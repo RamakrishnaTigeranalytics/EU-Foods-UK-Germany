@@ -1,0 +1,67 @@
+<div class="w-[654px]">
+    <div class="border-b border-marsgray-200">
+        <nwn-command-header type="stroke" >Financial Constraints</nwn-command-header>
+    </div>
+
+    <div *ngIf="constraint_difference" class="flex flex-row space-x-3 px-6 py-4 bg-white">
+        <div class="baselinemetrics scrollbar-x">
+            <table class="border border-marsgray-200 text-left">
+                <thead class="bg-white">
+                    <tr class="whitespace-nowrap tr-br">
+                        <th colspan="1" scope="colgroup" class="th-br">
+                            <nwn-cell-header type="subheadermd" color="bggray-100">MAC</nwn-cell-header>
+                        </th>
+                        <th colspan="1" scope="colgroup" class="th-br">
+                            <nwn-cell-header type="subheadermd" color="bggray-100">Retailer profit</nwn-cell-header>
+                        </th>
+                        <th colspan="1" scope="colgroup" class="th-br">
+                            <nwn-cell-header type="subheadermd" color="bggray-100">Trade expense</nwn-cell-header>
+                        </th>
+                        <th colspan="1" scope="colgroup" class="th-br">
+                            <nwn-cell-header type="subheadermd" color="bggray-100">MAC, %NSV</nwn-cell-header>
+                        </th>
+                        <th colspan="1" scope="colgroup" class="th-br">
+                            <nwn-cell-header type="subheadermd" color="bggray-100">RP, %RSV</nwn-cell-header>
+                        </th>
+                        
+                    </tr>
+                    
+                </thead>
+                <tbody class="bg-white">
+                    <tr class="whitespace-nowrap tr-br">
+                        <td >
+                            <nwn-cell-item [nwnCellItem]="'summarypopup'" [nwnCellData]="constraint_difference.mac"></nwn-cell-item>
+                        </td>
+                        <td >
+                            <nwn-cell-item [nwnCellItem]="'summarypopup'" [nwnCellData]="constraint_difference.rp"></nwn-cell-item>
+                        </td>
+                        <td >
+                            <nwn-cell-item [nwnCellItem]="'summarypopup'" [nwnCellData]="constraint_difference.te"></nwn-cell-item>
+                        </td>
+                        <td >
+                            <nwn-cell-item [nwnCellItem]="'summarypopup'" [nwnCellData]="constraint_difference.mac_percent"></nwn-cell-item>
+                        </td>
+                        <td >
+                            <nwn-cell-item [nwnCellItem]="'summarypopup'" [nwnCellData]="constraint_difference.rp_percent"></nwn-cell-item>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="border-b border-marsgray-200">
+        <div class="flex flex-row space-x-3 px-6 py-4 bg-white">
+            <div>
+                <nwn-legend-items nwnLegendItems="onesquare" type="squaresm" color="bg-gray-500"
+                    >User Input</nwn-legend-items
+                >
+            </div>
+            <div>
+                <nwn-legend-items nwnLegendItems="onesquare" type="squaresm" color="bg-gray-700"
+                    >Optimizer Recommended</nwn-legend-items
+                >
+            </div>
+        </div>
+    </div>
+    <nwn-search-footer (click)="closeModal()" [showClose]="true"></nwn-search-footer>
+</div>

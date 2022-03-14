@@ -1,0 +1,57 @@
+<div class="w-[650px] bg-white mx-auto my-6">
+    <div class="border-b border-marsgray-200">
+        <nwn-command-header type="stroke" nwnSvgIcon="adjustments">Manage metrics</nwn-command-header>
+    </div>
+    <div class="h-auto bg-white">
+        <div class="border-b border-marsgray-200">
+            <nwn-command-search [placeholder] = "'Search saved scenario'" (inputChangeEvent) = "inputChangeEvent($event)" [hideClose]="true"></nwn-command-search>
+        </div>
+        <div class="border border-gray-200 px-2 bg-gray-100">
+            <nwn-cell-header type="headersm">Sales metrics</nwn-cell-header>
+        </div>
+        <div *ngFor="let sales of sales_metrics | appFilter: searchText;">
+            <nwn-command-multiselect (valueChangeSelect) = "changeMetrics($event)" [leftBorder]="false" [value] = "sales.value" [checked] = "sales.checked" [hideClose]="true">{{sales.value}}</nwn-command-multiselect>
+            <!-- <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">Base Units</nwn-command-multiselect>
+            <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">Incremental Units</nwn-command-multiselect>
+            <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">Volume</nwn-command-multiselect> -->
+        </div>
+        <div class="border border-gray-200 px-2 bg-gray-100">
+            <nwn-cell-header type="headersm">Retailer metrics</nwn-cell-header>
+        </div>
+        <div *ngFor="let retailer of retailer_metrics | appFilter: searchText;">
+            <nwn-command-multiselect (valueChangeSelect) = "changeMetrics($event)" [leftBorder]="false" [value] = "retailer.value" [checked] = "retailer.checked" [hideClose]="true">{{retailer.value}}</nwn-command-multiselect>
+        </div>
+        <div class="border border-gray-200 px-2 bg-gray-100">
+            <nwn-cell-header type="headersm">Mars matrics</nwn-cell-header>
+        </div>
+        <div>
+            <div *ngFor="let mars of mars_metrics | appFilter: searchText;">
+                <nwn-command-multiselect (valueChangeSelect) = "changeMetrics($event)" [leftBorder]="false" [value] = "mars.value" [checked] = "mars.checked" [hideClose]="true">{{mars.value}}</nwn-command-multiselect>
+            </div>
+            <!-- <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">LSV</nwn-command-multiselect>
+            <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">NSV</nwn-command-multiselect>
+            <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">MAC</nwn-command-multiselect>
+            <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">MAC, %NSV</nwn-command-multiselect>
+            <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">TE, % GSV</nwn-command-multiselect>
+            <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">TE / Unit</nwn-command-multiselect>
+            <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">ROI</nwn-command-multiselect>
+            <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">Lift %</nwn-command-multiselect>
+            <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">ASP</nwn-command-multiselect>
+            <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">Promo ASP</nwn-command-multiselect>
+            <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">RSV</nwn-command-multiselect>
+            <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">Customer Margin</nwn-command-multiselect>
+            <nwn-command-multiselect [leftBorder]="false" [hideClose]="true"
+                >Customer Margin, %RSV</nwn-command-multiselect
+            > -->
+        </div>
+
+
+        <!-- <div class="border border-gray-200 px-2 bg-gray-100">
+            <nwn-cell-header type="headersm">Other metrics</nwn-cell-header>
+        </div>
+        <div *ngFor="let other of other_metrics | appFilter: searchText;">
+            <nwn-command-multiselect (valueChangeSelect) = "changeMetrics($event)" [leftBorder]="false" [value] = "other.value" [checked] = "other.checked" [hideClose]="true">{{other.value}}</nwn-command-multiselect>
+        </div> -->
+    </div>
+    <nwn-search-footer (click)="closeModal()" [showKeyBoardCtrl]="true" [showApply]="true"></nwn-search-footer>
+</div>

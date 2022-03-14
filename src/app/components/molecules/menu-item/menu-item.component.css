@@ -1,0 +1,3 @@
+.active-icon {
+    @apply border-gray-200 bg-marsgray-100 text-marsblue-500;
+}

@@ -1,0 +1,56 @@
+<div class="bg-marsgray-50 p-2 fixed top-0 w-14 h-screen space-y-4 flex flex-col justify-between items-center">
+    <div class="p-2 text-center flex flex-col items-center space-y-16">
+        <a routerLink="home-page" title="Home page">
+            <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M2.82068 1.87954L11.8525 10.851V18.3091L6.48882 12.9835V23.5767H1.84619V1.42285C2.27496 1.42285 2.54782 1.61247 2.82068 1.87954Z"
+                    fill="#0000A0"
+                />
+                <path
+                    d="M17.2202 12.9835L11.8525 18.3091V10.851L20.8883 1.87954C21.1612 1.61247 21.434 1.42285 21.8628 1.42285V23.5767H17.2202V12.9835Z"
+                    fill="#00D7B9"
+                />
+            </svg>
+        </a>
+        <ng-container *ngIf="!hide_side">
+        <div  *ngIf="user$ | async as user" class="mb-10 text-center">
+            <!-- <nwn-side-menu></nwn-side-menu> -->
+            <div class="flex flex-col">
+                <div class="flex flex-col space-y-6 border-b border-marsgray-200 pb-6">
+
+                    <nwn-menu-item
+                        type="stroke"
+                        nwnSvgIcon="pricing-tool"
+                       
+                        [link]="'/pricing-tool'" 
+
+                       
+                        
+                        >Pricing tools</nwn-menu-item
+                    >
+                    <!-- href="/pricing-tool" [link]="'/pricing'"  (click) = "redirectPage()" -->
+                    <!-- [active]="currentRoute === '/pricing-tool'" -->
+                    <nwn-menu-item *ngIf="is_promo"
+                        type="stroke"
+                        nwnSvgIcon="promo-tool"
+                        [link]="'/promo'" 
+                       
+                       
+                        >Promo tool</nwn-menu-item
+                    >
+                    <!-- [active]="currentRoute === '/promo-tool/promo-scenario-builder'" -->
+                    <!-- href="/promo-tool/promo-scenario-builder" --> 
+                </div>
+                <!-- <div class="flex flex-col space-y-6 pt-6">
+                    <nwn-menu-item type="stroke" nwnSvgIcon="profit-tool" [link]="'/profit'" >Profit tool</nwn-menu-item>
+                    <nwn-menu-item type="stroke" nwnSvgIcon="pricing-capabilities" [link]="'/pricing'">Pricing Capabilities</nwn-menu-item>
+                    <nwn-menu-item type="stroke" nwnSvgIcon="srm-insight"  [link]="'/srm'">SRM insights</nwn-menu-item>
+                </div> -->
+            </div>
+        </div>
+    </ng-container>
+    </div>
+    <div *ngIf="user$ | async as user">
+        <nwn-menu-item type="stroke" nwnSvgIcon="logout"  (click) = "logout()" >Logout</nwn-menu-item>
+    </div>
+</div>

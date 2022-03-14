@@ -1,0 +1,13 @@
+/* drag button */
+.checkbox-metric .dragBtn.hidden {
+    @apply hidden;
+}
+.checkbox-metric:hover .dragBtn.hidden {
+    @apply hidden;
+}
+.checkbox-metric .dragBtn {
+    @apply hidden;
+}
+.checkbox-metric:hover .dragBtn {
+    @apply block;
+}

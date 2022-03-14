@@ -1,0 +1,95 @@
+<div class="w-[650px] bg-white mx-auto my-6">
+    <div class="border-b border-marsgray-200">
+        <nwn-command-header type="stroke" nwnSvgIcon="adjustments">Promotion details</nwn-command-header>
+    </div>
+    <form [formGroup]="form" >
+    <div class="h-auto bg-white">
+        <div class="px-6 py-3 space-y-2 promodetailselect">
+            <label for="promoname">Promo Mechanic<span class="mandatory-fields">*</span></label>
+            <ngx-select-dropdown
+            (open)="hideNoResultsFound()"
+            (change)="hideNoResultsFound();changePromotion($event)"
+            id="promo-details"
+            formControlName="promo"
+            tabindex="0"
+            [multiple]="false"
+            [config]="config"
+            [options]="promo_name"
+            >
+        </ngx-select-dropdown>
+        <span *ngIf="errMsg.mechanic" class="err-msg">Please select the promo mechanic</span>
+            <!-- <div class="relative">
+                <select (change)="changePromotion($event)" formControlName="promo"
+                    name="promoname"
+                    class="
+                        appearance-none
+                        h-10
+                        w-full
+                        py-2
+                        px-3
+                        rounded-none
+                        border border-marsgray-300
+                        focus:border-marsgray-500
+                        focus:outline-none
+                        bg-transparent
+                    "
+                >
+                <option value="">Choose Promotion</option>
+                    <option value="{{promo}}" *ngFor="let promo of promo_name">{{promo}}</option>
+                    <option value="">Promo name</option>
+                    <option value="">Promo name</option> 
+                </select>
+                <nwn-svg-icon type="stroke" nwnSvgIcon="chevron-down" class="absolute top-1 right-1"></nwn-svg-icon>
+            </div> -->
+        </div>
+        <div class="px-6 py-2">
+            <label for="promoname">Discount depth
+                <!-- <span class="mandatory-fields">*</span> -->
+            </label>
+            <div class="custom-slider pt-4 pb-6">
+                <ngx-slider [(value)]="valueDiscountdepth" (mouseup)="sliderEvent()" [options]="discountdepth"></ngx-slider>
+            </div>
+            
+        </div>
+        <!-- <div class="px-6 py-2">
+            <label for="promoname">Co-investment depth
+                
+            </label>
+            <div class="custom-slider pt-4 pb-6">
+                <ngx-slider [(value)]="valueCoInvestment" [options]="coInvestment"></ngx-slider>
+            </div>
+            <span *ngIf="errMsg.discount" class="err-msg">Please select the discount depth or co investment</span>
+             
+        </div> -->
+        <div class="px-6 py-2">
+            <nwn-text-input nwnTextInput="text" [placeholder]="promo_generated" [error]="true"
+                ><p label>Name</p></nwn-text-input
+            >
+        </div>
+        <nwn-search-footer (click) = "addPromotions()" [showAdd]="true" type="secondary"></nwn-search-footer>
+        <div class="border border-gray-200 px-2 bg-gray-100">
+            <nwn-cell-header type="headersm">Input promotions</nwn-cell-header>
+        </div>
+
+        <div *ngFor="let promo of input_promotions">
+            <nwn-command-multiselect (clickClosedEvent)="clickClosedEvent($event)" (valueChangeSelect)="valueChangePromo($event)" [value] = "promo.value" [checked]="promo.checked" [leftBorder]="false" [hideClose]="false">{{promo.value}}</nwn-command-multiselect>
+            <!-- <nwn-command-multiselect [leftBorder]="false" [hideClose]="false">N + 1 - 20%</nwn-command-multiselect> -->
+        </div>
+        <div class="border border-gray-200 px-2 bg-gray-100">
+            <nwn-cell-header type="headersm">Baseline promotions</nwn-cell-header>
+        </div>
+        <div *ngFor="let base_promo of base_line_promotions">
+            <nwn-command-multiselect (valueChangeSelect)="valueChangeBaseline($event)" [value] = "base_promo.value" [checked]="base_promo.checked" [leftBorder]="false" [hideClose]="true">{{base_promo.value}}</nwn-command-multiselect>
+            <!--[value] = "brand.value" [checked]="brand.checked" 
+                <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">TPR - 10%</nwn-command-multiselect>
+            <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">TPR - 20%</nwn-command-multiselect>
+            <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">TPR - 25%</nwn-command-multiselect>
+            <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">MAC, %NSV</nwn-command-multiselect>
+            <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">N + 1 - 7%</nwn-command-multiselect>
+            <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">TE / Unit</nwn-command-multiselect>
+            <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">N + 1 - 15%</nwn-command-multiselect> -->
+        </div>
+    </div>
+</form>
+    <nwn-search-footer [showApply]="true" (click)="applyPromotion()"></nwn-search-footer>
+</div>

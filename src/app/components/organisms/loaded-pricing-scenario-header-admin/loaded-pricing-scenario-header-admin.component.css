@@ -1,0 +1,259 @@
+.tablist > div {
+    @apply cursor-pointer;
+}
+.tab:hover {
+    @apply bg-marsgray-200;
+}
+
+.active nwn-pricing-product-item .sfi {
+    @apply border-marsblue-500 text-marsblue-500 !important;
+}
+
+::ng-deep .mat-tab-header-pagination-before {
+    /* position: absolute !important;
+    width: 26px !important;
+    height: 100% !important;
+    right: 22px !important;
+    background-color: rgba(244, 244, 245, 1) !important;
+    box-shadow: none !important; */
+    order: 2;
+}
+::ng-deep .mat-tab-header-pagination-after {
+    order: 3;
+}
+
+::ng-deep .mat-tab-label-container {
+    order: 1;
+}
+
+::ng-deep .mat-tab-label:hover {
+    @apply bg-marsgray-200 text-marsblue-500 opacity-100 !important;
+}
+
+::ng-deep .mat-tab-label-active {
+    @apply bg-marsgray-200 opacity-100 !important;
+}
+
+::ng-deep .mat-tab-label-active .mat-tab-label-content {
+    @apply text-marsblue-500 opacity-100 !important;
+}
+
+::ng-deep .mat-tab-label {
+    cursor: pointer !important;
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
+    font-size: 14px !important;
+    line-height: 20px !important;
+    font-weight: 600 !important;
+    min-width: 109px !important;
+    height: auto !important;
+    opacity: 1 !important;
+    --tw-text-opacity: 1 !important;
+    color: rgba(161, 161, 170, var(--tw-text-opacity)) !important;
+}
+
+.width-of-tab {
+    width: calc(100% - 44px);
+}
+::ng-deep .mat-tab-header-pagination-chevron {
+    @apply border-marsgray-900 !important;
+}
+
+/* .example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.example-headers-align .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+} */
+
+.mat-expansion-panel:not([class*=mat-elevation-z]){
+
+    box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+}
+
+.mat-accordion .mat-expansion-panel:not(.mat-expanded), .mat-accordion .mat-expansion-panel:not(.mat-expansion-panel-spacing){
+border:0
+
+}
+
+.mat-expansion-panel {
+    background-color: rgba(250, 250, 250, var(--tw-bg-opacity));
+    color: rgba(0,0,0,.87);
+    /* overflow: visible; */
+}
+.mat-expansion-panel-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 24px;
+    border-radius: inherit;
+    transition: height 225ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.mat-expansion-panel-header {
+    height: 48px;
+}
+::ng-deep .mat-expansion-indicator::after{
+    border-color: black!important;
+}
+/* .sub-header-lg{
+    padding-right: 0.5rem;
+} */
+.small-padding > nwn-cell-header > .sub-header-lg{
+    padding-right: 0.5rem;
+}
+
+.applyall {
+    font-size: 0.8rem
+}
+
+/* dp-date-picker.ng-touched {
+    border: 10px solid rebeccapurple;
+  }
+  dp-date-picker.ng-untouched {
+    border: 10px solid saddlebrown;
+  } */
+
+  .tabs li { 
+    /* Makes a horizontal row */
+    float: left; 
+      
+    /* So the psueudo elements can be
+       abs. positioned inside */
+    position: relative; 
+  }
+  .tabs a { 
+    /* Make them block level
+       and only as wide as they need */
+    float: left; 
+    padding: 10px 40px; 
+    text-decoration: none;
+    
+    /* Default colors */ 
+    color: black;
+    background: #ddc385; 
+    
+    /* Only round the top corners */
+    -webkit-border-top-left-radius: 15px;
+    -webkit-border-top-right-radius: 15px;
+    -moz-border-radius-topleft: 15px;
+    -moz-border-radius-topright: 15px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px; 
+  }
+  .tabs {
+    list-style: none;
+   
+}
+.group {
+    zoom: 1;
+}
+  .group:before, .group:after{
+      content: "";
+      display: table;
+  }
+  .group:after {
+    clear: both;
+}
+  .tabs .active {
+    /* Highest, active tab is on top */
+    z-index: 3;
+  }
+  .tabs .active a { 
+    /* Colors when tab is active */
+    background:rgba(243, 244, 246, var(--tw-bg-opacity)); 
+    color: black; 
+  }
+  .tabs li:before, .tabs li:after, 
+  .tabs li a:before, .tabs li a:after {
+    /* All pseudo elements are 
+       abs. positioned and on bottom */
+    position: absolute;
+    bottom: 0;
+  }
+  /* Only the first, last, and active
+     tabs need pseudo elements at all */
+  .tabs li:last-child:after,   .tabs li:last-child a:after,
+  .tabs li:first-child:before, .tabs li:first-child a:before,
+  .tabs .active:after,   .tabs .active:before, 
+  .tabs .active a:after, .tabs .active a:before {
+    content: "";
+  }
+  .tabs .active:before, .tabs .active:after {
+    background: rgba(243, 244, 246, var(--tw-bg-opacity)); 
+    
+    /* Squares below circles */
+    z-index: 1;
+  }
+  /* Squares */
+  .tabs li:before, .tabs li:after {
+    background: #ddc385;
+    width: 10px;
+    height: 10px;
+  }
+  .tabs li:before {
+    left: -10px;      
+  }
+  .tabs li:after { 
+    right: -10px;
+  }
+  /* Circles */
+  .tabs li a:after, .tabs li a:before {
+    width: 20px; 
+    height: 20px;
+    /* Circles are circular */
+    -webkit-border-radius: 10px;
+    -moz-border-radius:    10px;
+    border-radius:         10px;
+    background:rgba(250, 250, 250, var(--tw-bg-opacity));;
+    
+    /* Circles over squares */
+    z-index: 2;
+  }
+  .tabs .active a:after, .tabs .active a:before {
+    background: #ddc385;
+  }
+  /* First and last tabs have different
+     outside color needs */
+  .tabs li:first-child.active a:before,
+  .tabs li:last-child.active a:after {
+    background: rgba(250, 250, 250, var(--tw-bg-opacity));;
+  }
+  .tabs li a:before {
+    left: -20px;
+  }
+  .tabs li a:after {
+    right: -20px;
+  }
+
+
+  /* datepicker */
+::ng-deep .dp-picker-input {
+    visibility: hidden;
+}
+
+.fill-def{
+    fill :#71717A
+
+}
+.fill-blue{
+    fill : #00006d
+
+}
+.date-picker-para{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: white;
+}
+.currspan{
+  padding:3px
+}

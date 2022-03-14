@@ -1,0 +1,146 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { guessProductionMode } = require('@ngneat/tailwind');
+
+process.env.TAILWIND_MODE = guessProductionMode() ? 'build' : 'watch';
+
+module.exports = {
+    prefix: '',
+    mode: 'jit',
+    purge: {
+        content: ['./src/**/*.{html,ts,css,scss,sass,less,styl}'],
+    },
+    darkMode: false, // or 'media' or 'class'
+    theme: {
+        borderWidth: {
+            DEFAULT: '1px',
+            0: '0',
+            2: '2px',
+            3: '3px',
+            4: '4px',
+            6: '6px',
+            8: '8px',
+        },
+        extend: {
+            lineHeight: {
+                0: '0',
+            },
+            backdropBlur: {
+                xs: '2px',
+            },
+            outline: {
+                'marsgray-1': ['1px solid #E4E4E7', '0px'],
+            },
+            fontFamily: {
+                sans: ['Mars Centra', 'sans-serif'],
+            },
+            fontSize: {
+                heading: ['32px', '40px'],
+                title: ['28px', '32px'],
+                'title-medium': ['20px', '28px'],
+                'title-small': ['14px', '20px'],
+                'body-standard': ['16px', '24px'],
+                body: ['14px', '20px'],
+                caption: ['12px', '16px'],
+                'link-standard': ['14px', '20px'],
+                'link-small': ['12px', '16px'],
+            },
+            spacing: {
+                2.5: '0.625rem',
+            },
+            colors: {
+                marslblue: {
+                    50: '#F0F9FF',
+                    100: '#E0F2FE',
+                    200: '#BAE6FD',
+                    300: '#7DD3FC',
+                    400: '#38BDF8',
+                    500: '#0EA5E9',
+                    600: '#0284C7',
+                    700: '#0369A1',
+                    800: '#075985',
+                    900: '#0C4A6E',
+                },
+                marsblue: {
+                    50: '#E2E2FF',
+                    100: '#BFBFFF',
+                    200: '#7777FF',
+                    300: '#3030FF',
+                    400: '#0000E7',
+                    500: '#0000A0',
+                    600: '#000087',
+                    700: '#00006D',
+                    800: '#000053',
+                    900: '#00003A',
+                },
+                marsgray: {
+                    50: '#FAFAFA',
+                    100: '#F4F4F5',
+                    200: '#E4E4E7',
+                    300: '#D4D4D8',
+                    400: '#A1A1AA',
+                    500: '#71717A',
+                    600: '#52525B',
+                    700: '#3C3C3C',
+                    800: '#27272A',
+                    900: '#18181B',
+                },
+                marsteal: {
+                    50: '#F0FDFA',
+                    100: '#CCFBF1',
+                    200: '#99F6E4',
+                    300: '#5EEAD4',
+                    400: '#00D7B8',
+                    500: '#14B8A6',
+                    600: '#0D9488',
+                    700: '#0F766E',
+                    800: '#115E59',
+                    900: '#134E4A',
+                },
+                marsgreen: {
+                    50: '#F7FEE7',
+                    100: '#ECFCCB',
+                    200: '#D9F99D',
+                    300: '#BEF264',
+                    400: '#A6DB00',
+                    500: '#84CC16',
+                    600: '#65A30D',
+                    700: '#4D7C0F',
+                    800: '#3F6212',
+                    900: '#365314',
+                    accent: '#61A020',
+                },
+                marsyellow: {
+                    50: '#FEFCE8',
+                    100: '#FEF9C3',
+                    200: '#FEF08A',
+                    300: '#FFDC00',
+                    400: '#FFDC00',
+                    500: '#EAB308',
+                    600: '#CA8A04',
+                    700: '#A16207',
+                    800: '#854D0E',
+                    900: '#713F12',
+                },
+                marsorange: {
+                    accent: '#E6A000',
+                },
+                marsred: {
+                    50: '#FEF2F2',
+                    100: '#FEE2E2',
+                    200: '#FECACA',
+                    300: '#F87171',
+                    400: '#F87171',
+                    500: '#EF4444',
+                    600: '#DC2626',
+                    700: '#B91C1C',
+                    800: '#991B1B',
+                    900: '#7F1D1D',
+                },
+            },
+        },
+    },
+    variants: {
+        extend: {},
+    },
+    plugins: [],
+};

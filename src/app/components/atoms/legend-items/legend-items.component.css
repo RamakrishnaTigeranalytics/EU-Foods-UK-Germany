@@ -1,0 +1,22 @@
+.triangle-tr {
+    width: 0;
+    height: 0;
+    border-top: 8px solid rgba(107, 114, 128);
+    border-left: 8px solid transparent;
+}
+.square-sm {
+    @apply w-2 h-2;
+}
+.square-lg {
+    @apply w-5 h-5;
+}
+.light-gradient{
+    background-color: #E0F2FE !important;
+ 
+ }
+ .medium-gradient{
+     background-color: #7DD3FC !important;
+ }
+ .high-gradient{
+     background-color: #40ACE2 !important;
+ }

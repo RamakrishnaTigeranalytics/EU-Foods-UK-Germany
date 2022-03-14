@@ -1,0 +1,17 @@
+<div
+    class="flex flex-row items-center group"
+    [ngClass]="{
+        sfi: size === 'sfi',
+        'default-sfi': type === 'default',
+        'active-sfi': type === 'active',
+        'filled-sfi': type === 'filled',
+        'filledactive-sfi': type === 'filled-active'
+    }"
+>
+    <p class="mr-1">
+        <ng-content></ng-content>
+    </p>
+    <nwn-button type="icon" size="no-size" class="leading-0" [ngClass]="{ hidden: showClose == false }">
+        <nwn-svg-icon (click) = "closeClicked($event)" size="md" nwnSvgIcon="close"></nwn-svg-icon>
+    </nwn-button>
+</div>

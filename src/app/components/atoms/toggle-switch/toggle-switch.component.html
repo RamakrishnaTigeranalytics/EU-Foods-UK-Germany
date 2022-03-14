@@ -1,0 +1,20 @@
+<label  
+[ngClass]="{
+    'disabled ' : disable
+}"
+class="switch">
+    <input type="checkbox" 
+   
+    [attr.disabled] = "disable ? true : null" id="togBtn" 
+    [ngModel]="checked" 
+    (ngModelChange)="onModelChange($event)" 
+   
+      
+     >
+    <div class="slider round">
+        <ng-container *ngIf="showText">
+     <span class="on">ON</span>
+     <span class="off">OFF</span>
+    </ng-container>
+    </div>
+   </label>

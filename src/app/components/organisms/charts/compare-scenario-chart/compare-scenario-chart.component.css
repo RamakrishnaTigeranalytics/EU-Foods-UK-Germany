@@ -1,0 +1,61 @@
+/* Label text in chart */
+::ng-deep text {
+    font-family: 'Mars Centra', 'sans-serif' !important;
+    font-size: 12px !important;
+    fill: #52525b !important;
+}
+
+/* Y Axis */
+::ng-deep .yAxis path {
+    stroke: white !important;
+}
+::ng-deep .yAxis line {
+    stroke: white !important;
+}
+
+/* X Axis */
+::ng-deep .xAxis path {
+    stroke: #d4d4d8 !important;
+}
+::ng-deep .xAxis line {
+    stroke: white !important;
+}
+
+/* Hover to change color for each bar */
+::ng-deep .group rect:first-child:hover {
+    fill: #3ebffd !important;
+}
+::ng-deep .group rect:nth-of-type(2):hover {
+    fill: #0074b0 !important;
+}
+
+/* Indicator Line */
+::ng-deep line {
+    stroke: #d4d4d8 !important;
+}
+
+::ng-deep line#indicatorLine {
+    stroke: #d4d4d8 !important;
+    stroke-width: 1 !important;
+    stroke-dasharray: 4 4 !important;
+}
+
+/* Tooltip */
+.arrow_box {
+    position: relative;
+    background: #ffffff;
+}
+.arrow_box:after {
+    top: 100%;
+    right: 10%;
+    border: solid transparent;
+    content: '';
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(255, 255, 255, 0);
+    border-top-color: #ffffff;
+    border-width: 8px;
+    margin-left: -6px;
+}

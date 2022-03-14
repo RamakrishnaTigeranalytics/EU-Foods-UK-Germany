@@ -1,0 +1,25 @@
+::ng-deep .sticked.freeze_horizontal {
+    @apply p-0 divide-x divide-y divide-marsgray-200;
+}
+.scrolly_table {
+    white-space: nowrap;
+    overflow: auto;
+}
+
+.sticked.freeze {
+    z-index: 10;
+    position: relative;
+    background-color: #fff;
+}
+
+.sticked.freeze_vertical {
+    z-index: 5;
+    position: relative;
+    background-color: #fff;
+}
+
+.sticked.freeze_horizontal {
+    z-index: 1;
+    position: relative;
+    background-color: #fff;
+}

@@ -1,0 +1,26 @@
+<div class="w-[650px] bg-white mx-auto my-6">
+    <div class="border-b border-marsgray-200">
+        <nwn-command-header type="stroke" nwnSvgIcon="variables">Objective function</nwn-command-header>
+    </div>
+    <div class="border-b border-marsgray-200">
+        <nwn-command-search [value]="searchText" [hideClose]="true" [placeholder]="placeholder" (inputChangeEvent) = "inputChangeEvent($event)"></nwn-command-search>
+    </div>
+    <div>
+        <nwn-command-iconitem (click) = "selectObjective(objective.value)" *ngFor = "let objective of objective_function | appFilter: searchText : 'promo';" type="stroke" nwnSvgIcon="{{objective.nwnSvgIcon}}" [hideTick]="true"
+            >{{objective.name}}</nwn-command-iconitem
+        >
+        <!-- <nwn-command-iconitem type="stroke" nwnSvgIcon="trending-up" [hideTick]="true"
+            >Maximize RP</nwn-command-iconitem
+        >
+        <nwn-command-iconitem type="stroke" nwnSvgIcon="trending-up" [hideTick]="true"
+            >Maximize NSV</nwn-command-iconitem
+        >
+        <nwn-command-iconitem type="stroke" nwnSvgIcon="trending-up" [hideTick]="true"
+            >Maximize RSV</nwn-command-iconitem
+        >
+        <nwn-command-iconitem type="stroke" nwnSvgIcon="trending-down" [hideTick]="true"
+            >Minimize TE</nwn-command-iconitem
+        > -->
+    </div>
+    <nwn-search-footer (click) = "apply()" [showKeyBoardCtrl]="true" [showApply]="true"></nwn-search-footer>
+</div>

@@ -1,0 +1,11 @@
+.align-info-check{
+    display: flex;
+    align-items: center;
+}
+
+.flex-1{
+    flex : 1
+}
+.m-1{
+    margin: 1rem;
+}

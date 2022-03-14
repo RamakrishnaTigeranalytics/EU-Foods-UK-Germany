@@ -1,0 +1,224 @@
+<div class="w-[1000px]">
+    <div class="border-b border-marsgray-200">
+        <nwn-command-header type="stroke" nwnSvgIcon="user-guide">User Guide</nwn-command-header>
+    </div>
+    <ng-container *ngIf="guideFor == 'optimizer'">
+      <div class="carousel relative relative overflow-hidden shadow-xl bg-white" style="padding: 5vh 1vh;">
+        <div class="carousel-inner relative overflow-hidden w-full">
+
+          <!--Slide 1-->
+          <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden=""
+            checked="checked">
+          <div class="carousel-item absolute opacity-0 bg-center bg_img_contain" style="background-image: url(../../../../assets/user-guide/optimizer/1.png)">
+          </div>
+          <label for="carousel-2" class="carousel-control next control-1">›</label>
+
+
+          <!--Slide 2-->
+          <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
+          <div class="carousel-item absolute opacity-0 bg-center bg_img_contain" style="background-image: url(../../../../assets/user-guide/optimizer/2.png)">
+          </div>
+          <label for="carousel-1" class="carousel-control prev control-2" id="goBackToStep1">‹</label>
+          <label for="carousel-3" class="carousel-control next control-2">›</label>
+
+      
+          <!--Slide 3-->
+          <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
+          <div class="carousel-item absolute opacity-0 bg_img_contain" style="background-image: url(../../../../assets/user-guide/optimizer/3.png)">
+          </div>
+          <label for="carousel-2" class="carousel-control prev control-3">‹</label>
+          <label for="carousel-4" class="carousel-control next control-3">›</label>
+
+          <!--Slide 4-->
+          <input class="carousel-open" type="radio" id="carousel-4" name="carousel" aria-hidden="true" hidden="">
+          <div class="carousel-item absolute opacity-0 bg_img_4_6" style="background-image: url(../../../../assets/user-guide/optimizer/4.png)">
+          </div>
+          <label for="carousel-3" class="carousel-control prev control-4">‹</label>
+          <label for="carousel-5" class="carousel-control next control-4">›</label>
+
+
+        <!--Slide 5-->
+        <input class="carousel-open" type="radio" id="carousel-5" name="carousel" aria-hidden="true" hidden="">
+        <div class="carousel-item absolute opacity-0 bg_img_contain" style="background-image: url(../../../../assets/user-guide/optimizer/5.png)">
+        </div>
+        <label for="carousel-4" class="carousel-control prev control-5">‹</label>
+        <label for="carousel-6" class="carousel-control next control-5">›</label>
+
+
+        <!--Slide 6-->
+        <input class="carousel-open" type="radio" id="carousel-6" name="carousel" aria-hidden="true" hidden="">
+        <div class="carousel-item absolute opacity-0 bg_img_4_6" style="background-image: url(../../../../assets/user-guide/optimizer/6.png)">
+        </div>
+        <label for="carousel-5" class="carousel-control prev control-6">‹</label>
+        <label for="carousel-7" class="carousel-control next control-6">›</label>
+
+        <!--Slide 7-->
+        <input class="carousel-open" type="radio" id="carousel-7" name="carousel" aria-hidden="true" hidden="">
+        <div class="carousel-item absolute opacity-0 bg_img_7" style="background-image: url(../../../../assets/user-guide/optimizer/7.png)">
+        </div>
+        <label for="carousel-6" class="carousel-control prev control-7">‹</label>
+        <label for="carousel-8" class="carousel-control next control-7">›</label>
+
+          <!--Slide 8-->
+          <input class="carousel-open" type="radio" id="carousel-8" name="carousel" aria-hidden="true" hidden="">
+          <div class="carousel-item absolute opacity-0 bg_img_cover" style="background-image: url(../../../../assets/user-guide/optimizer/8.png)">
+          </div>
+          <label for="carousel-7" class="carousel-control prev control-8">‹</label>
+          <label for="carousel-9" class="carousel-control next control-8">›</label>
+
+            <!--Slide 9-->
+            <input class="carousel-open" type="radio" id="carousel-9" name="carousel" aria-hidden="true" hidden="">
+            <div class="carousel-item absolute opacity-0 bg_img_contain" style="background-image: url(../../../../assets/user-guide/optimizer/9.png)">
+            </div>
+            <label for="carousel-8" class="carousel-control prev control-9">‹</label>
+
+      
+          <!-- Add additional indicators for each slide-->
+          <ol class="carousel-indicators">
+            <li class="inline-block mr-3">
+              <label for="carousel-1"
+                class="carousel-bullet cursor-pointer block text-4xl text-gray-400 hover:text-blue-700">•</label>
+            </li>
+            <li class="inline-block mr-3">
+              <label for="carousel-2"
+                class="carousel-bullet cursor-pointer block text-4xl text-gray-400 hover:text-blue-700">•</label>
+            </li>
+            <li class="inline-block mr-3">
+              <label for="carousel-3"
+                class="carousel-bullet cursor-pointer block text-4xl text-gray-400 hover:text-blue-700">•</label>
+            </li>
+            <li class="inline-block mr-3">
+              <label for="carousel-4"
+                class="carousel-bullet cursor-pointer block text-4xl text-gray-400 hover:text-blue-700">•</label>
+            </li>
+            <li class="inline-block mr-3">
+              <label for="carousel-5"
+                class="carousel-bullet cursor-pointer block text-4xl text-gray-400 hover:text-blue-700">•</label>
+            </li>
+            <li class="inline-block mr-3">
+              <label for="carousel-6"
+                class="carousel-bullet cursor-pointer block text-4xl text-gray-400 hover:text-blue-700">•</label>
+            </li>
+            <li class="inline-block mr-3">
+              <label for="carousel-7"
+                class="carousel-bullet cursor-pointer block text-4xl text-gray-400 hover:text-blue-700">•</label>
+            </li>
+            <li class="inline-block mr-3">
+              <label for="carousel-8"
+                class="carousel-bullet cursor-pointer block text-4xl text-gray-400 hover:text-blue-700">•</label>
+            </li>
+            <li class="inline-block mr-3">
+              <label for="carousel-9"
+                class="carousel-bullet cursor-pointer block text-4xl text-gray-400 hover:text-blue-700">•</label>
+            </li>
+          </ol>
+      
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="guideFor == 'simulator'">
+      <div class="carousel relative relative overflow-hidden shadow-xl bg-white" style="padding: 5vh 1vh;">
+        <div class="carousel-inner relative overflow-hidden w-full">
+
+          <!--Slide 1-->
+          <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden=""
+            checked="checked">
+          <div class="carousel-item absolute opacity-0 bg-center bg_img_contain" style="background-image: url(../../../../assets/user-guide/simulator/1.png)">
+          </div>
+          <label for="carousel-2" class="carousel-control next control-1">›</label>
+
+
+          <!--Slide 2-->
+          <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
+          <div class="carousel-item absolute opacity-0 bg-center bg_img_contain" style="background-image: url(../../../../assets/user-guide/simulator/2.png)">
+          </div>
+          <label for="carousel-1" class="carousel-control prev control-2" id="goBackToStep1">‹</label>
+          <label for="carousel-3" class="carousel-control next control-2">›</label>
+
+      
+          <!--Slide 3-->
+          <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
+          <div class="carousel-item absolute opacity-0 bg_img_contain" style="background-image: url(../../../../assets/user-guide/simulator/3.png)">
+          </div>
+          <label for="carousel-2" class="carousel-control prev control-3">‹</label>
+          <label for="carousel-4" class="carousel-control next control-3">›</label>
+
+          <!--Slide 4-->
+          <input class="carousel-open" type="radio" id="carousel-4" name="carousel" aria-hidden="true" hidden="">
+          <div class="carousel-item absolute opacity-0 bg_img_cover" style="background-image: url(../../../../assets/user-guide/simulator/4.PNG)">
+          </div>
+          <label for="carousel-3" class="carousel-control prev control-4">‹</label>
+          <label for="carousel-5" class="carousel-control next control-4">›</label>
+
+
+        <!--Slide 5-->
+        <input class="carousel-open" type="radio" id="carousel-5" name="carousel" aria-hidden="true" hidden="">
+        <div class="carousel-item absolute opacity-0 bg_img_cover" style="background-image: url(../../../../assets/user-guide/simulator/5.PNG)">
+        </div>
+        <label for="carousel-4" class="carousel-control prev control-5">‹</label>
+        <label for="carousel-6" class="carousel-control next control-5">›</label>
+
+
+        <!--Slide 6-->
+        <input class="carousel-open" type="radio" id="carousel-6" name="carousel" aria-hidden="true" hidden="">
+        <div class="carousel-item absolute opacity-0 bg_img_contain_sim_6" style="background-image: url(../../../../assets/user-guide/simulator/6.PNG)">
+        </div>
+        <label for="carousel-5" class="carousel-control prev control-6">‹</label>
+        <label for="carousel-7" class="carousel-control next control-6">›</label>
+
+        <!--Slide 7-->
+        <input class="carousel-open" type="radio" id="carousel-7" name="carousel" aria-hidden="true" hidden="">
+        <div class="carousel-item absolute opacity-0 bg_img_cover" style="background-image: url(../../../../assets/user-guide/simulator/7.PNG)">
+        </div>
+        <label for="carousel-6" class="carousel-control prev control-7">‹</label>
+        <label for="carousel-8" class="carousel-control next control-7">›</label>
+
+          <!--Slide 8-->
+          <input class="carousel-open" type="radio" id="carousel-8" name="carousel" aria-hidden="true" hidden="">
+          <div class="carousel-item absolute opacity-0 bg_img_contain_sim_6" style="background-image: url(../../../../assets/user-guide/simulator/8.PNG)">
+          </div>
+          <label for="carousel-7" class="carousel-control prev control-8">‹</label>
+
+      
+          <!-- Add additional indicators for each slide-->
+          <ol class="carousel-indicators">
+            <li class="inline-block mr-3">
+              <label for="carousel-1"
+                class="carousel-bullet cursor-pointer block text-4xl text-gray-400 hover:text-blue-700">•</label>
+            </li>
+            <li class="inline-block mr-3">
+              <label for="carousel-2"
+                class="carousel-bullet cursor-pointer block text-4xl text-gray-400 hover:text-blue-700">•</label>
+            </li>
+            <li class="inline-block mr-3">
+              <label for="carousel-3"
+                class="carousel-bullet cursor-pointer block text-4xl text-gray-400 hover:text-blue-700">•</label>
+            </li>
+            <li class="inline-block mr-3">
+              <label for="carousel-4"
+                class="carousel-bullet cursor-pointer block text-4xl text-gray-400 hover:text-blue-700">•</label>
+            </li>
+            <li class="inline-block mr-3">
+              <label for="carousel-5"
+                class="carousel-bullet cursor-pointer block text-4xl text-gray-400 hover:text-blue-700">•</label>
+            </li>
+            <li class="inline-block mr-3">
+              <label for="carousel-6"
+                class="carousel-bullet cursor-pointer block text-4xl text-gray-400 hover:text-blue-700">•</label>
+            </li>
+            <li class="inline-block mr-3">
+              <label for="carousel-7"
+                class="carousel-bullet cursor-pointer block text-4xl text-gray-400 hover:text-blue-700">•</label>
+            </li>
+            <li class="inline-block mr-3">
+              <label for="carousel-8"
+                class="carousel-bullet cursor-pointer block text-4xl text-gray-400 hover:text-blue-700">•</label>
+            </li>
+          </ol>
+      
+        </div>
+      </div>
+    </ng-container>
+    <nwn-search-footer (click)="closeModal()" [showClose]="true"></nwn-search-footer>
+</div>

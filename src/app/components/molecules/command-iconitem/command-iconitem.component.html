@@ -1,0 +1,32 @@
+<div
+    class="
+        flex flex-row
+        bg-white
+        hover:bg-marsgray-50
+        items-center
+        px-6
+        py-3
+        space-x-4
+        justify-between
+        group
+        hover:text-marsblue-600
+        cursor-pointer
+    "
+    [ngClass]="{ 'command-iconItem-borderLeft': borderLeft == true,
+    'active' : active == true
+
+                    }"
+>
+    <div class="flex flex-row items-center space-x-4">
+        <div class="text-marsgray-700">
+            <nwn-svg-icon [type]="type" [nwnSvgIcon]="nwnSvgIcon"></nwn-svg-icon>
+        </div>
+
+        <p class="text-body-standard text-marsgray-700 group-hover:text-marsblue-600">
+            <ng-content></ng-content>
+        </p>
+    </div>
+    <div [ngClass]="{ hidden: hideTick == true }">
+        <nwn-svg-icon type="fill" nwnSvgIcon="tickmark"></nwn-svg-icon>
+    </div>
+</div>

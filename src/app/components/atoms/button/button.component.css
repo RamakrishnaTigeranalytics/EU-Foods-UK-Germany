@@ -1,0 +1,109 @@
+/* Size */
+.btn {
+    @apply px-6 py-2.5 inline-flex space-x-2 items-center text-body font-bold focus:outline-none;
+}
+.small-btn {
+    @apply px-6 py-1.5 inline-flex space-x-2 text-title-small items-center font-bold focus:outline-none;
+}
+.ghost-large {
+    @apply px-0 py-0 inline-flex space-x-2 items-center focus:outline-none;
+}
+.ghost-small {
+    @apply px-0 py-0 inline-flex space-x-2 text-title-small items-center focus:outline-none;
+}
+.icon-small-btn {
+    @apply p-1 flex space-x-2 items-center focus:outline-none;
+}
+.icon-large-btn {
+    @apply p-2 flex space-x-2 items-center focus:outline-none;
+}
+.no-size {
+    @apply p-0 leading-0;
+}
+.side-border-size {
+    @apply px-5 py-3 font-normal text-body text-marsgray-700 inline-flex items-center;
+}
+
+/* Types */
+.primary-btn {
+    @apply text-white bg-marsblue-500 hover:bg-marsblue-700;
+}
+.secondary-btn {
+    @apply text-marsblue-500 border border-marsblue-500 hover:bg-marsgray-200;
+}
+.tertiary-btn {
+    @apply text-marsgray-700 border border-marsgray-300 hover:bg-marsgray-100 font-normal;
+}
+.danger-btn {
+    
+    @apply text-white bg-marsblue-500 ;
+    background-color: red;
+}
+.link-btn {
+    @apply text-marsblue-500 bg-transparent hover:bg-marsgray-200;
+}
+.transparent-btn {
+    @apply text-marsgray-700 bg-transparent hover:bg-marsgray-200;
+}
+.ghost-white-btn {
+    @apply text-white text-transparent bg-transparent hover:bg-transparent;
+}
+.ghost-dark-btn {
+    @apply text-marsgray-700 text-transparent bg-transparent hover:bg-transparent;
+}
+.icon-btn {
+    @apply bg-transparent hover:bg-marsgray-200;
+}
+.no-style {
+    @apply bg-transparent border-none focus:outline-none;
+}
+/* .side-border {
+    @apply bg-white border-l-3 border-transparent hover:border-marsblue-500;
+} */
+
+.side-border {
+    @apply bg-white border-transparent hover:border-marsblue-500;
+}
+
+/* Disabled / Enabled */
+.disabled-primary-btn {
+    @apply text-white bg-gray-400 hover:bg-gray-400 cursor-not-allowed;
+}
+.disabled-icon-btn {
+    @apply text-gray-400 cursor-not-allowed bg-transparent hover:bg-transparent pointer-events-none;
+}
+.disabled-secondary-btn {
+    @apply text-gray-400 border border-gray-400 hover:bg-transparent cursor-not-allowed;
+}
+.disabled-link-btn {
+    @apply text-gray-400 cursor-not-allowed bg-transparent hover:bg-transparent;
+}
+.disabled-transparent-btn {
+    @apply text-gray-400 cursor-not-allowed bg-transparent hover:bg-transparent;
+}
+.disabled-ghostwhite-btn {
+    @apply text-white cursor-not-allowed bg-transparent hover:bg-transparent;
+}
+.disabled-ghostdark-btn {
+    @apply text-marsgray-700 cursor-not-allowed bg-transparent hover:bg-transparent;
+}
+
+.icon-btn {
+    @apply relative;
+}
+.icon-btn .btn-tooltip {
+    @apply hidden absolute shadow whitespace-nowrap px-4 py-2 -left-6 -bottom-10 bg-white w-auto z-[99] text-caption text-marsgray-700 font-medium;
+}
+.icon-btn:hover .btn-tooltip {
+    @apply block;
+}
+
+/* .disabled-transparent-btn {
+    @apply relative
+}
+.disabled-transparent-btn .btn-tooltip {
+    @apply hidden absolute shadow whitespace-nowrap px-4 py-2 -left-6 -bottom-10 bg-white w-auto z-[99] text-caption text-marsgray-700 font-medium;
+}
+.disabled-transparent-btn:hover .btn-tooltip {
+    @apply block;
+} */

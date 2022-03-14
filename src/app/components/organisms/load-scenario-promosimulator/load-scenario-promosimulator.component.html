@@ -1,0 +1,99 @@
+<div class="w-[650px] bg-white mx-auto my-6">
+    <div class="border-b border-marsgray-200">
+        <!-- <div (click)="openPrice()">test pricing</div> -->
+        <ng-container *ngIf="title == 'My scenario'">
+            <nwn-command-header type="stroke" nwnSvgIcon="my-scenarios">{{title}}</nwn-command-header>
+        </ng-container>
+        <ng-container *ngIf="title == 'Load scenario'">
+            <nwn-command-header type="stroke" nwnSvgIcon="plus">{{title}}</nwn-command-header>
+        </ng-container>
+    </div>
+    <div class="bg-gray-100 border-b border-marsgray-200">
+        <div class="flex flex-row flex-wrap px-6">
+            <!-- <div class="pr-6">
+                <nwn-tab-cta (click)="toggleTabs(1)" [type]="openTab === 1 ? 'selectedtab' : 'unselectedtab'">Pricing scenario</nwn-tab-cta>
+            </div> -->
+            <div class="pr-6">
+                <nwn-tab-cta (click)="toggleTabs(2)" [type]="openTab === 2 ? 'selectedtab' : 'unselectedtab'">Promo simulator scenario</nwn-tab-cta>
+            </div>
+            <!-- <div class="pr-6">
+                <nwn-tab-cta (click)="toggleTabs(3)" [type]="openTab === 3 ? 'selectedtab' : 'unselectedtab'">Optimizer scenario</nwn-tab-cta>
+            </div> -->
+        </div>
+    </div>
+    <div class="border-b border-marsgray-200">
+        <nwn-command-search [value]="searchText" (inputChangeEvent) = "inputChangeEvent($event)" [hideClose]="true"></nwn-command-search>
+    </div>
+    <div class="h-[448px] scrollbar-y px-6 py-4 bg-white space-y-3" [ngClass]="{ hidden: openTab !== 2, block: openTab === 2 }">
+        <!-- [ngClass]="{ 'bg-marsgray-100': active }" -->
+        <div
+            class="border border-marsgray-300 cursor-pointer"
+            *ngFor="let promotion of list_promotion_promo | appFilter: searchText : 'promo';let i = index"
+            (click)="select(i,promotion)"
+            [ngClass]="{ active: selectedIndex == i }"
+        >
+            <nwn-scenario-load-card [id] = "promotion" (infoClickedEvent) = "infoClickedEvent($event)" [showInfo]="true">
+                <p slcHead>{{promotion.name}}</p>
+                <p slcContent>{{promotion.comments}}</p>
+            </nwn-scenario-load-card>
+        </div>
+    </div>
+
+    <div class="h-[448px] scrollbar-y px-6 py-4 bg-white space-y-3" [ngClass]="{ hidden: openTab !== 1, block: openTab === 1 }">
+        <!-- [ngClass]="{ 'bg-marsgray-100': active }" -->
+        <div
+            class="border border-marsgray-300 cursor-pointer"
+            *ngFor="let promotion of list_promotion_pricing | appFilter: searchText : 'promo';let i = index"
+            (click)="select(i,promotion)"
+            [ngClass]="{ active: selectedIndex == i }"
+        >
+            <nwn-scenario-load-card [id] = "promotion" (infoClickedEvent) = "infoClickedEvent($event)" [showInfo]="true">
+                <p slcHead>{{promotion.name}}</p>
+                <p slcContent>{{promotion.comments}}</p>
+            </nwn-scenario-load-card>
+        </div>
+    </div>
+    <div class="h-[448px] scrollbar-y px-6 py-4 bg-white space-y-3" [ngClass]="{ hidden: openTab !== 3, block: openTab === 3 }">
+        <!-- [ngClass]="{ 'bg-marsgray-100': active }" -->
+        <div
+            class="border border-marsgray-300 cursor-pointer"
+            *ngFor="let promotion of list_promotion_optimizer | appFilter: searchText : 'promo';let i = index"
+            (click)="select(i,promotion)"
+            [ngClass]="{ active: selectedIndex == i }"
+        >
+            <nwn-scenario-load-card [id] = "promotion" (infoClickedEvent) = "infoClickedEvent($event)" [showInfo]="true">
+                <p slcHead>{{promotion.name}}</p>
+                <p slcContent>{{promotion.comments}}</p>
+            </nwn-scenario-load-card>
+        </div>
+    </div>
+    <nwn-search-footer [showKeyBoardCtrl]="true" (click) = "loadScenario()" [showLoad]="true"></nwn-search-footer>
+</div>
+
+<nwn-modal id="promo-simulator-popup" class="hidden">
+    <nwn-promo-simulator-scenario (confirmatonEventModal)="modalConfirmation($event)" (deleteClicked) = "deleteClickedEvent($event)" [promotion_viewed] = "promotion_viewed" ></nwn-promo-simulator-scenario>
+</nwn-modal>
+
+<!-- <nwn-modal id="promo-simulator-popup" class="hidden">
+    <nwn-promo-simulator-scenario ></nwn-promo-simulator-scenario>
+</nwn-modal> -->
+
+<nwn-modal id="pricing-scenario-popup" class="hidden">
+    <nwn-loaded-pricing-scenario></nwn-loaded-pricing-scenario>
+</nwn-modal>
+<nwn-modal id="pricing-scenario-popup-2" class="hidden">
+    <nwn-pricing-scenario></nwn-pricing-scenario>
+</nwn-modal>
+<!-- <nwn-modal id="optimize-fn" class="hidden">
+<nwn-optimize-function></nwn-optimize-function>
+</nwn-modal> -->
+
+<nwn-modal id="delete-scenario" class="hidden">
+    <nwn-delete-alert [selected_promotion] = "selected_promotion" (confirmatonEvent) = "confirmationDelete($event)"></nwn-delete-alert>
+</nwn-modal>
+
+<nwn-modal id="product-choose" class="hidden">
+    <nwn-pricing-product-popup (pricingChooseEvent) = "pricingChooseEvent($event)" [metaInfo] = "metaInfo"></nwn-pricing-product-popup>
+</nwn-modal>
+
+<!-- 'nwn-pricing-product-popup -->

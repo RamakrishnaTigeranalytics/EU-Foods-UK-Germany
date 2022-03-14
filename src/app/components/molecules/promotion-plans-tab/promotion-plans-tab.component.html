@@ -1,0 +1,122 @@
+<div>
+    <div class="flex flex-row items-center justify-between py-6">
+        <div class="flex flex-row items-center space-x-3">
+            <div class="tableheaddrop">
+                <!-- <ngx-select-dropdown
+                    tabindex="0"
+                    [multiple]="false"
+                    [(ngModel)]="singleSelect"
+                    [config]="config"
+                    [options]="yearValue"
+                ></ngx-select-dropdown> -->
+            </div>
+        </div>
+        <div class="flex flex-row flex-wrap space-x-4">
+            <div>
+                <nwn-legend-items nwnLegendItems="onesquare" type="squaresm" color="bg-gray-500"
+                    >Base value</nwn-legend-items
+                >
+            </div>
+            <div>
+                <nwn-legend-items nwnLegendItems="onesquare" type="squaresm" color="bg-gray-700"
+                    >Simulated value</nwn-legend-items
+                >
+            </div>
+            <div>
+                <nwn-legend-items
+                    nwnLegendItems="twosquare"
+                    type="squaresm"
+                    colorVariantFirst="bgGreenAccent"
+                    colorVariantSecond="bgRed-600"
+                    >Simulated value</nwn-legend-items
+                >
+            </div>
+        </div>
+    </div>
+    <div
+        id="promoplanTableScroll"
+        class="promoplanTableScroll scrolly_table scrollbar"
+        [ngStyle]="{ 'width.px': ppTableWidth, 'height.px': ppTableHeight }"
+    >
+        <table *ngIf="scenario_names.length > 0" class="divide-y divide-x divide-marsgray-200 border border-marsgray-200 text-left">
+            <thead class="bg-white divide-y divide-x divide-marsgray-200">
+                <tr class="whitespace-nowrap divide-x divide-y divide-marsgray-200">
+                    <td
+                        class="sticked ppfreeze whitespace-nowrap divide-x divide-y divide-gray-200 bg-white"
+                        rowspan="1"
+                        colspan="1"
+                    >
+                        <nwn-cell-header type="subheaderlg" color="bgwhite">Week</nwn-cell-header>
+                    </td>
+                    <th  *ngFor="let scenario of scenario_names;" colspan="1" scope="colgroup" class="sticked ppfreeze_vertical">
+                        <nwn-comparescenario-cell-header [showCHClose]="true" [scenario] = "scenario"
+                            >{{scenario.name}}</nwn-comparescenario-cell-header
+                        >
+                    </th>
+                    <!-- <th colspan="1" scope="colgroup" class="sticked ppfreeze_vertical">
+                        <nwn-comparescenario-cell-header [showCHClose]="true"
+                            >Galaxy promo</nwn-comparescenario-cell-header
+                        >
+                    </th>
+                    <th colspan="1" scope="colgroup" class="sticked ppfreeze_vertical">
+                        <nwn-comparescenario-cell-header [showCHClose]="true"
+                            >Galaxy promo</nwn-comparescenario-cell-header
+                        >
+                    </th>
+                    <th colspan="1" scope="colgroup" class="sticked ppfreeze_vertical">
+                        <nwn-comparescenario-cell-header [showCHClose]="true"
+                            >Galaxy promo</nwn-comparescenario-cell-header
+                        >
+                    </th>
+                    <th colspan="1" scope="colgroup" class="sticked ppfreeze_vertical">
+                        <nwn-comparescenario-cell-header [showCHClose]="true"
+                            >Galaxy promo</nwn-comparescenario-cell-header
+                        >
+                    </th>
+                    <th colspan="1" scope="colgroup" class="sticked ppfreeze_vertical">
+                        <nwn-comparescenario-cell-header [showCHClose]="true"
+                            >Galaxy promo</nwn-comparescenario-cell-header
+                        >
+                    </th>
+                    <th colspan="1" scope="colgroup" class="sticked ppfreeze_vertical">
+                        <nwn-comparescenario-cell-header [showCHClose]="true"
+                            >Galaxy promo</nwn-comparescenario-cell-header
+                        >
+                    </th>
+                    <th colspan="1" scope="colgroup" class="sticked ppfreeze_vertical">
+                        <nwn-comparescenario-cell-header [showCHClose]="true"
+                            >Galaxy promo</nwn-comparescenario-cell-header
+                        >
+                    </th> -->
+                </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-marsgray-200">
+                <tr *ngFor="let promo of promotions" class="whitespace-nowrap divide-x divide-marsgray-200">
+                    <th scope="row" class="sticked ppfreeze_horizontal bg-white">
+                        <nwn-cell-header type="subheaderlg" color="bg-transparent" [showDate]="true"
+                            >Week {{promo.week}}
+                            <p dateValue>{{promo.date}}</p></nwn-cell-header
+                        >
+                    </th>
+                    <td *ngFor="let discount of promo.discount">
+                        <nwn-cell-item [nwnCellData]="discount" nwnCellItem="promo"></nwn-cell-item>
+                    </td>
+                  
+                </tr>
+                 
+               
+                <!-- <tr class="whitespace-nowrap divide-x divide-marsgray-200">
+                    <th scope="row" class="sticked ppfreeze_horizontal">
+                        <nwn-cell-header type="subheaderlg" color="bg-transparent" [showDate]="true"
+                            >Week 5
+                            <p dateValue>18-12-2020</p></nwn-cell-header
+                        >
+                    </th>
+                    <td *ngFor="let promo of promotions"><nwn-cell-item nwnCellItem="promo"></nwn-cell-item></td>
+                    
+                </tr> -->
+                 
+            </tbody>
+        </table>
+    </div>
+</div>

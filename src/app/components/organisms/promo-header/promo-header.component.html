@@ -1,0 +1,85 @@
+<div class="bg-white">
+    <div class="block w-full flex-row">
+        <nwn-promotool-tab
+       
+            type="fill"
+            nwnSvgIcon="optimizer"
+            [link]="'/promo/optimizer'" 
+            
+            [active]="currentRoute.includes('/promo/optimizer')"
+            >Promo optimizer
+        </nwn-promotool-tab>
+        <!-- *ngIf="groups.includes('optimizer') || groups.includes('admin')" -->
+        <nwn-promotool-tab
+       
+            type="fill"
+            nwnSvgIcon="simulator"
+            [link]="'/promo/simulator'" 
+            
+            [active]="currentRoute.includes('/promo/simulator')"
+            >Promo scenario builder
+        </nwn-promotool-tab>
+        <!-- *ngIf="groups.includes('promo') || groups.includes('admin')" -->
+
+        <div data-letters="Y" id="userLogo" class="float-right" style="margin-top: 12px;cursor: pointer;" (click)="toggleDisplayDivIf()"></div>
+
+            <div *ngIf="!isShowDivIf">
+                <div class="absolute z-50 top-15 right-0 bg-white shadow-sm w-[286px] h-auto signout-popup">
+                    <div class="">
+                        <div data-leters="Y" id="userLogo1" class="text-center bg-div"></div>
+                    </div>
+                    <div class="text-center border-b" style="padding-bottom: 20px;margin-top: -12vh;">
+                        <h2 class="user-name text-marsgray-700">{{userdetail.user.name | titlecase }}</h2>
+                        <span class="text-title-small mail-text">{{userdetail.user.email}}</span>
+                    </div>
+                    <div>
+                        <nwn-button type="sideBorder" size="sideBorderSize" class="w-full" (click)="openModal('load-scenario-promosimulator')">
+                            <nwn-svg-icon class="mr-0.5" type="stroke" nwnSvgIcon="my-scenarios" size="lg"></nwn-svg-icon>
+                           <!-- <img src="../../../../assets/favicons/script.png" class="my-scenario-icon" />  -->
+                           My scenarios
+                        </nwn-button>
+                    </div>
+                    <!-- <div class="border-b">
+                        <nwn-button type="sideBorder" id="compare-scenario-br" size="sideBorderSize" class="w-full" (click)="openModal('compare-promo-scenario')">
+                            <nwn-svg-icon
+                                class="mr-0.5"
+                                type="stroke"
+                                nwnSvgIcon="arrow-compare"
+                                size="lg"
+                            ></nwn-svg-icon>
+                            Compare scenarios
+                        </nwn-button>
+                    </div> -->
+
+                    <div class="text-center">
+                        <span class="sign-out" (click)="signout()">Sign out</span>
+                    </div>
+                </div>
+                <div
+                    class="fixed bg-opacity-10 top-0 left-0 right-0 h-full w-full"
+                    (click)="toggleDisplayDivIf()"
+                ></div>
+            </div>
+    </div>
+</div>
+
+
+
+<!-- <div class="bg-white">
+    <div class="flex flex-row">
+        <nwn-promotool-tab
+            type="fill"
+            nwnSvgIcon="simulator"
+            href="/promo-tool/promo-scenario-builder"
+            [active]="currentRoute === '/promo-tool/promo-scenario-builder'"
+            >Promo scenario builder</nwn-promotool-tab
+        >
+        <nwn-promotool-tab
+            type="fill"
+            nwnSvgIcon="optimizer"
+            href="/promo-tool/promo-optimizer"
+            [active]="currentRoute === '/promo-tool/promo-optimizer'"
+            >Promo optimizer</nwn-promotool-tab
+        >
+    </div>
+</div> -->

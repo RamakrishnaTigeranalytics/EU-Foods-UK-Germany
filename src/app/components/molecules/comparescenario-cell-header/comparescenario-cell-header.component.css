@@ -1,0 +1,6 @@
+.infoCompareScenario ~ .largeTooltip {
+    @apply hidden absolute -left-1 top-11 z-[99] shadow-xl whitespace-normal;
+}
+.infoCompareScenario:hover ~ .largeTooltip {
+    @apply block;
+}

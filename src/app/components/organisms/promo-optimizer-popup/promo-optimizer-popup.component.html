@@ -1,0 +1,38 @@
+<div class="w-[650px] bg-white mx-auto my-6">
+    <div class="border-b border-marsgray-200">
+        <nwn-command-header type="fill" nwnSvgIcon="optimizer">Promo optimizer</nwn-command-header>
+    </div>
+    <div class="border-b border-marsgray-200">
+        <nwn-command-search [value]="searchText" [hideClose]="true" [placeholder]="placeholder" (inputChangeEvent) = "inputChangeEvent($event)"></nwn-command-search>
+    </div>
+    <div>
+        <ng-container *ngFor="let data of filterNames | appFilter: searchText : 'promo';">
+            <nwn-command-iconitem  type="{{data.type}}" *ngIf="data.name == 'Set filters'" nwnSvgIcon="{{data.nwnSvgIcon}}" [hideTick]="data.hideTick" (click)="openModal(data.id)">{{data.name}}</nwn-command-iconitem>
+            <nwn-command-iconitem  type="{{data.type}}" *ngIf="data.name != 'Set filters'" nwnSvgIcon="{{data.nwnSvgIcon}}" [ngClass]="{ 'disabled': isFiltered == false }" [hideTick]="data.hideTick" (click)="openModal(data.id)">{{data.name}}</nwn-command-iconitem>
+        </ng-container>
+        <!-- <nwn-command-iconitem type="stroke" nwnSvgIcon="variables" [hideTick]="true" (click)="openModal('optimize-function')"
+            >Set optimize function
+        </nwn-command-iconitem>
+        <nwn-command-iconitem type="stroke" nwnSvgIcon="filter" [hideTick]="true" (click)="openModal('filter-basic-optimizer')">Set filters</nwn-command-iconitem>
+
+        <nwn-command-iconitem type="stroke" nwnSvgIcon="adjustments" [hideTick]="true" (click)="openModal('duration-of-waves')"
+            >Set duration of promo waves</nwn-command-iconitem
+        >
+        <nwn-command-iconitem type="stroke" nwnSvgIcon="adjustments" [hideTick]="true" (click)="openModal('minimum-gap-waves')"
+            >Set minimum gap between promo waves</nwn-command-iconitem
+        >
+        <nwn-command-iconitem type="stroke" nwnSvgIcon="adjustments" [hideTick]="true" (click)="openModal('number-promo-waves')"
+            >Set number of promo weeks</nwn-command-iconitem
+        >
+        <nwn-command-iconitem type="stroke" nwnSvgIcon="adjustments" [hideTick]="true" (click)="openModal('compulsory-weeks-popup')"
+            >Set compulsory weeks</nwn-command-iconitem
+        >
+        <nwn-command-iconitem type="stroke" nwnSvgIcon="adjustments" [hideTick]="true" (click)="openModal('weeks-ignored')"
+            >Set weeks to be ignored</nwn-command-iconitem
+        >
+        <nwn-command-iconitem type="stroke" nwnSvgIcon="adjustments" [hideTick]="true" (click)="openModal('promotion-details')"
+            >Set promotion details</nwn-command-iconitem
+        > -->
+    </div>
+    <nwn-search-footer [showKeyBoardCtrl]="true"></nwn-search-footer>
+</div>

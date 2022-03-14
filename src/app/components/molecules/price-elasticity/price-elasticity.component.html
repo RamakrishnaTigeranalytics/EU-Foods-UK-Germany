@@ -1,0 +1,46 @@
+<!-- <div class="py-4 px-1 flex flex-col space-y-3 hover:bg-marsgray-200"> -->
+    <div class="py-3 px-2 flex flex-col hover:bg-marsgray-200">
+        <!-- <div class="flex flex-row items-center space-x-1">
+        <ng-content></ng-content>
+    </div> -->
+        
+    <!-- <div *ngIf="showBase" class="text-center">
+        <p class="text-marsyellow-800 text-caption">{{base}}</p>
+    </div> -->
+    <div class="mb-2  flex flex-row items-center justify-around space-x-1">
+       
+        <ng-content></ng-content>
+
+    </div>
+    <div class="flex flex-row items-center justify-between space-x-1">
+        <nwn-button type="icon" size="iconsm" (click)="decrement()">
+            <nwn-svg-icon type="stroke" size="md" nwnSvgIcon="minus"></nwn-svg-icon>
+        </nwn-button>
+
+        <input
+            class="
+                text-title-medium text-marsgray-700
+                w-16
+                h-10
+                p-2
+                rounded-none
+                border border-marsgray-300
+                focus:border-marsgray-500 focus:outline-none
+                bg-marsgray-50
+                text-center
+                enabledInput
+            "
+            type="number"
+            [value] = "counter"
+            (input)="onInputChange($event.target.value)"
+            placeholder="0"
+           
+        />
+        
+        <nwn-button type="icon" size="iconsm" (click)="increment()">
+            <nwn-svg-icon type="stroke" size="md" nwnSvgIcon="plus"></nwn-svg-icon>
+        </nwn-button>
+    </div>
+   
+    <!-- <p class="text-center text-body text-marsgray-500 ml-1"> <ng-content select="[priceContent]"></ng-content></p> -->
+</div>

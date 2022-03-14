@@ -1,0 +1,106 @@
+/* https://github.com/angular-slider/ngx-slider/blob/master/STYLING.md */
+/* https://github.com/angular-slider/ngx-slider/blob/master/src/ngx-slider/lib/slider.component.scss */
+::ng-deep .promodetailselect .ngx-dropdown-container .ngx-dropdown-button {
+    @apply bg-transparent rounded-none text-body rounded-none  border border-marsgray-300 my-2 p-2 z-40 !important;
+}
+::ng-deep .promodetailselect .ngx-dropdown-container button .nsdicon-angle-down::before {
+    @apply border-marsgray-700 !important;
+}
+::ng-deep .promodetailselect .ngx-dropdown-container .ngx-dropdown-list-container ul {
+    @apply my-0 !important;
+}
+::ng-deep .promodetailselect .ngx-dropdown-container .ngx-dropdown-list-container ul.available-items {
+    @apply m-0 max-h-[146px] overflow-y-auto rounded-none  !important;
+}
+::ng-deep
+    .promodetailselect
+    .ngx-dropdown-container
+    .ngx-dropdown-list-container
+    .search-container
+    input:focus
+    + label {
+    @apply hidden !important;
+}
+::ng-deep .promodetailselect .ngx-dropdown-container .ngx-dropdown-list-container .search-container label.active {
+    @apply hidden !important;
+}
+::ng-deep .promodetailselect .ngx-dropdown-container .ngx-dropdown-list-container ul li {
+    @apply text-body px-3 py-2 flex flex-row items-center space-x-3 hover:text-marsblue-500 border-l-3 border-transparent hover:border-marsblue-500 !important;
+}
+::ng-deep .promodetailselect .ngx-dropdown-container .ngx-dropdown-list-container .search-container input:focus {
+    @apply border-b border-marsgray-300 !important;
+}
+::ng-deep .promodetailselect .ngx-dropdown-container .ngx-dropdown-list-container .search-container {
+    @apply bg-marsgray-50 mt-0 pt-0  !important;
+}
+::ng-deep .promodetailselect .ngx-dropdown-container .ngx-dropdown-list-container .search-container label {
+    @apply text-body font-normal pl-2 h-auto top-1 !important;
+}
+::ng-deep .promodetailselect .ngx-dropdown-container .ngx-dropdown-list-container .search-container input {
+    width: 96.5% !important;
+    padding: 10px !important;
+    @apply border-marsgray-100 !important;
+}
+::ng-deep .promodetailselect .ngx-dropdown-container .ngx-dropdown-list-container {
+    @apply p-0 rounded-none shadow-lg !important;
+}
+::ng-deep .promodetailselect .ngx-dropdown-container .ngx-dropdown-list-container hr {
+    @apply hidden !important;
+}
+::ng-deep .promodetailselect .ngx-dropdown-container .ngx-dropdown-list-container ul.selected-items {
+    @apply my-0  !important;
+}
+::ng-deep .promodetailselect .ngx-dropdown-container .ngx-dropdown-list-container ul.selected-items li {
+    @apply relative mb-0 bg-transparent text-marsgray-700 hover:bg-marsgray-50 hover:text-marsblue-500 border-l-3 border-transparent hover:border-marsblue-500 !important;
+}
+::ng-deep .promodetailselect .ngx-dropdown-container .ngx-dropdown-list-container ul.selected-items li .nsdicon-close {
+    @apply hidden !important;
+}
+::ng-deep
+    .promodetailselect
+    .ngx-dropdown-container
+    .ngx-dropdown-list-container
+    ul
+    li
+    > :not([hidden])
+    ~ :not([hidden]) {
+    @apply ml-0 !important;
+}
+::ng-deep .promodetailselect .ngx-dropdown-container .ngx-dropdown-list-container ul.selected-items li::after {
+    content: '';
+    position: absolute;
+    background-image: url('/assets/svg/bluetick.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 24px;
+    height: 24px;
+    right: 8px;
+    z-index: 12;
+}
+::ng-deep .custom-slider .ngx-slider {
+    @apply h-[-32px]  !important;
+}
+::ng-deep .custom-slider .ngx-slider .ngx-slider-pointer {
+    @apply bg-marsblue-600 rounded-[4px] w-[18px] h-[18px] mt-[6px] items-center outline-none !important;
+}
+::ng-deep .custom-slider .ngx-slider .ngx-slider-pointer:after {
+    @apply bg-transparent !important;
+}
+::ng-deep .custom-slider .ngx-slider .ngx-slider-bar {
+    @apply bg-gray-200 rounded-none h-[4px] !important;
+}
+::ng-deep .custom-slider .ngx-slider .ngx-slider-floor {
+    @apply -bottom-5 text-caption !important;
+}
+::ng-deep .custom-slider .ngx-slider .ngx-slider-ceil {
+    @apply -bottom-5 text-caption !important;
+}
+::ng-deep .custom-slider .ngx-slider .ngx-slider-model-high {
+    @apply text-caption p-[4px] bg-gray-100 rounded-[4px] !important;
+}
+::ng-deep .custom-slider .ngx-slider .ngx-slider-model-value {
+    @apply text-caption p-[4px] bg-gray-100 rounded-[4px] !important;
+}
+::ng-deep .custom-slider .ngx-slider .ngx-slider-selection {
+    @apply bg-marsblue-600 !important;
+}

@@ -1,0 +1,68 @@
+::ng-deep .smallDropdown .ngx-dropdown-container .ngx-dropdown-button {
+    @apply bg-transparent w-[110px] text-body border-none p-0 z-40 mb-[7px] !important;
+}
+::ng-deep .smallDropdown .ngx-dropdown-container button .nsdicon-angle-down::before {
+    @apply border-marsgray-700 !important;
+}
+::ng-deep .smallDropdown .ngx-dropdown-container .ngx-dropdown-list-container ul.available-items {
+    @apply m-0 max-h-[110px] overscroll-y-auto !important;
+}
+::ng-deep .smallDropdown .ngx-dropdown-container .ngx-dropdown-list-container ul li {
+    @apply text-body px-3 py-2 flex flex-row items-center space-x-3 hover:bg-marsgray-50 hover:text-marsblue-500 border-l-3 border-transparent hover:border-marsblue-500 !important;
+}
+::ng-deep .smallDropdown .ngx-dropdown-container button .nsdicon-angle-down {
+    @apply float-none !important;
+}
+::ng-deep .smallDropdown .ngx-dropdown-container .ngx-dropdown-list-container {
+    @apply p-0 rounded-none !important;
+}
+::ng-deep .smallDropdown .ngx-dropdown-container .ngx-dropdown-button .display-text {
+    width: calc(100% - 20px) !important;
+}
+::ng-deep .smallDropdown .ngx-dropdown-container .ngx-dropdown-list-container hr {
+    @apply hidden !important;
+}
+::ng-deep .smallDropdown .ngx-dropdown-container .ngx-dropdown-list-container ul.selected-items {
+    @apply my-0  !important;
+}
+::ng-deep .smallDropdown .ngx-dropdown-container .ngx-dropdown-list-container ul.selected-items li {
+    @apply relative mb-0 bg-transparent text-marsgray-700 hover:bg-marsgray-50 hover:text-marsblue-500 border-l-3 border-transparent hover:border-marsblue-500 !important;
+}
+::ng-deep .smallDropdown .ngx-dropdown-container .ngx-dropdown-list-container ul.selected-items li .nsdicon-close {
+    @apply hidden !important;
+}
+::ng-deep .smallDropdown .ngx-dropdown-container .ngx-dropdown-list-container hr {
+    @apply hidden !important;
+}
+::ng-deep .smallDropdown .ngx-dropdown-container .ngx-dropdown-list-container ul.selected-items {
+    @apply my-0  !important;
+}
+::ng-deep .smallDropdown .ngx-dropdown-container .ngx-dropdown-list-container ul.selected-items li {
+    @apply relative mb-0 bg-transparent text-marsgray-700 hover:bg-marsgray-50 hover:text-marsblue-500 border-l-3 border-transparent hover:border-marsblue-500 !important;
+}
+::ng-deep .smallDropdown .ngx-dropdown-container .ngx-dropdown-list-container ul.selected-items li .nsdicon-close {
+    @apply hidden !important;
+}
+/* ::ng-deep
+    .smallDropdown
+    .ngx-dropdown-container
+    .ngx-dropdown-list-container
+    ul.selected-items
+    li:hover
+    .nsdicon-close {
+    @apply block !important;
+} */
+::ng-deep .smallDropdown .ngx-dropdown-container .ngx-dropdown-list-container ul li > :not([hidden]) ~ :not([hidden]) {
+    @apply ml-0 !important;
+}
+::ng-deep .smallDropdown .ngx-dropdown-container .ngx-dropdown-list-container ul.selected-items li::after {
+    content: '';
+    position: absolute;
+    background-image: url('/assets/svg/bluetick.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 24px;
+    height: 24px;
+    right: 8px;
+    z-index: 12;
+}

@@ -1,0 +1,26 @@
+
+.default-week-item {
+    @apply px-2 py-2 space-y-1 text-left relative border border-marsgray-300 hover:bg-marsgray-100;
+}
+.triangle-tl {
+    width: 0;
+    height: 0;
+    border-top: 15px solid #61a020;
+    border-right: 15px solid transparent;
+}
+.compulsory-week-item {
+    @apply px-2 py-2 space-y-1 text-left relative border border-marsgreen-accent bg-marsgreen-100;
+}
+.disable-week-item {
+    @apply px-2 py-2 space-y-1 text-left relative border border-marsred-400 bg-marsred-100;
+}
+.disable-week-item .triangle-tl {
+    width: 0;
+    height: 0;
+    border-top: 15px solid #f87171;
+    border-right: 15px solid transparent;
+}
+
+.week-item{
+    min-width: 95px;
+}

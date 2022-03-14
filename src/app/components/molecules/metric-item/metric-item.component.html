@@ -1,0 +1,71 @@
+<div nwnMetricItem="nwnMetricItem" class="w-full min-w-[184px] cursor-pointer">
+    <ng-container *ngIf="nwnMetricItem === 'defaultRight'">
+        <div class="w-full flex flex-col space-y-2 px-4 py-5 hover:bg-marsgray-200 relative">
+            <div class="flex flex-row space-x-2 items-center">
+                <div class="text-title-medium text-marsgray-700">
+                    <ng-content select="[rightHeadValue]"></ng-content>
+                </div>
+                <span
+                    class="text-body text-yellow-800 leading-none w-max"
+                    [ngClass]="{ hidden: showRightValue == true }"
+                    ><ng-content select="[rightValue]"></ng-content
+                ></span>
+            </div>
+            <div class="flex flex-row">
+                <div class="text-marsgray-500 text-body"><ng-content select="[rightMetricContent]"></ng-content></div>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="nwnMetricItem === 'defaultTop'">
+        <div class="w-full flex flex-col space-y-2 px-4 py-5 hover:bg-marsgray-200 relative">
+            <div class="flex flex-col space-y-2 text-left items-start">
+                <span class="text-body text-yellow-800 leading-none w-max"
+                    ><ng-content select="[topValue]"></ng-content
+                ></span>
+                <div class="text-title-medium text-marsgray-700"><ng-content select="[topHeadValue]"></ng-content></div>
+            </div>
+            <div class="flex flex-row">
+                <div class="text-marsgray-500 text-body"><ng-content select="[topMetricContent]"></ng-content></div>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="nwnMetricItem === 'multipleValues'">
+        <div class="w-full flex flex-col space-y-2 px-4 py-5 hover:bg-marsgray-200 relative">
+            <div class="flex flex-col space-y-2 text-left items-start">
+                <span class="text-body text-yellow-800 leading-none w-max"
+                    ><ng-content select="[multipleValue]"></ng-content
+                ></span>
+                <div class="text-title-medium text-marsgray-700 flex flex-row">
+                    <ng-content select="[multipleHeadValue]"></ng-content>
+                </div>
+            </div>
+            <div class="flex flex-row">
+                <div class="text-marsgray-500 text-body">
+                    <ng-content select="[multipleMetricContent]"></ng-content>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="nwnMetricItem === 'checkboxMetric'">
+        <div
+            class="checkbox-metric w-full flex flex-row space-x-3 items-center px-4 py-5 hover:bg-marsgray-200 relative"
+        >
+            <nwn-button
+                type="nostyle"
+                size="nosize"
+                class="dragBtn absolute top-4 left-0 cursor-move"
+                [ngClass]="{ hidden: disabled == true }"
+            >
+                <nwn-svg-icon type="stroke" nwnSvgIcon="drag" size="lg"></nwn-svg-icon>
+            </nwn-button>
+            <div class="w-full flex flex-col space-y-3">
+                <div class="text-title-medium text-marsgray-700 flex flex-row">
+                    <ng-content select="[checkHeadValue]"></ng-content>
+                </div>
+                <nwn-checkbox [disable] = "disabled" [checked] = "checked" [showLabel]="true" [value] = "value" [checkboxData]="checkboxValue" (valueChange)="onRoleChangeCheckbox($event)"
+                    ><ng-content select="[checkboxLabel]"></ng-content
+                ></nwn-checkbox>
+            </div>
+        </div>
+    </ng-container>
+</div>

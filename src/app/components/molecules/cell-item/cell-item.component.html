@@ -1,0 +1,72 @@
+<div class="px-3 py-2 space-y-1 bg-white" nwnCellItem="nwnCellItem">
+
+    <ng-container *ngIf="nwnCellItem === 'carret-up' && nwnCellData">
+        <p class="text-caption text-marsgray-500">{{nwnCellData.converted_base}}</p>
+        <div class="flex flex-row items-center space-x-1">
+            <p
+                class="text-body text-marsgray-700"
+                [ngClass]="{
+                    'text-size-md': size === 'textsize-md',
+                    'text-size-lg': size === 'textsize-lg'
+                }"
+            >
+            {{nwnCellData.converted_simulated}}
+                <span
+                    class="inline-flex items-center justify-center space-x-1"
+                    [ngClass]="{
+                        'text-marsgreen-accent': nwnCellData.color === 'green',
+                        'text-marsred-600': nwnCellData.color === 'red',
+                        'text-marsgray-500': nwnCellData.color === 'neutral'
+                    }"
+                >
+                <ng-container *ngIf="differenceFormat == 'absolute'">
+                    {{nwnCellData.converted_difference}}
+                </ng-container>
+                <ng-container *ngIf="differenceFormat == 'percent'">
+                    {{nwnCellData.percent}}
+                </ng-container>
+
+                    <nwn-svg-icon type="fill" *ngIf="nwnCellData.converted_base != nwnCellData.converted_simulated" nwnSvgIcon="{{nwnCellData.arrow}}"></nwn-svg-icon>
+                </span>
+            </p>
+        </div>
+    </ng-container>
+
+
+    <ng-container *ngIf="nwnCellItem === 'summarypopup'">
+        <p class="text-caption text-marsgray-500">{{nwnCellData.converted_base}}</p>
+        <div class="flex flex-row items-center space-x-1">
+            <p
+                class="text-body text-marsgray-700"
+                [ngClass]="{
+                    'text-size-md': size === 'textsize-md',
+                    'text-size-lg': size === 'textsize-lg'
+                }"
+            >
+            {{nwnCellData.converted_simulated}}
+            </p>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="nwnCellItem === 'promo'">
+        <p  *ngIf="nwnCellData.promotion_value" class="text-caption text-marsgray-500">  {{nwnCellData.promotion_value}}</p>
+        <p  *ngIf="!nwnCellData.promotion_value" class="text-caption text-marsgray-500">  --</p>
+        <div class="flex flex-row items-center space-x-1">
+            <p
+                class="text-body text-marsgray-700"
+                [ngClass]="{
+                    'text-size-md': size === 'textsize-md',
+                    'text-size-lg': size === 'textsize-lg'
+                }"
+            >
+              
+                <span class="inline-flex items-center justify-center space-x-1 text-gray-700">
+                    <ng-container *ngIf="nwnCellData.promotion_value_simulated">{{nwnCellData.promotion_value_simulated}}</ng-container>
+                    <ng-container *ngIf="!nwnCellData.promotion_value_simulated">--</ng-container>
+                     
+                      <!-- <ng-container *ngIf="nwnCellData.coinvestment">(Co-{{nwnCellData.coinvestment}}%)</ng-container>  -->
+                    </span>
+            </p>
+        </div>
+    </ng-container>
+</div>

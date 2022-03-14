@@ -1,0 +1,12 @@
+.nwn-modal-open {
+    @apply block;
+}
+.nwn-modal-close {
+    @apply hidden;
+}
+.nwn-modal-bg {
+    @apply fixed inset-0 bg-black bg-opacity-75 transition-opacity;
+}
+body.nwn-modal-open {
+    @apply overflow-hidden;
+}

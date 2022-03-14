@@ -1,0 +1,29 @@
+<div class="flex flex-col">
+    <div class="flex flex-col space-y-6 border-b border-marsgray-200 pb-6">
+        <nwn-menu-item
+            type="stroke"
+            nwnSvgIcon="pricing-tool"
+            [active]="currentRoute === '/pricing-tool/pricing-scenario-builder'"
+            href="/pricing-tool/pricing-scenario-builder"
+            >Pricing tool</nwn-menu-item
+        >
+        <!-- href="/pricing-tool" -->
+        <!-- [active]="currentRoute === '/pricing-tool'" -->
+        <nwn-menu-item
+            type="stroke"
+            nwnSvgIcon="promo-tool"
+            [active]="
+                currentRoute === '/promo-tool/promo-scenario-builder' || currentRoute === '/promo-tool/promo-optimizer'
+            "
+            href="/promo-tool/promo-scenario-builder"
+            >Promo tool</nwn-menu-item
+        >
+        <!-- [active]="currentRoute === '/promo-tool/promo-scenario-builder'" -->
+        <!-- href="/promo-tool/promo-scenario-builder" -->
+    </div>
+    <div class="flex flex-col space-y-6 pt-6">
+        <nwn-menu-item type="stroke" nwnSvgIcon="profit-tool" href="/">Profit tool</nwn-menu-item>
+        <nwn-menu-item type="stroke" nwnSvgIcon="pricing-capabilities" href="/">Pricing Capabilities</nwn-menu-item>
+        <nwn-menu-item type="stroke" nwnSvgIcon="srm-insight" href="/">SRM insights</nwn-menu-item>
+    </div>
+</div>

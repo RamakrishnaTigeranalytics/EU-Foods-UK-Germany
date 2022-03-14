@@ -1,0 +1,60 @@
+<div class="w-[650px] bg-white mx-auto my-6">
+    <div class="border-b border-marsgray-200">
+        <nwn-command-header type="stroke" nwnSvgIcon="plus">Load scenario</nwn-command-header>
+    </div>
+    <div class="bg-gray-100 border-b border-marsgray-200">
+        <div class="flex flex-row flex-wrap px-6">
+            <div class="pr-6">
+                <nwn-tab-cta (click)="toggleTabs(1)" [type]="openTab === 1 ? 'selectedtab' : 'unselectedtab'">created by me</nwn-tab-cta>
+            </div>
+            <div class="pr-6">
+                <nwn-tab-cta (click)="toggleTabs(2)" [type]="openTab === 2 ? 'selectedtab' : 'unselectedtab'">created by others</nwn-tab-cta>
+            </div>
+           
+        </div>
+    </div>
+    <div class="border-b border-marsgray-200">
+        <nwn-command-search [value]="searchText" [hideClose]="true"  (inputChangeEvent)="inputChangeEvent($event)"></nwn-command-search>
+    </div>
+    <div class="h-[448px] scrollbar-y px-6 py-4 bg-white space-y-3"  [ngClass]="{ hidden: openTab !== 1, block: openTab === 1 }">
+        <!-- [ngClass]="{ 'bg-marsgray-100': active }" -->
+        <div
+            class="border border-marsgray-300 cursor-pointer"
+            *ngFor="let loadPricingSimulatorItem of list_promotion | appFilter: searchText : 'promo';let i = index"
+            (click)="select(i,loadPricingSimulatorItem)"
+            [ngClass]="{ active: selectedIndex == i }"
+        >
+            <nwn-scenario-load-card [id] = "loadPricingSimulatorItem" (infoClickedEvent) = "infoClickedEvent($event)" [showInfo]="true">
+                <p slcHead>{{ loadPricingSimulatorItem.name }}
+
+                    <span style="font-size: 12px;">(created on <b>{{loadPricingSimulatorItem?.created_at | date}})</b>
+                    </span>
+                </p>
+                <p slcContent>{{ loadPricingSimulatorItem.comments }}</p>
+            </nwn-scenario-load-card>
+        </div>
+    </div>
+    <div class="h-[448px] scrollbar-y px-6 py-4 bg-white space-y-3"  [ngClass]="{ hidden: openTab !== 2, block: openTab === 2 }">
+        <!-- [ngClass]="{ 'bg-marsgray-100': active }" -->
+        <div
+            class="border border-marsgray-300 cursor-pointer"
+            *ngFor="let loadPricingSimulatorItem of list_promotion_others | appFilter: searchText : 'promo';let i = index"
+            (click)="select(i,loadPricingSimulatorItem)"
+            [ngClass]="{ active: selectedIndex == i }"
+        >
+            <nwn-scenario-load-card [id] = "loadPricingSimulatorItem" (infoClickedEvent) = "infoClickedEvent($event)" [showInfo]="true">
+                <p slcHead>{{ loadPricingSimulatorItem.name }} 
+                    <span style="font-size: 12px;">(createdby <b>{{loadPricingSimulatorItem.user?.email}}</b>
+                        created on <b>{{loadPricingSimulatorItem.created_at | date}})</b>
+                    </span>
+                    </p>
+                <p slcContent>{{ loadPricingSimulatorItem.comments }}</p>
+            </nwn-scenario-load-card>
+        </div>
+    </div>
+    
+    <nwn-search-footer (click) = "loadScenario()" [showKeyBoardCtrl]="true" [showLoad]="true"></nwn-search-footer>
+</div>
+<nwn-modal id="pricing-simulator-popup" class="hidden">
+    <nwn-promo-simulator-scenario [currency]="currency" (confirmatonEventModal)="modalConfirmation($event)" (deleteClicked) = "deleteClickedEvent($event)" [promotion_viewed] = "promotion_viewed" ></nwn-promo-simulator-scenario>
+</nwn-modal>

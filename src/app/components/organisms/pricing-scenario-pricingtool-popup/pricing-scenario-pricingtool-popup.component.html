@@ -1,0 +1,41 @@
+<div class="w-[650px] bg-white mx-auto my-6">
+    <div class="border-b border-marsgray-200">
+        <nwn-command-header type="stroke" nwnSvgIcon="adjustments">Pricing scenario</nwn-command-header>
+    </div>
+    <div class="h-auto bg-white">
+        <div class="px-3 py-4 bg-white">
+            <nwn-scenario-load-card [showTrash]="true">
+                <p slcHead>Pricing scenario name</p>
+                <p slcContent>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nisi enim ultrices eget donec in nunc, mi
+                    nisl elit. Nibh proin vitae faucibus tempor mauris, justo. Turpis adipiscing egestas.
+                </p>
+            </nwn-scenario-load-card>
+        </div>
+        <div class="border border-gray-200 px-2 bg-gray-100">
+            <nwn-cell-header type="headersm">Filters</nwn-cell-header>
+        </div>
+        <div class="flex flex-row flex-wrap px-6 pt-2">
+            <div class="mr-2 mb-2">
+                <nwn-filter-item [hideClose]="true" type="stroke" nwnSvgIcon="retailers">3 retailers</nwn-filter-item>
+            </div>
+            <div class="mr-2 mb-2">
+                <nwn-filter-item [hideClose]="true" type="stroke" nwnSvgIcon="categories">Chocolate</nwn-filter-item>
+            </div>
+            <div class="mr-2 mb-2">
+                <nwn-filter-item [hideClose]="true" type="stroke" nwnSvgIcon="brands">All brands</nwn-filter-item>
+            </div>
+            <div class="mr-2 mb-2">
+                <nwn-filter-item [hideClose]="true" type="stroke" nwnSvgIcon="brand-formats"
+                    >Galaxy silk</nwn-filter-item
+                >
+            </div>
+            <div class="mr-2 mb-2">
+                <nwn-filter-item [hideClose]="true" type="stroke" nwnSvgIcon="product-groups"
+                    >5 product groups</nwn-filter-item
+                >
+            </div>
+        </div>
+    </div>
+    <nwn-search-footer [showBack]="true" [showLoad]="true"></nwn-search-footer>
+</div>

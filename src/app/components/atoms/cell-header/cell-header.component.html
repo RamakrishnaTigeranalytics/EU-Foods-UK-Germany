@@ -1,0 +1,20 @@
+<div
+    [ngClass]="{
+        'header-sm': type === 'headersm',
+        'sub-header-sm': type === 'subheadersm',
+        'sub-header-md': type === 'subheadermd',
+        'sub-header-lg': type === 'subheaderlg',
+        'bg-white': color === 'bgwhite',
+        'bg-transparent': color === 'bgtransparent',
+        'bg-gray-100': color === 'bggray-100',
+        'sub-header-pds' : type === 'subheaderpds'
+
+    }"
+>
+    <p>
+        <ng-content></ng-content>
+    </p>
+    <div class="text-caption text-marsgray-700 font-medium" [ngClass]="{ hidden: showDate == false }">
+        <ng-content select="[dateValue]"></ng-content>
+    </div>
+</div>

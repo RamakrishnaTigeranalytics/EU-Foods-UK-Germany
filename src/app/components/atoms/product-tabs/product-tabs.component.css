@@ -1,0 +1,6 @@
+.selected-tabproduct {
+    @apply px-2 py-1 text-title-small font-semibold bg-marsgray-200 text-marsblue-500 cursor-pointer;
+}
+.unselected-tabproduct {
+    @apply px-2 py-1 text-title-small font-semibold text-marsgray-400 hover:text-marsblue-500 hover:bg-marsgray-200 cursor-pointer;
+}

@@ -1,0 +1,24 @@
+/* Hover to change color for each bar */
+::ng-deep .group rect#lift:hover {
+    fill: #b1bfc8 !important;
+}
+
+/* Tooltip */
+.arrow_box {
+    position: relative;
+    background: #ffffff;
+}
+.arrow_box:after {
+    top: 100%;
+    right: 10%;
+    border: solid transparent;
+    content: '';
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(255, 255, 255, 0);
+    border-top-color: #ffffff;
+    border-width: 8px;
+    margin-left: -6px;
+}

@@ -1,0 +1,28 @@
+<div class="w-[650px] bg-white mx-auto my-6">
+    <div class="border-b border-marsgray-200">
+        <nwn-command-header type="stroke" nwnSvgIcon="filter">Filter</nwn-command-header>
+    </div>
+    <div class="border-b border-marsgray-200">
+        <nwn-command-search [value] = "searchText" [hideClose]="true" [placeholder]="placeholder" (inputChangeEvent)="inputChangeEvent($event)"></nwn-command-search>
+    </div>
+    <div>
+        <!-- <nwn-command-iconitem type="stroke" nwnSvgIcon="retailers" [hideTick]="true" (click)="openFilterModal('filter-retailer')"
+            >Filter by retailer</nwn-command-iconitem
+        >
+        <nwn-command-iconitem type="stroke" nwnSvgIcon="categories" [hideTick]="true" (click)="openFilterModal('filter-categories')"
+            >Filter by category</nwn-command-iconitem
+        >
+        <nwn-command-iconitem type="stroke" nwnSvgIcon="strategic-cells" [hideTick]="true" (click)="openFilterModal('filter-stragetic-cells')"
+            >Filter by strategic cell</nwn-command-iconitem
+        >
+        <nwn-command-iconitem type="stroke" nwnSvgIcon="brands" [hideTick]="true" (click)="openFilterModal('filter-brands')">Filter by brand</nwn-command-iconitem>
+        <nwn-command-iconitem type="stroke" nwnSvgIcon="brand-formats" [hideTick]="true" (click)="openFilterModal('filter-brand-formats')"
+            >Filter by brand format</nwn-command-iconitem
+        >
+        <nwn-command-iconitem type="stroke" nwnSvgIcon="product-groups" [hideTick]="true" (click)="openFilterModal('filter-product-groups')"
+            >Filter by product group</nwn-command-iconitem
+        > -->
+        <nwn-command-iconitem *ngFor="let data of filterNames | appFilter: searchText : 'promo';" type="{{data.type}}" nwnSvgIcon="{{data.nwnSvgIcon}}" [hideTick]="data.hideTick" (click)="openFilterModal(data.id)">{{data.name}}</nwn-command-iconitem>
+    </div>
+    <nwn-search-footer [showKeyBoardCtrl]="true"></nwn-search-footer>
+</div>

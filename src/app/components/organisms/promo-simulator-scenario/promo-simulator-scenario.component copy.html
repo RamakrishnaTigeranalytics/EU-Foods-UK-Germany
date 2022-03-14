@@ -1,0 +1,83 @@
+<div class="w-[650px] bg-white mx-auto my-6">
+    <div class="border-b border-marsgray-200">
+        <nwn-command-header type="stroke" nwnSvgIcon="adjustments">Promo Simulator scenario</nwn-command-header>
+    </div>
+    <div class="h-auto bg-white">
+        <div class="px-6 py-4 bg-white">
+            <nwn-scenario-load-card (deleteClickedEvent)="deleteClickedEvent($event)" [showTrash]="true">
+                <p slcHead>{{promotion_viewed?.name}}</p>
+                <p slcContent>
+                   {{promotion_viewed?.comments}}
+                </p>
+            </nwn-scenario-load-card>
+        </div>
+        <div class="border border-gray-200 px-2 bg-gray-100">
+            <nwn-cell-header type="headersm">Filters</nwn-cell-header>
+        </div>
+        <!-- <div class="flex flex-row flex-wrap px-6 pt-2" *ngIf="isArray(promotion_viewed?.meta)">
+             
+            <div class="mr-2 mb-2">
+                <nwn-filter-item [hideClose]="true" type="stroke" nwnSvgIcon="retailers">
+                  Ret1
+                </nwn-filter-item>
+            </div>
+            
+            <div class="mr-2 mb-2">
+                <nwn-filter-item [hideClose]="true" type="stroke" nwnSvgIcon="product-groups"
+                    >
+                   pg1
+                    </nwn-filter-item
+                >
+            </div>
+         
+        </div> -->
+         
+        <div class="grid grid-cols-1">
+            <div class="flex flex-row flex-wrap px-6 pt-2" *ngIf="isArray(promotion_viewed?.meta)">
+             
+                <div class="mr-1 mb-1">
+                    <nwn-filter-item [hideClose]="true" type="stroke" nwnSvgIcon="retailers">
+                      Ret1
+                    </nwn-filter-item>
+                </div>
+                
+                <div class="mr-1 mb-1">
+                    <nwn-filter-item [hideClose]="true" type="stroke" nwnSvgIcon="product-groups"
+                        >
+                       pg1
+                        </nwn-filter-item
+                    >
+                </div>
+             
+            </div>
+            <div>
+                <nwn-metric-item-popup>
+                    <p metricPopHead>23</p>
+                    <p metricPopContent>List price (simulated)</p>
+                </nwn-metric-item-popup>
+            </div>
+            <div>
+                <nwn-metric-item-popup>
+                    <p metricPopHead>34</p>
+                    <p metricPopContent>RSP w/o VAT (simulated)</p>
+                </nwn-metric-item-popup>
+            </div>
+            <div>
+                <nwn-metric-item-popup>
+                    <p metricPopHead>56</p>
+                    <p metricPopContent>COGS (simulated)</p>
+                </nwn-metric-item-popup>
+            </div>
+            <div>
+                <nwn-metric-item-popup>
+                    <p metricPopHead>-9.23</p>
+                    <p metricPopContent>Price elasticity (base)</p>
+                </nwn-metric-item-popup>
+            </div>
+        </div>
+  
+    </div>
+    <nwn-search-footer (buttonClickedEvent) = "buttonClickedEvent($event)" [showBack]="true" [showLoad]="true" ></nwn-search-footer>
+</div>
+
+

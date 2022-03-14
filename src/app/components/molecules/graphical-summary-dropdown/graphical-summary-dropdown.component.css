@@ -1,0 +1,27 @@
+/* ::ng-deep .ngx-dropdown-list-container{
+    box-shadow: none;
+    border: none;
+    }
+.ngx-dropdown-list-container{
+        box-shadow: none;
+        border: none;
+        } */
+
+::ng-deep .ngx-dropdown-container > .ngx-dropdown-list-container{
+box-shadow: none!important;
+border: none!important;
+}
+/* .ngx-dropdown-container > .ngx-dropdown-list-container{
+    box-shadow: none!important;
+    border: none!important;
+    }
+
+    ::ng-deep .ngx-dropdown-container .ngx-dropdown-list-container{
+        box-shadow: none!important;
+        border: none!important;
+        }
+        .ngx-dropdown-container .ngx-dropdown-list-container{
+            box-shadow: none!important;
+            border: none!important;
+            }
+         */

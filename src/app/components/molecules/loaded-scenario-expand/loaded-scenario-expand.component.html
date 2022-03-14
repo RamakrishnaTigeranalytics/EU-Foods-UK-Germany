@@ -1,0 +1,108 @@
+<div class="flex flex-col border-b border-gray-300">
+    <div class="flex flex-row flex-wrap items-center justify-between py-4">
+        <div class="flex flex-row flex-wrap items-center">
+            <div class="mr-2 mb-2">
+                <nwn-dropdown></nwn-dropdown>
+            </div>
+            <div *ngIf="selected_quarter" class="flex flex-row flex-wrap items-center justify-start">
+                <div class="mr-2 mb-2" *ngFor="let key of quarter_year; let first = first;">
+                    <nwn-simulated-filter-item (click)="changeQuarter(key)" [selected_quarter]="selected_quarter" [key]="key" type="default" size="sfi">{{key}}</nwn-simulated-filter-item>
+                </div>
+                <!-- <div class="mr-2 mb-2">
+                    <nwn-simulated-filter-item type="default" size="sfi">Y1 Q2</nwn-simulated-filter-item>
+                </div>
+                <div class="mr-2 mb-2">
+                    <nwn-simulated-filter-item type="default" size="sfi">Y1 Q3</nwn-simulated-filter-item>
+                </div>
+                <div class="mr-2 mb-2">
+                    <nwn-simulated-filter-item type="active" size="sfi">Y1 Q4</nwn-simulated-filter-item>
+                </div>
+                <div class="mr-2 mb-2">
+                    <nwn-simulated-filter-item type="default" size="sfi">Y2 Q1</nwn-simulated-filter-item>
+                </div>
+                <div class="mr-2 mb-2">
+                    <nwn-simulated-filter-item type="filled" size="sfi">Y2 Q2</nwn-simulated-filter-item>
+                </div>
+                <div class="mr-2 mb-2">
+                    <nwn-simulated-filter-item type="default" size="sfi">Y2 Q3</nwn-simulated-filter-item>
+                </div>
+                <div class="mr-2 mb-2">
+                    <nwn-simulated-filter-item type="default" size="sfi">Y2 Q4</nwn-simulated-filter-item>
+                </div>
+                <div class="mr-2 mb-2">
+                    <nwn-simulated-filter-item type="filled-active" size="sfi">Y3 Q1</nwn-simulated-filter-item>
+                </div>
+                <div class="mr-2 mb-2">
+                    <nwn-simulated-filter-item type="default" size="sfi">Y3 Q2</nwn-simulated-filter-item>
+                </div>
+                <div class="mr-2 mb-2">
+                    <nwn-simulated-filter-item type="default" size="sfi">Y3 Q3</nwn-simulated-filter-item>
+                </div>
+                <div class="mr-2 mb-2">
+                    <nwn-simulated-filter-item type="default" size="sfi">Y3 Q4</nwn-simulated-filter-item>
+                </div> -->
+            </div>
+        </div>
+        <div class="flex flex-row flex-wrap items-center">
+            <nwn-button type="secondary" size="sm" class="mr-1 mb-1">
+                <nwn-svg-icon class="mr-1" type="stroke" nwnSvgIcon="plus" size="md"></nwn-svg-icon>
+                Add promo
+            </nwn-button>
+            <nwn-button type="secondary" size="sm" class="mr-1 mb-1">
+                <nwn-svg-icon class="mr-1" type="stroke" nwnSvgIcon="copy" size="md"></nwn-svg-icon>
+                Copy base scenario
+            </nwn-button>
+        </div>
+    </div>
+    <div *ngIf="selected_quarter" class="flex flex-row flex-wrap items-center">
+        <div class="mr-2 mb-2" *ngFor="let product_week of selected_product_week">
+            <nwn-weekly-promotion [product_week] = "product_week"></nwn-weekly-promotion>
+        </div>
+        <!-- <div class="mr-2 mb-2">
+            <nwn-weekly-promotion></nwn-weekly-promotion>
+        </div>
+        <div class="mr-2 mb-2">
+            <nwn-weekly-promotion></nwn-weekly-promotion>
+        </div>
+        <div class="mr-2 mb-2">
+            <nwn-weekly-promotion></nwn-weekly-promotion>
+        </div>
+        <div class="mr-2 mb-2">
+            <nwn-weekly-promotion></nwn-weekly-promotion>
+        </div>
+        <div class="mr-2 mb-2">
+            <nwn-weekly-promotion></nwn-weekly-promotion>
+        </div>
+        <div class="mr-2 mb-2">
+            <nwn-weekly-promotion></nwn-weekly-promotion>
+        </div>
+        <div class="mr-2 mb-2">
+            <nwn-weekly-promotion></nwn-weekly-promotion>
+        </div>
+        <div class="mr-2 mb-2">
+            <nwn-weekly-promotion></nwn-weekly-promotion>
+        </div>
+        <div class="mr-2 mb-2">
+            <nwn-weekly-promotion></nwn-weekly-promotion>
+        </div>
+        <div class="mr-2 mb-2">
+            <nwn-weekly-promotion></nwn-weekly-promotion>
+        </div>
+        <div class="mr-2 mb-2">
+            <nwn-weekly-promotion></nwn-weekly-promotion>
+        </div> -->
+    </div>
+</div>
+<div style="justify-content:end;padding:10px" class="flex flex-row flex-wrap items-center justify-between space-x-2 border-b border-gray-300">
+    
+    <div class="flex flex-row items-center space-x-4">
+        <div class="flex flex-row items-center">
+            <div class="bg-marsgray-700 w-5 h-5 mr-2"></div>
+            <p class="text-body text-marsgray-500">Input metric</p>
+        </div>
+        <div class="flex flex-row items-center">
+            <div class="bg-yellow-200 w-5 h-5 mr-2"></div>
+            <p class="text-body text-marsgray-500">Base metric</p>
+        </div>
+    </div>
+</div>

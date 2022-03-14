@@ -1,0 +1,6 @@
+.selected-tabcta {
+    @apply text-title-small text-marsblue-500 font-bold cursor-pointer py-3 border-b border-marsblue-500;
+}
+.unselected-tabcta {
+    @apply text-title-small text-marsgray-400 font-bold hover:text-marsblue-500 border-b border-transparent hover:border-marsblue-500 cursor-pointer py-3;
+}

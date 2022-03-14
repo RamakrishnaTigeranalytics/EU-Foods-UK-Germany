@@ -1,0 +1,76 @@
+<nwn-loaded-pricing-scenario-header-admin
+[currency] = "currency"
+[pricingArray] = "pricingArray"
+(modalEvent)="receiveMessage($event)"
+(simulateResetEvent) = "simulateReset($event)"
+(loadScenarioEvent) = "loadScenarioEvent($event)"
+[count_ret] = "count_ret"
+[showtbas]= "showtbas"
+(removeRetailerEvent) = "removeRetailerEvent($event)"
+></nwn-loaded-pricing-scenario-header-admin>
+<!-- <nwn-summary-placeholder ></nwn-summary-placeholder> -->
+
+ <!-- Modals -->
+<!-- Filter Retailer -->
+<nwn-modal id="filter-retailer" class="hidden">
+    <nwn-filter-retailer
+    [pricing] = "true"
+    [filter_model]="filter_model" 
+    [count_ret] = "count_ret"
+    (closeModal)="close($event)" (filterApply)="filterApply($event)" 
+    (retailerChange) = "retailerChange($event)"
+     [retailers] = "retailers"></nwn-filter-retailer>
+</nwn-modal>
+<!-- Filter Category -->
+<nwn-modal id="filter-categories" class="hidden">
+    <nwn-filter-categories 
+    [pricing] = "true"
+    [count_ret] = "count_ret" 
+    [filter_model]="filter_model" 
+    (closeModal)="close($event)" (filterApply)="filterApply($event)"
+     (categoryChange) = "categoryChange($event)" 
+     [categories] = "categories"></nwn-filter-categories>
+</nwn-modal>
+<!-- Filter Strategic Cell -->
+<nwn-modal id="filter-stragetic-cells" class="hidden">
+    <nwn-filter-stragetic-cells
+    [pricing] = "true"
+    [count_ret] = "count_ret" [filter_model]="filter_model" (closeModal)="close($event)" (filterApply)="filterApply($event)" (strategicCellChange) = "strategicCellChange($event)" [stragetic_cells] = "strategic_cell"></nwn-filter-stragetic-cells>
+</nwn-modal>
+<!-- Filter Brands -->
+<nwn-modal id="filter-brands" class="hidden">
+    <nwn-filter-brands
+    [pricing] = "true"
+    [count_ret] = "count_ret" [filter_model]="filter_model"  (closeModal)="close($event)" 
+    (filterApply)="filterApply($event)" (brandChange) = "brandChange($event)"  [brands] = "brands"></nwn-filter-brands>
+</nwn-modal>
+<!-- Filter Brand Formats -->
+<nwn-modal id="filter-brand-formats" class="hidden">
+    <nwn-filter-brands-formats
+    [pricing] = "true"
+    [count_ret] = "count_ret" [filter_model]="filter_model" (closeModal)="close($event)" (filterApply)="filterApply($event)" (brandFormatChange) = "brandFormatChange($event)" [brand_formats] = "brands_format"></nwn-filter-brands-formats>
+</nwn-modal>
+<!-- Filter Product Groups -->
+<nwn-modal id="filter-product-groups" class="hidden">
+    <nwn-filter-product-groups
+    [pricing] = "true"
+    [filter_model]="filter_model" 
+    [count_ret] = "count_ret"
+    (closeModal)="close($event)" 
+    (filterApply)="filterApply($event)" 
+    (productChange) = "productChange($event)" 
+    (retailerChange) = "retailerChange($event)"
+    [product_groups] = "product_group"></nwn-filter-product-groups>
+</nwn-modal>
+<!-- Add Promotions -->
+<nwn-modal id="add-promotion" class="hidden">
+    <nwn-add-promotion></nwn-add-promotion>
+</nwn-modal>
+<!-- compare scenario -->
+<nwn-modal id="compare-scenario-popup" class="hidden">
+    <nwn-compare-scenario-popup></nwn-compare-scenario-popup>
+</nwn-modal>
+<!-- pricing scenario -->
+<nwn-modal id="pricing-scenario" class="hidden">
+    <nwn-pricing-scenario></nwn-pricing-scenario>
+</nwn-modal>

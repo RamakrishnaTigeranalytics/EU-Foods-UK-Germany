@@ -1,0 +1,50 @@
+<label class="flex flex-row {{spacex}} leading-none h-3 items-center">
+    <div class="relative checktool">
+        <input
+            type="checkbox"
+            [ngClass]="{
+                'disabled ' : disable,
+                ' border-2 border-marsgray-300 checked:bg-marsblue-600 checked:border-transparent' : !disable
+            }"
+            [value]="value"
+            [attr.disabled] = "disable ? true : null"
+            [checked] = "checked"   
+            (change) = "checkValue($event)"
+            class="
+                form-tick
+                appearance-none
+                h-4
+                w-4
+               
+                
+                
+                focus:outline-none
+            "
+            [(ngModel)]="checked"
+           
+        />
+        <!-- {{disable}} -->
+<!--  (change)="onToggle()" -->
+        <svg
+            class="stroke-current w-3 h-3 text-white pointer-events-none absolute"
+            width="10"
+            height="8"
+            viewBox="0 0 10 8"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path d="M1 3.00012L4 6.00012L9.00024 1" stroke-width="2" stroke-linecap="round" />
+        </svg>
+
+        <div [ngClass]="{ hidden: showTooltip == false }">
+            <div class="btn-tooltip">
+                <ng-content select="[tooltipContent]"></ng-content>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-marsgray-700 text-body leading-none w-full mb-1" [ngClass]="{ hidden: showLabel == false }">
+        <!-- {{spacex}} -->
+        <ng-content></ng-content>
+    </div>
+</label>

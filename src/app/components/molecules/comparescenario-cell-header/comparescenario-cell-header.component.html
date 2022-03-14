@@ -1,0 +1,16 @@
+<div class="flex flex-row bg-white items-center justify-between px-5 py-5 space-x-2 w-full">
+    <div class="text-body text-marsgray-700 font-normal">
+        <ng-content></ng-content>
+    </div>
+    <div class="text-marsgray-700 flex flex-row">
+        <!-- <div class="relative">
+            <nwn-button type="icon" size="iconsm" class="infoCompareScenario">
+                <nwn-svg-icon nwnSvgIcon="info" size="md" type="stroke"></nwn-svg-icon>
+            </nwn-button>
+            <nwn-large-tool-tip [scenario] = "scenario" class="largeTooltip"></nwn-large-tool-tip>
+        </div> -->
+        <nwn-button (click)="removeCompare(scenario)" type="icon" size="iconsm" [ngClass]="{ hidden: showCHClose == false }">
+            <nwn-svg-icon nwnSvgIcon="close" size="md" type="stroke"></nwn-svg-icon>
+        </nwn-button>
+    </div>
+</div>

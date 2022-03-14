@@ -1,0 +1,23 @@
+.triangle-tr {
+    width: 0;
+    height: 0;
+    border-top: 8px solid rgba(107, 114, 128);
+    border-left: 8px solid transparent;
+}
+.holiday-popover {
+    @apply hidden absolute top-0 -right-28 z-[99];
+}
+.holiday:hover .triangle-tr ~ .holiday-popover {
+    @apply block;
+}
+
+.light-gradient{
+   background-color: #E0F2FE;
+
+}
+.medium-gradient{
+    background-color: #7DD3FC;
+}
+.high-gradient{
+    background-color: #40ACE2;
+}

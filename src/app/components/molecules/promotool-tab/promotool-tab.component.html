@@ -1,0 +1,23 @@
+<a
+    class="
+        inline-flex
+        items-center
+        group
+        hover:bg-marsgray-100
+        py-5
+        px-8
+        space-x-2
+        border-t-4 border-transparent
+        hover:border-marsteal-400
+        hover:text-marsblue-500
+    "
+    [ngClass]="{ 'active-headtab': active == true }"
+    [routerLink]="link"
+>
+<!-- [href]="href" -->
+    <nwn-svg-icon [type]="type" [nwnSvgIcon]="nwnSvgIcon"></nwn-svg-icon>
+    <p class="text-body text-marsgray-700 group-hover:text-marsblue-500">
+        <ng-content></ng-content>
+    </p>
+</a>
+<!-- [ngClass]="{ 'active-headtab': active == true }" -->

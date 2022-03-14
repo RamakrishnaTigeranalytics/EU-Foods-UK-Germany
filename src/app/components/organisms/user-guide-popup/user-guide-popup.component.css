@@ -1,0 +1,125 @@
+.carousel-open:checked+.carousel-item {
+  position: static;
+  opacity: 100;
+}
+
+.carousel-item {
+  -webkit-transition: opacity 0.6s ease-out;
+  transition: opacity 0.6s ease-out;
+}
+
+#carousel-1:checked~.control-1,
+#carousel-2:checked~.control-2,
+#carousel-3:checked~.control-3,
+#carousel-4:checked~.control-4,
+#carousel-5:checked~.control-5,
+#carousel-6:checked~.control-6,
+#carousel-7:checked~.control-7,
+#carousel-8:checked~.control-8,
+#carousel-9:checked~.control-9{
+  display: block;
+}
+
+.carousel-indicators {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  /* position: absolute; */
+  bottom: 2%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 10;
+}
+
+#carousel-1:checked~.control-1~.carousel-indicators li:nth-child(1) .carousel-bullet,
+#carousel-2:checked~.control-2~.carousel-indicators li:nth-child(2) .carousel-bullet,
+#carousel-3:checked~.control-3~.carousel-indicators li:nth-child(3) .carousel-bullet,
+#carousel-4:checked~.control-4~.carousel-indicators li:nth-child(4) .carousel-bullet,
+#carousel-5:checked~.control-5~.carousel-indicators li:nth-child(5) .carousel-bullet,
+#carousel-6:checked~.control-6~.carousel-indicators li:nth-child(6) .carousel-bullet,
+#carousel-7:checked~.control-7~.carousel-indicators li:nth-child(7) .carousel-bullet,
+#carousel-8:checked~.control-8~.carousel-indicators li:nth-child(8) .carousel-bullet,
+#carousel-9:checked~.control-9~.carousel-indicators li:nth-child(9) .carousel-bullet {
+  /* color: #2b6cb0; */
+  color: #E6A000;
+  /*Set to match the Tailwind colour you want the active one to be */
+}
+
+.bg_img {
+    height: 400px;
+    width: 100%;
+    background-size: 100% 400px;
+    background-repeat: no-repeat;
+}
+.bg_img_4_6 {
+  height: 460px;
+  margin-left: 7vw;
+  width: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.bg_img_7 {
+  height: 400px;
+  width: 100%;
+  margin-left: 8vw;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.bg_img_contain {
+  height: 400px;
+  width: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.bg_img_cover {
+  height: 400px;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.bg_img_contain_sim_6 {
+  height: 400px;
+  width: 100%;
+  margin-left: 6vw;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+
+.carousel-control {
+  background: rgba(0, 0, 0, 0.28);
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  display: none;
+  font-size: 40px;
+  height: 40px;
+  line-height: 35px;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+  cursor: pointer;
+  -ms-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  text-align: center;
+  width: 40px;
+  z-index: 10;
+}
+
+.carousel-control.prev {
+  left: 2%;
+}
+
+.carousel-control.next {
+  right: 2%;
+}
+
+.carousel-control:hover {
+  background: rgba(0, 0, 0, 0.8);
+  color: #aaaaaa;
+}

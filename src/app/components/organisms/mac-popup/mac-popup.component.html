@@ -1,0 +1,27 @@
+<div class="w-[650px] bg-white mx-auto my-6">
+    <div class="border-b border-marsgray-200">
+        <nwn-command-header type="stroke" nwnSvgIcon="adjustments">{{label}}</nwn-command-header>
+    </div>
+    <div class="h-auto bg-white">
+        <!-- <div class="border-b border-marsgray-200">
+            <nwn-metric-item-popup>
+                <p metricPopHead>x1.00</p>
+                <p metricPopContent>{{label}} (input)</p>
+            </nwn-metric-item-popup>
+            <nwn-command-search [hideClose]="true" placeholder="Try typing 1.00 "></nwn-command-search>
+        </div> -->
+
+        <div class="grid grid-cols-2">
+            <div>
+                <!-- <nwn-metric-item-popup>
+                    <p metricPopHead>x1.00</p>
+                    <p metricPopContent>{{label}} (input)</p>
+                </nwn-metric-item-popup> -->
+            </div>
+        </div>
+        <div class="flex">
+            <nwn-promo-elasticity [steps] = "0.01"  [(ngModel)]='value'>{{label}}</nwn-promo-elasticity>
+        </div>
+    </div>
+    <nwn-search-footer (click) = "apply()" [showApply]="true"></nwn-search-footer>
+</div>

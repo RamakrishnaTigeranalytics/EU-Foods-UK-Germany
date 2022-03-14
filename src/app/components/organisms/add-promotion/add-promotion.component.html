@@ -1,0 +1,201 @@
+<div class="w-[650px] bg-white mx-auto my-6">
+    <div class="border-b border-marsgray-200">
+        <nwn-command-header type="stroke" nwnSvgIcon="adjustments">Promotion Details</nwn-command-header>
+    </div>
+    <form [formGroup]="form" >
+    <div class="h-auto bg-white">
+        <div class="px-6 py-3 space-y-2 promodetailselect">
+            <label for="promoname">Promo Mechanic<span class="mandatory-fields">*</span></label>
+            <ngx-select-dropdown
+            (open)="hideNoResultsFound()"
+            (change)="hideNoResultsFound();changeLevelOnePromotion($event)"
+            id="promo-details"
+            formControlName="promo_level_one"
+            tabindex="0"
+            [multiple]="false"
+            [config]="config"
+            [options]="promo_name"
+            >
+        </ngx-select-dropdown>
+        <span *ngIf="errMsg.mechanic" class="err-msg">Please select the promo mechanic</span>
+            
+        </div>
+        <div class="px-6 py-3 space-y-2 promodetailselect">
+            <label for="promoname">Promo Mechanic2<span class="mandatory-fields">*</span></label>
+            <ngx-select-dropdown
+            (open)="hideNoResultsFound()"
+            (change)="hideNoResultsFound();changePromotion($event)"
+            id="promo-details"
+            formControlName="promo_level_two"
+            tabindex="0"
+            [disabled] = "disable_level_two"
+            [multiple]="false"
+            [config]="config"
+            [options]="promo_name2"
+            >
+        </ngx-select-dropdown>
+        <span *ngIf="errMsg.mechanic" class="err-msg">Please select the promo mechanic</span>
+            
+        </div>
+        <!-- *ngIf="show_custom" -->
+        <ng-container *ngIf="show_custom && form.controls.promo_level_one.value == 'Multibuy'" >
+        <div style="align-items: baseline;" class="flex flex-row px-6 py-2 space-y-2">
+            <div class="flex">
+                <label for="promoname">Custom:</label>
+            </div>
+            
+            <input
+            (keyup)="onInputChange($event)"
+                type="text"
+                formControlName="multibuy_split_1"
+                class="
+                    flex
+                    h-10
+                    w-full
+                    p-2
+                    rounded-none
+                    border border-marsgray-300
+                    focus:border-marsgray-500
+                    focus:outline-none
+                    bg-white
+                "
+                [ngClass]="{ 'border-marsred-600': error == false }"/>
+                <div style="padding:10px" class="flex"><label for="promoname">/</label></div>
+                <div style="padding:10px" class="flex"><label for="promoname">{{currency}}</label></div>
+                <input
+            (keyup)="onInputChange($event)"
+                type="text"
+                formControlName="multibuy_split_2"
+                class="
+                    flex
+                    h-10
+                    w-full
+                    p-2
+                    rounded-none
+                    border border-marsgray-300
+                    focus:border-marsgray-500
+                    focus:outline-none
+                    bg-white
+                "
+                [ngClass]="{ 'border-marsred-600': error == false }"/>
+
+               
+        
+        </div>
+        <div class="px-6 py-3 space-y-2 promodetailselect">
+            <label for="promoname">Promo Price</label>
+            
+            <input
+            
+                type="text"
+                formControlName="promo_price"
+                class="
+                    flex
+                    h-10
+                    w-full
+                    p-2
+                    rounded-none
+                    border border-marsgray-300
+                    focus:border-marsgray-500
+                    focus:outline-none
+                    bg-white
+                "
+                [ngClass]="{ 'border-marsred-600': error == false }"/>
+            
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="show_custom && form.controls.promo_level_one.value == 'TPR'" >
+        <div class="px-6 py-3 space-y-2 promodetailselect">
+            <label for="promoname">Promo Price {{currency}}
+                <!-- {{pricingForm.controls.products.controls[i].controls.product_group.value -->
+                </label>
+            
+            <input
+            (keyup)="onInputChange($event)"
+            
+                type="text"
+                formControlName="promo_price"
+                class="
+                    flex
+                    h-10
+                    w-full
+                    p-2
+                    rounded-none
+                    border border-marsgray-300
+                    focus:border-marsgray-500
+                    focus:outline-none
+                    bg-white
+                "
+                [ngClass]="{ 'border-marsred-600': error == false }"/>
+            
+        </div>
+    </ng-container>
+
+
+
+        <div class="px-6 py-2">
+            <label for="promoname">Display
+                
+            </label>
+            
+                <div
+                class="flex flex-row h-12 bg-white hover:bg-marsgray-50 items-center space-x-4"
+                
+            >
+            <ng-container  *ngFor="let display of display_keys">
+                <nwn-checkbox [showLabel]="true" [value]= "display.value" [checked] = "display.checked" (valueChange)='valueChangeDisplay($event)'>{{display.value}}</nwn-checkbox>
+                <!-- <nwn-checkbox [showLabel]="true" [value]= "value" [checked] = "checked" (valueChange)='valueChange($event)'>SS</nwn-checkbox>
+                <nwn-checkbox [showLabel]="true" [value]= "value" [checked] = "checked" (valueChange)='valueChange($event)'>PL</nwn-checkbox>
+                <nwn-checkbox [showLabel]="true" [value]= "value" [checked] = "checked" (valueChange)='valueChange($event)'>Poweraisle</nwn-checkbox> -->
+            </ng-container>
+            
+                
+            </div>
+            
+
+            
+        </div>
+        
+        <div *ngIf="is_consumer_promotion" class="px-6 py-2">
+            <label for="promoname">Consumer Promotion  
+            </label>
+                <div
+                class="flex flex-row h-12 bg-white hover:bg-marsgray-50 items-center space-x-4">
+                <nwn-checkbox [showLabel]="true" [value]= "value" [checked] = "form.controls.cp.value" (valueChange)='valueChangeCP($event)'>Consumer Promotion</nwn-checkbox>
+            </div>
+            
+        </div>
+       
+        <div class="px-6 py-2">
+            <nwn-text-input formControlName="generated_promo" nwnTextInput="text" [placeholder]="promo_generated" [error]="true"
+                ><p label>Name</p></nwn-text-input
+            >
+        </div>
+        <nwn-search-footer (click) = "addPromotions()" [showAdd]="true" type="secondary"></nwn-search-footer>
+        <div class="border border-gray-200 px-2 bg-gray-100">
+            <nwn-cell-header type="headersm">Input promotions</nwn-cell-header>
+        </div>
+
+        <div *ngFor="let promo of input_promotions">
+            <nwn-command-multiselect (clickClosedEvent)="clickClosedEvent($event)" (valueChangeSelect)="valueChangePromo($event)" [value] = "promo.value" [checked]="promo.checked" [leftBorder]="false" [hideClose]="false">{{promo.value}}</nwn-command-multiselect>
+            <!-- <nwn-command-multiselect [leftBorder]="false" [hideClose]="false">N + 1 - 20%</nwn-command-multiselect> -->
+        </div>
+        <div class="border border-gray-200 px-2 bg-gray-100">
+            <nwn-cell-header type="headersm">Baseline promotions</nwn-cell-header>
+        </div>
+        <div *ngFor="let base_promo of base_line_promotions">
+            <nwn-command-multiselect (valueChangeSelect)="valueChangeBaseline($event)" [value] = "base_promo.value" [checked]="base_promo.checked" [leftBorder]="false" [hideClose]="true">{{base_promo.value}}</nwn-command-multiselect>
+            <!--[value] = "brand.value" [checked]="brand.checked" 
+                <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">TPR - 10%</nwn-command-multiselect>
+            <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">TPR - 20%</nwn-command-multiselect>
+            <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">TPR - 25%</nwn-command-multiselect>
+            <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">MAC, %NSV</nwn-command-multiselect>
+            <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">N + 1 - 7%</nwn-command-multiselect>
+            <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">TE / Unit</nwn-command-multiselect>
+            <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">N + 1 - 15%</nwn-command-multiselect> -->
+        </div>
+    </div>
+</form>
+    <nwn-search-footer [showApply]="true" (click)="applyPromotion()"></nwn-search-footer>
+</div>

@@ -1,0 +1,59 @@
+<div class="w-[650px] bg-white mx-auto my-6 promodetails">
+    <div class="border-b border-marsgray-200">
+        <nwn-command-header type="stroke" nwnSvgIcon="adjustments">Promotion details</nwn-command-header>
+    </div>
+    <form [formGroup]="form" >
+    <div class="h-auto bg-white">
+        <div class="px-6 py-3 space-y-2 promodetailselect">
+            <label for="promoname">Promo Mechanic<span class="mandatory-fields">*</span></label>
+                <ngx-select-dropdown
+                (open)="hideNoResultsFound()"
+                (change)="hideNoResultsFound();changePromotion($event)"
+                id="promo-details1"
+                formControlName="promo"
+                tabindex="0"
+                [multiple]="false"
+                [config]="config"
+                [options]="optionsNormal"
+                >
+            </ngx-select-dropdown>
+            <span *ngIf="errMsg.mechanic" class="err-msg">Please select the promo mechanic</span>
+        </div>
+        <div class="px-6 py-2">
+            <label for="promoname">Discount depth
+                <!-- <span class="mandatory-fields">*</span> -->
+            </label>
+            <div class="custom-slider pt-4 pb-6">
+                <ngx-slider [(value)]="valueDiscountdepth" (mouseup)="sliderEvent()" [options]="discountdepth"></ngx-slider>
+            </div>
+            <span *ngIf="errMsg.discount" class="err-msg">Please select the discount depth</span>
+        </div>
+        <!-- <div class="px-6 py-2">
+            <label for="promoname">Co-investment depth
+              
+            </label>
+            <div class="custom-slider pt-4 pb-6">
+                <ngx-slider [(value)]="valueCoInvestment" [options]="coInvestment"></ngx-slider>
+            </div>
+           
+        </div> -->
+        <div class="px-6 py-2">
+            <nwn-text-input nwnTextInput="text" [placeholder]="promo_generated" [error]="true"
+                ><p label>Name</p></nwn-text-input
+            >
+        </div>
+        <nwn-search-footer (click) = "addPromotions()" [showAdd]="true" type="secondary" color="bgWhite"></nwn-search-footer>
+        <div class="border border-gray-200 px-2 bg-gray-100">
+            <nwn-cell-header type="headersm">Promotions</nwn-cell-header>
+        </div>
+
+        <div *ngFor="let promo of input_promotions">
+            <nwn-command-multiselect (clickClosedEvent)="clickClosedEvent($event)" (valueChangeSelect)="valueChangePromo($event)" [value] = "promo.value" [checked]="promo.checked"  [leftBorder]="false" [hideClose]="false">{{promo.value}}</nwn-command-multiselect>
+            <!-- <nwn-command-multiselect [leftBorder]="false" [hideClose]="false">N + 1 - 20%</nwn-command-multiselect>
+            <nwn-command-multiselect [leftBorder]="false" [hideClose]="false">TPR - 35%</nwn-command-multiselect>
+            <nwn-command-multiselect [leftBorder]="false" [hideClose]="false">N + 1 - 20%</nwn-command-multiselect> -->
+        </div>
+    </div>
+    </form>
+    <nwn-search-footer (click) = "apply()" [showApply]="true"></nwn-search-footer>
+</div>

@@ -1,0 +1,79 @@
+<div class="w-[1000px] bg-white mx-auto my-6">  
+  <!--  -->
+  <div class="border-b border-marsgray-200">
+       
+          <nwn-command-header type="stroke" >Choose retailer</nwn-command-header>
+       
+  </div>
+  <div class="bg-gray-100 border-b border-marsgray-200">
+    
+    <div *ngIf = "metaInfo.length > 0" class="md:flex md:justify-center overflow-x-auto   md:space-x-8 md:px-14  "> <!---->
+      <!-- box-1 -->
+      <div (click) = "toggleId(meta.id)"
+      [ngClass]="{
+        'active' : selected_id == meta.id
+      }"
+      *ngFor="let meta of metaInfo" class="mt-16 py-4 px-4 bg-whit w-72 bg-white rounded-xl shadow-lg mx-auto md:mx-0" >
+        <div class="w-sm"  >
+    
+            <div class="flex flex-row justify-center"> 
+            <div class="mr-1 mb-1">
+              <nwn-filter-item [hideClose]="true" type="stroke" nwnSvgIcon="retailers">
+                {{meta.retailer}}
+              </nwn-filter-item>
+          </div>
+          
+          <div class="mr-1 mb-1">
+              <nwn-filter-item [hideClose]="true" type="stroke" nwnSvgIcon="product-groups"
+                  >
+                  {{meta.product_group}}
+                  </nwn-filter-item
+              >
+          </div>
+          
+          </div>
+          
+          <div class="mt-4 text-black-600 text-center">
+
+            <div class="grid">
+              <div>
+                  <nwn-metric-item-popup>
+                      <p metricPopHead>{{meta.pricing?.base_lpi | percentIncrease : meta.pricing?.lpi | number : '1.2-2'}} {{currency}}</p>
+                      <p metricPopHead2 class="text-caption text-marsgray-700 font-medium">Base ({{meta.pricing?.base_lpi | number : '1.2-2'}} {{currency}})</p>
+                      <p metricPopContent>List price</p>
+                  </nwn-metric-item-popup>
+              </div>
+              <div>
+                  <nwn-metric-item-popup>
+                      <p metricPopHead>{{meta.pricing?.base_rsp | percentIncrease : meta.pricing?.rsp | number : '1.2-2'}} {{currency}}</p>
+                      <p metricPopHead2 class="text-caption text-marsgray-700 font-medium">Base ({{meta.pricing?.base_rsp | number : '1.2-2'}} {{currency}})</p>
+                      <p metricPopContent>RSP w/o VAT</p>
+                  </nwn-metric-item-popup>
+              </div>
+              <div>
+                  <nwn-metric-item-popup>
+                      <p metricPopHead>{{meta.pricing?.base_cogs | percentIncrease : meta.pricing?.cogs | number : '1.2-2'}} {{currency}}</p>
+                      <p metricPopHead2 class="text-caption text-marsgray-700 font-medium">Base ({{meta.pricing?.base_cogs | number : '1.2-2'}} {{currency}})</p>
+                      <p metricPopContent>COGS</p>
+                  </nwn-metric-item-popup>
+              </div>
+              <div>
+                  <nwn-metric-item-popup>
+                      <p metricPopHead>{{meta.pricing?.inc_elasticity | number : '1.2-2'}}</p>
+                      <p metricPopHead2 class="text-caption text-marsgray-700 font-medium">Base ({{meta.pricing?.base_elasticity | number : '1.2-2'}} {{currency}})</p>
+                      <p metricPopContent>Price elasticity</p>
+                  </nwn-metric-item-popup>
+              </div>
+          </div>
+           
+          </div>
+        </div>
+      </div>
+      
+      </div>  
+      
+  </div>
+ 
+   
+  <nwn-search-footer [showKeyBoardCtrl]="true" (click) = "loadScenario()" [showLoad]="true"></nwn-search-footer>
+</div>

@@ -1,0 +1,6 @@
+nwn-scenario-load-card .load-scenario-card {
+    @apply bg-white;
+}
+.active nwn-scenario-load-card .load-scenario-card {
+    @apply bg-marsgray-100;
+}

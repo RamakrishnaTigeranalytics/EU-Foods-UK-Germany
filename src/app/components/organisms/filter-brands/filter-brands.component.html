@@ -1,0 +1,25 @@
+<div class="w-[650px] bg-white mx-auto my-6">
+    <div class="border-b border-marsgray-200">
+        <nwn-command-header type="stroke" nwnSvgIcon="brands">Filter by brands</nwn-command-header>
+    </div>
+    <div class="border-b border-marsgray-200">
+        <nwn-command-search [value]="searchText" [placeholder]="placeholder" [hideClose]="true" (inputChangeEvent)="inputChangeEvent($event)"></nwn-command-search>
+    </div>
+    <div class="scrollbar-y h-[287px]">
+        <ng-container *ngIf="!pricing">
+        <nwn-command-multiselect (valueChangeSelect)="valueChangeSelect($event,'Brands')" *ngFor="let brand of brands | appFilter: searchText;" [value] = "brand.value" [checked]="brand.checked" [leftBorder]="false" [hideClose]="true">{{brand.value}}</nwn-command-multiselect>
+    </ng-container>
+    <ng-container *ngIf="pricing">
+        <nwn-command-multiselect (valueChangeSelect) = "allselect($event)" [value] = "all_.value" [checked]="all_.checked" [leftBorder]="false" [hideClose]="true" >{{all_.value}}</nwn-command-multiselect>
+        <nwn-command-multiselect (valueChangeSelect)="valueChangeSelectPricing($event,'Brands')" *ngFor="let brand of brands | appFilter: searchText;" [value] = "brand.value" [checked]="brand.checked" [leftBorder]="false" [hideClose]="true">{{brand.value}}</nwn-command-multiselect>
+    </ng-container>
+        <!-- <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">Double Mint</nwn-command-multiselect>
+        <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">Bounty</nwn-command-multiselect>
+        <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">Orbit</nwn-command-multiselect>
+        <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">Skittles</nwn-command-multiselect>
+        <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">Twix</nwn-command-multiselect>
+        <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">Mars</nwn-command-multiselect>
+        <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">Twix</nwn-command-multiselect> -->
+    </div>
+    <nwn-search-footer (click) = "apply('filter-brands')" [showKeyBoardCtrl]="true" [showApply]="true"></nwn-search-footer>
+</div>

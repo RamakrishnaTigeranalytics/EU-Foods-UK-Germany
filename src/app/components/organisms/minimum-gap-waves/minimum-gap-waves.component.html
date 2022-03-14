@@ -1,0 +1,35 @@
+<div class="w-[650px] bg-white mx-auto my-6">
+    <div class="border-b border-marsgray-200">
+        <nwn-command-header type="stroke" nwnSvgIcon="adjustments">Minimum gap between waves</nwn-command-header>
+    </div>
+    <div class="h-auto bg-white">
+        <div class="border-b border-marsgray-200">
+            <nwn-command-search [value] = "value" [hideClose]="true" placeholder="Try typing 5 - 7 weeks"></nwn-command-search>
+        </div>
+
+        <div class="grid grid-cols-2">
+            <div>
+                <nwn-metric-item-popup>
+                    <p metricPopHead>
+                        <!-- <span *ngIf="duration_min && duration_min!=duration_max">{{duration_min}} - </span> -->
+                        {{value}}</p>
+                    <p metricPopContent>Number of weeks (input)</p>
+                </nwn-metric-item-popup>
+            </div>
+            <div>
+                <nwn-metric-item-popup>
+                    <p metricPopHead>{{basepromo}}</p>
+                    <p metricPopContent>Number of weeks (base)</p>
+                </nwn-metric-item-popup>
+            </div>
+        </div>
+        <div class="px-6 py-2">
+            <div class="custom-slider single-slider pt-4 pb-6">
+                <ngx-slider [(value)]="minGapWaves" (mouseup)="sliderChangeEvent($event)" [options] = "options"></ngx-slider>
+    
+                <!-- <nwn-slider (sliderChangeEvent) = "sliderChangeEvent($event)" [floor] = "floor" [ceil] = "ceil" [steps] = "steps" [options] = "options"  [minValue] = "duration_min" [maxValue] = "duration_max"></nwn-slider> -->
+            </div>
+        </div>
+    </div>
+    <nwn-search-footer (click) = "apply()" [showApply]="true"></nwn-search-footer>
+</div>

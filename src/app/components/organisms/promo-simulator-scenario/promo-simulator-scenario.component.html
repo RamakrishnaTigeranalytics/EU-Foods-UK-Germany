@@ -1,0 +1,151 @@
+<div class="w-[650px] bg-white mx-auto my-6">
+    <div class="border-b border-marsgray-200">
+        <nwn-command-header type="stroke" nwnSvgIcon="adjustments">Pricing Simulator scenario</nwn-command-header>
+    </div>
+    <div class="h-auto bg-white">
+        <div class="px-6 py-4 bg-white">
+            <nwn-scenario-load-card (deleteClickedEvent)="deleteClickedEvent($event)" [showTrash]="true">
+                <p slcHead>{{promotion_viewed?.name}}</p>
+                <p slcContent>
+                   {{promotion_viewed?.comments}}
+                </p>
+            </nwn-scenario-load-card>
+        </div>
+        <div class="border border-gray-200 px-2 bg-gray-100">
+            <nwn-cell-header type="headersm">Filters</nwn-cell-header>
+        </div>
+       
+        <ng-container *ngIf="!isArray(promotion_viewed?.meta)">
+        <div class="flex flex-row flex-wrap px-6 pt-2">
+            <div class="mr-2 mb-2">
+                <nwn-filter-item [hideClose]="true" type="stroke" nwnSvgIcon="retailers">
+                    {{promotion_viewed?.meta?.retailer}}
+                </nwn-filter-item>
+            </div>
+           
+            <div class="mr-2 mb-2">
+                <nwn-filter-item [hideClose]="true" type="stroke" nwnSvgIcon="product-groups"
+                    >
+                    {{promotion_viewed?.meta?.product_group}}
+                    </nwn-filter-item
+                >
+            </div>
+        </div>
+        <div *ngIf="promotion_viewed?.meta.pricing" class="grid grid-cols-2">
+            <div>
+                <nwn-metric-item-popup>
+
+                    <p metricPopHead>{{currency}} {{promotion_viewed?.meta?.pricing?.base_nsv  | percentIncrease : promotion_viewed?.meta?.pricing?.nsv  | number : '1.2-2'}}</p>
+                      <p metricPopHead2 class="text-caption text-marsgray-700 font-medium">Base ({{currency}} {{promotion_viewed?.meta?.pricing?.base_nsv  | number : '1.2-2'}})</p>
+                      <p metricPopContent>NSV/Unit</p>
+                    <!-- <p metricPopHead>{{promotion_viewed?.meta?.pricing?.lpi | number : '1.2-2' }} {{currency}}</p>
+                    <p metricPopContent>List price (simulated)</p> -->
+                </nwn-metric-item-popup>
+            </div>
+            <div>
+                <nwn-metric-item-popup>
+                    <p metricPopHead>{{currency}} {{promotion_viewed?.meta?.pricing?.base_rsp| percentIncrease : promotion_viewed?.meta?.pricing?.rsp   | number : '1.2-2'}}</p>
+                    <p metricPopHead2 class="text-caption text-marsgray-700 font-medium">Base ({{currency}} {{promotion_viewed?.meta?.pricing?.base_rsp | number : '1.2-2'}})</p>
+                    <p metricPopContent>Shelf Price </p>
+                </nwn-metric-item-popup>
+            </div>
+            <!-- <div>
+                <nwn-metric-item-popup>
+                    <p metricPopHead>{{promotion_viewed?.meta?.pricing?.base_cogs| percentIncrease : promotion_viewed?.meta?.pricing?.cogs   | number : '1.2-2'}} {{currency}}</p>
+                    <p metricPopHead2 class="text-caption text-marsgray-700 font-medium">Base ({{promotion_viewed?.meta?.pricing?.base_cogs | number : '1.2-2'}}) {{currency}}</p>
+                    <p metricPopContent>COGS</p>
+                </nwn-metric-item-popup>
+            </div>
+            <div>
+                <nwn-metric-item-popup>
+                    <p metricPopHead>{{promotion_viewed?.meta?.pricing?.inc_elasticity | number : '1.2-2'}}</p>
+                    <p metricPopHead2 class="text-caption text-marsgray-700 font-medium">Base ({{promotion_viewed?.meta?.pricing?.base_elasticity | number : '1.2-2'}})</p>
+                    <p metricPopContent>Price elasticity </p>
+                </nwn-metric-item-popup>
+
+
+            </div> -->
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="isArray(promotion_viewed?.meta)">
+        <ng-container *ngFor="let meta of promotion_viewed?.meta">
+        <div class="flex flex-row flex-wrap px-6 pt-2">
+            <div class="mr-2 mb-2">
+                <nwn-filter-item [hideClose]="true" type="stroke" nwnSvgIcon="retailers">
+                    {{meta.retailer}}
+                </nwn-filter-item>
+            </div>
+           
+            <div class="mr-2 mb-2">
+                <nwn-filter-item [hideClose]="true" type="stroke" nwnSvgIcon="product-groups"
+                    >
+                    {{meta.product_group}}
+                    </nwn-filter-item
+                >
+            </div>
+        </div>
+        <div *ngIf="meta.pricing" class="grid grid-cols-2">
+            <div>
+                <nwn-metric-item-popup>
+                    <!-- <p metricPopHead>{{meta.pricing?.base_lpi | percentIncrease : meta.pricing?.lpi | number : '1.2-2'}} {{currency}}</p>
+                    <p metricPopContent>List price (simulated)</p> -->
+
+                    <p metricPopHead>{{currency}} {{meta.pricing?.base_nsv | percentIncrease : meta.pricing?.nsv | number : '1.2-2'}}</p>
+                      <p metricPopHead2 class="text-caption text-marsgray-700 font-medium">Base ({{currency}} {{meta.pricing?.base_nsv | number : '1.2-2'}})</p>
+                      <p metricPopContent>NSV/Unit</p>
+                </nwn-metric-item-popup>
+            </div>
+            <div>
+                <nwn-metric-item-popup>
+
+                    <p metricPopHead>{{currency}} {{meta.pricing?.base_rsp | percentIncrease : meta.pricing?.rsp | number : '1.2-2'}} </p>
+                    <p metricPopHead2 class="text-caption text-marsgray-700 font-medium">Base ({{currency}} {{meta.pricing?.base_rsp | number : '1.2-2'}})</p>
+                    <p metricPopContent>Shelf Price</p>
+                    <!-- <p metricPopHead>{{meta.pricing?.base_rsp | percentIncrease : meta.pricing?.rsp | number : '1.2-2'}} {{currency}}</p>
+                    <p metricPopContent>RSP w/o VAT (simulated)</p> -->
+                </nwn-metric-item-popup>
+            </div>
+            <!-- <div>
+                <nwn-metric-item-popup>
+
+                    <p metricPopHead>{{meta.pricing?.base_cogs | percentIncrease : meta.pricing?.cogs | number : '1.2-2'}} {{currency}}</p>
+                    <p metricPopHead2 class="text-caption text-marsgray-700 font-medium">Base ({{meta.pricing?.base_cogs | number : '1.2-2'}} {{currency}})</p>
+                    <p metricPopContent>COGS</p>
+                    
+                </nwn-metric-item-popup>
+            </div>
+            <div>
+                <nwn-metric-item-popup>
+                    <p metricPopHead>{{meta.pricing?.inc_elasticity | number : '1.2-2'}} {{currency}}</p>
+                    <p metricPopHead2 class="text-caption text-marsgray-700 font-medium">Base ({{meta.pricing?.base_elasticity | number : '1.2-2'}} {{currency}})</p>
+                    <p metricPopContent>Price elasticity</p>
+                    
+                </nwn-metric-item-popup>
+            </div> -->
+        </div>
+    </ng-container>
+    </ng-container>
+
+    </div>
+    <nwn-search-footer (buttonClickedEvent) = "buttonClickedEvent($event)" [showBack]="true" [showLoad]="true" ></nwn-search-footer>
+</div>
+
+
+
+
+
+
+
+
+ <!-- <div class="mr-2 mb-2">
+                <nwn-filter-item [hideClose]="true" type="stroke" nwnSvgIcon="categories">Chocolate</nwn-filter-item>
+            </div>
+            <div class="mr-2 mb-2">
+                <nwn-filter-item [hideClose]="true" type="stroke" nwnSvgIcon="brands">All brands</nwn-filter-item>
+            </div>
+            <div class="mr-2 mb-2">
+                <nwn-filter-item [hideClose]="true" type="stroke" nwnSvgIcon="brand-formats"
+                    >Galaxy silk</nwn-filter-item
+                >
+            </div> -->

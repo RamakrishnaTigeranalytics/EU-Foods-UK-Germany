@@ -1,0 +1,6 @@
+.active-headtab {
+    @apply bg-marsgray-100 border-marsteal-400 text-marsblue-500;
+}
+.active-headtab p {
+    @apply text-marsblue-500;
+}

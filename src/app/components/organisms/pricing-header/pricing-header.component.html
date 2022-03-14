@@ -1,0 +1,22 @@
+<div class="bg-white">
+    <div class="flex flex-row">
+        <nwn-promotool-tab
+        *ngIf="is_admin"
+            type="stroke"
+            nwnSvgIcon="pricing-tool"
+            [link]="'/pricing-tool/admin-pricing-scenario-builder'" 
+           
+            [active]="currentRoute.includes('/pricing-tool/admin-pricing-scenario-builder')"
+            >Pricing Scenario Admin</nwn-promotool-tab
+        >
+        <nwn-promotool-tab
+            type="stroke"
+            nwnSvgIcon="pricing-tool"
+            [link]="'/pricing-tool/pricing-scenario-builder'" 
+          
+            [active]="currentRoute.includes('/pricing-tool/pricing-scenario-builder')"
+            >Pricing Scenario Builder</nwn-promotool-tab
+        >
+        
+    </div>
+</div>

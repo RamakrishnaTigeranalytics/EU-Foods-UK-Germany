@@ -1,0 +1,24 @@
+<div *ngIf="product_week"  class="weeklyPromo flex flex-col p-4 hover:bg-marsgray-200">
+    <div class="flex flex-row" style="justify-content: space-between;">
+        <p class="text-dark-blue">{{currency}}{{product_week.median_base_price_log}}</p>  
+        <p *ngIf="!product_week.promo_price">{{currency}}{{product_week.median_base_price_log}}</p>
+        <p *ngIf="product_week.promo_price">{{currency}}{{product_week.promo_price}}</p>
+    </div>
+    <!-- <p class="text-marsyellow-800 text-caption font-normal mb-1"> -->
+        <!-- <ng-container *ngIf="!product_week.promotion_name">--</ng-container> -->
+        <!-- <ng-container *ngIf="product_week.promotion_name">{{product_week.promotion_name}}</ng-container> -->
+        <!-- <ng-container *ngIf="product_week.promo_depth">TPR-{{product_week.promo_depth | number:'1.0-3'}}%</ng-container> -->
+        <!-- <ng-container *ngIf="product_week.co_investment"> (Co-{{product_week.co_investment | number:'1.0-3'}}%)</ng-container> -->
+    <!-- </p> -->
+    <div class="weeklyPromoDropdown">
+        <ngx-select-dropdown
+            tabindex="0"
+            [multiple]="false"
+            [(ngModel)]="singleSelect"
+            [config]="config"
+            [options]="optionsWeeklyPromotion"
+            (change)="promotionChanged($event)"
+        ></ngx-select-dropdown>
+    </div>
+    <p class="text-marsgray-400 text-caption font-normal mt-1">Week {{product_week.week}}</p>
+</div>

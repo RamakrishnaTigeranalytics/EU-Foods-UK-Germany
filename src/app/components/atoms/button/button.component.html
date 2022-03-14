@@ -1,0 +1,39 @@
+<button
+    [class]="class"
+    [ngClass]="{
+        btn: size === 'lg',
+        'small-btn': size === 'sm',
+        'ghost-large': size === 'ghostlg',
+        'ghost-small': size === 'ghostsm',
+        'icon-small-btn': size === 'iconsm',
+        'icon-large-btn': size === 'iconlg',
+        'no-size': size === 'nosize',
+        'side-border-size': size === 'sideBorderSize',
+        'primary-btn': type === 'primary',
+        'secondary-btn': type === 'secondary',
+        'tertiary-btn': type === 'tertiary',
+        'danger-btn': type === 'danger',
+        'link-btn': type === 'link',
+        'transparent-btn': type === 'transparent',
+        'side-border': type === 'sideBorder',
+        'ghost-white-btn': type === 'ghostwhite',
+        'ghost-dark-btn': type === 'ghostdark',
+        'no-style': type === 'nostyle',
+        'icon-btn': type === 'icon',
+        'disabled-icon-btn': disabled == true && type === 'icon',
+        'disabled-primary-btn': disabled == true && type === 'primary',
+        'disabled-secondary-btn': disabled == true && type === 'secondary',
+        'disabled-link-btn': disabled == true && type === 'link',
+        'disabled-transparent-btn': disabled == true && type === 'transparent',
+        'disabled-ghostwhite-btn': disabled == true && type === 'ghostwhite',
+        'disabled-ghostdark-btn': disabled == true && type === 'ghostdark'
+    }"
+>
+<!-- {{disabled}}{{type}} -->
+    <ng-content></ng-content>
+    <div [ngClass]="{ hidden: showTooltip == false }">
+        <div class="btn-tooltip">
+            <ng-content select="[tooltipContent]"></ng-content>
+        </div>
+    </div>
+</button>

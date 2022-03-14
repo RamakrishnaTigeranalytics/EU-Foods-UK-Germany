@@ -1,0 +1,141 @@
+input[type='number'] {
+    -moz-appearance: textfield;
+    -webkit-appearance: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.enabledInput {
+    @apply text-title-medium text-marsgray-700
+    w-[80px]
+    h-9
+    px-2
+    py-1
+    rounded-none
+    border border-marsgray-300
+    focus:border-marsgray-500 focus:outline-none
+    bg-marsgray-50
+    text-center;
+    font-size: 18px;
+    text-align: center!important
+    /* border-radius: 5px; */
+}
+.disabledInput {
+    @apply text-title-medium text-marsgray-700
+    w-[80px]
+    h-9
+    px-0
+    py-1 border-none bg-transparent  text-left;
+}
+/* datepicker */
+::ng-deep .dp-picker-input {
+    @apply bg-transparent focus:border-none text-caption;
+}
+::ng-deep .dp-picker-input.focus-visible {
+    @apply border-none border-transparent outline-none !important;
+}
+::ng-deep dp-calendar-nav .dp-nav-header,
+::ng-deep dp-day-calendar .dp-weekdays,
+::ng-deep dp-day-calendar button,
+::ng-deep dp-day-calendar input,
+::ng-deep dp-day-calendar optgroup,
+::ng-deep dp-day-calendar select,
+::ng-deep dp-day-calendar textarea {
+    @apply text-body !important;
+}
+::ng-deep .dp-current-location-btn {
+    @apply hidden !important;
+}
+::ng-deep dp-calendar-nav .dp-calendar-nav-left:before,
+::ng-deep dp-calendar-nav .dp-calendar-secondary-nav-left:after,
+::ng-deep dp-calendar-nav .dp-calendar-secondary-nav-left:before {
+    @apply border-marsgray-900 !important;
+}
+::ng-deep dp-calendar-nav .dp-calendar-nav-left:before,
+::ng-deep dp-calendar-nav .dp-calendar-nav-right:before {
+    @apply border-marsgray-900 !important;
+}
+::ng-deep .dp-calendar-nav-container {
+    @apply bg-marsgray-50 p-4 h-auto border-none !important;
+}
+::ng-deep dp-day-calendar .dp-calendar-weekday {
+    @apply border-none border-transparent !important;
+}
+::ng-deep .dp-weekdays {
+    @apply bg-marsgray-50 px-2 flex flex-row justify-between border-b border-gray-400 !important;
+}
+::ng-deep dp-day-calendar .dp-calendar-weekday {
+    @apply border-none px-2 py-2 w-auto !important;
+}
+::ng-deep dp-day-calendar .dp-calendar-wrapper {
+    @apply border-none !important;
+}
+::ng-deep .dp-calendar-week.ng-star-inserted {
+    @apply flex flex-row justify-between px-2 !important;
+}
+::ng-deep .dp-calendar-nav-container {
+    @apply flex flex-row justify-between !important;
+}
+::ng-deep dp-calendar-nav .dp-nav-header {
+    @apply relative transform-none left-0 block !important;
+}
+::ng-deep dp-day-calendar .dp-selected {
+    @apply text-white bg-marsblue-500 !important;
+}
+::ng-deep .dp-picker-input:focus {
+   border: none;
+   outline: none;
+}
+::ng-deep .dp-calendar-month{
+    width: 50px!important;
+    height: 50px!important;
+}
+
+
+/* .percent {
+    display: inline-block;
+    position: relative;
+    width: 35%;
+  }
+  .percent::after {
+    content: '%';
+    position: absolute;
+    top: 6px;
+    right: -35px;
+    transition: all .05s ease-in-out;
+  } */
+
+  .input-icon {
+    position: relative;
+  }
+  .input-icon > i {
+    position: absolute;
+    display: block;
+    transform: translate(0, -50%);
+    top: 50%;
+    pointer-events: none;
+    width: 25px;
+    text-align: center;
+      font-style: normal;
+  }
+  
+  .input-icon > input {
+    padding-left: 25px;
+      padding-right: 0;
+  }
+  .input-icon-right > i {
+    right: 0;
+  }
+  
+  .input-icon-right > input {
+    padding-left: 0;
+    padding-right: 25px;
+    text-align: center;
+  }  
+
+  .border-l{
+      border-left-width: 1px;
+  }

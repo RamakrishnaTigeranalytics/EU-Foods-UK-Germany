@@ -1,0 +1,59 @@
+<div
+    class="flex flex-row items-center justify-between space-x-6 px-6 py-3 w-full"
+    [ngClass]="{ 'bg-marsgray-50': color === 'bgGray-50', 'bg-white': color === 'bgWhite' }"
+>
+    <div class="w-3/4">
+        <div class="flex flex-row flex-wrap space-x-6" [ngClass]="{ hidden: showKeyBoardCtrl == false }">
+            <!-- <div class="flex flex-row space-x-2 items-center">
+                <div class="bg-marsgray-400 rounded text-white p-1">
+                    <nwn-svg-icon nwnSvgIcon="arrow-up" type="stroke" size="md"></nwn-svg-icon>
+                </div>
+                <div class="bg-marsgray-400 rounded text-white p-1">
+                    <nwn-svg-icon nwnSvgIcon="arrow-down" type="stroke" size="md"></nwn-svg-icon>
+                </div>
+                <span class="text-marsgray-500 py-2 text-caption">to navigate</span>
+            </div>
+            <div class="flex flex-row space-x-2 items-center">
+                <span class="bg-marsgray-400 text-white rounded px-2 py-1 uppercase text-caption">Enter</span>
+                <span class="text-marsgray-500 py-2 text-caption">to select</span>
+            </div> -->
+            <div class="flex flex-row space-x-2 items-center">
+                <span class="bg-marsgray-400 text-white rounded px-2 py-1 uppercase text-caption">ESC</span>
+                <span class="text-marsgray-500 py-2 text-caption">to cancel</span>
+            </div>
+        </div>
+    </div>
+    <div class="flex flex-row w-1/4 justify-end space-x-2">
+        <div [ngClass]="{ hidden: showClose == false }">
+            <nwn-button type="link" size="sm">Close</nwn-button>
+        </div>
+        <div [ngClass]="{ hidden: showBack == false }">
+            <nwn-button type="link" (click) = "buttonClicked('back')" size="sm">Back</nwn-button>
+        </div>
+        <div [ngClass]="{ hidden: showApply == false }">
+            <nwn-button type="primary" size="sm">Apply</nwn-button>
+        </div>
+        <div [ngClass]="{ hidden: showAdd == false }">
+            <nwn-button [type]="type" [disabled]="disabled" size="sm">Add</nwn-button>
+        </div>
+        <div [ngClass]="{ hidden: showSaved == false }">
+            <nwn-button type="primary" size="sm" (click) = "buttonClicked('save')">Save</nwn-button>
+        </div>
+        <div [ngClass]="{ hidden: showSaveAs == false }">
+            <nwn-button type="primary" size="sm" id="saveas_but" (click) = "buttonClicked('saveas')">Save As</nwn-button>
+        </div>
+        <div [ngClass]="{ hidden: showCompare == false }">
+            <nwn-button type="primary" size="sm">Compare</nwn-button>
+        </div>
+        <div [ngClass]="{ hidden: showLoad == false }">
+            <nwn-button type="primary" (click) = "buttonClicked('load')" size="sm">Load</nwn-button>
+        </div>
+        
+        <div [ngClass]="{ hidden: showNo == false }">
+            <nwn-button (click) = "buttonClicked('no')" type="secondary" size="sm">No</nwn-button>
+        </div>
+        <div [ngClass]="{ hidden: showYes == false }">
+            <nwn-button (click) = "buttonClicked('yes')" type="primary" size="sm">yes</nwn-button>
+        </div>
+    </div>
+</div>

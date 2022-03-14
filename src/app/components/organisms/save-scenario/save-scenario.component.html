@@ -1,0 +1,21 @@
+<div class="w-[650px] bg-white mx-auto my-6">
+    <div class="border-b border-marsgray-200">
+        <nwn-command-header type="stroke" nwnSvgIcon="save">Save scenario</nwn-command-header>
+    </div>
+    <div class="border-b border-marsgray-200 px-6 py-2 space-y-4 bg-white">
+        <form [formGroup]="saveForm">
+        <div>
+            <nwn-text-input formControlName="name" nwnTextInput="text" placeholder="Scenario name" [error]="true"
+                ><p label>Scenario name</p></nwn-text-input
+            >
+            <div class="error" *ngIf="error">{{error}}*</div>
+        </div>
+        <div>
+            <nwn-text-input  formControlName="comment" nwnTextInput="textarea" placeholder="Description"
+                ><p labeltextarea>Scenario description</p></nwn-text-input
+            >
+        </div>
+    </form>
+    </div>
+    <nwn-search-footer (SaveScenarioEvent)="saveScenario($event)" [showSaved]="showSave"  [showSaveAs]="true"></nwn-search-footer>
+</div>

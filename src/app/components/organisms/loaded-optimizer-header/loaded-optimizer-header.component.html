@@ -1,0 +1,385 @@
+<div class="bg-marsgray-100 px-12">
+    <div class="flex flex-row items-center justify-between border-b border-gray-300 py-2">
+        <div class="flex flex-row flex-wrap content-start items-center justify-start">
+            <div class="mr-2 mb-2">
+                <nwn-filter-item (closeClickedEvent) = "$event.stopPropagation();closeClicked('Retailers')"
+                    type="stroke"
+                    nwnSvgIcon="retailers"
+                    [hideClose]="filter_model.retailer =='Retailers'"
+                    (click)="sendMessage('filter-retailer')"
+                    >{{filter_model.retailer}}</nwn-filter-item
+                >
+            </div>
+            <div class="mr-2 mb-2">
+                <nwn-filter-item (closeClickedEvent) = "$event.stopPropagation();closeClicked('Category')"
+                    type="stroke"
+                    nwnSvgIcon="categories"
+                    [hideClose]="filter_model.category =='Category'"
+                    (click)="sendMessage('filter-categories')"
+                    >{{filter_model.category}}</nwn-filter-item
+                >
+            </div>
+            <!-- <div class="mr-2 mb-2">
+                <nwn-filter-item (closeClickedEvent) = "$event.stopPropagation();closeClicked('Strategic cells')"
+                    type="stroke"
+                    nwnSvgIcon="strategic-cells"
+                    [hideClose]="filter_model.strategic_cell =='Strategic cells'"
+                    (click)="sendMessage('filter-stragetic-cells')"
+                    >{{filter_model.strategic_cell}}</nwn-filter-item
+                >
+            </div> -->
+            <div class="mr-2 mb-2">
+                <nwn-filter-item (closeClickedEvent) = "$event.stopPropagation();closeClicked('Brands')"
+                    type="stroke"
+                    nwnSvgIcon="brands"
+                    [hideClose]="filter_model.brand =='Brands'"
+                    (click)="sendMessage('filter-brands')"
+                    >{{filter_model.brand}}</nwn-filter-item
+                >
+            </div>
+            <!-- <div class="mr-2 mb-2">
+                <nwn-filter-item (closeClickedEvent) = "$event.stopPropagation();closeClicked('Brand Formats')"
+                    type="stroke"
+                    nwnSvgIcon="brand-formats"
+                    [hideClose]="filter_model.brand_format =='Brand Formats'"
+                    (click)="sendMessage('filter-brand-formats')"
+                    >{{filter_model.brand_format}}</nwn-filter-item
+                >
+            </div> -->
+            <div class="mr-2 mb-2">
+                <nwn-filter-item (closeClickedEvent) = "$event.stopPropagation();closeClicked('Product groups')"
+                    type="stroke"
+                    nwnSvgIcon="product-groups"
+                    [hideClose]="filter_model.product_group =='Product groups'"
+                    (click)="sendMessage('filter-product-groups')"
+                    >{{filter_model.product_group}}</nwn-filter-item
+                >
+            </div>
+        </div>
+        <div *ngIf="title">
+            <nwn-loaded-scenarioitem (openInfoEvent) = "openInfoEvent($event)" [title] = "title"></nwn-loaded-scenarioitem>
+        </div>
+    </div>
+    <!-- <div class="flex flex-col">
+        <nwn-loaded-scenario-expand></nwn-loaded-scenario-expand>
+    </div> -->
+    <div id="close-expand-header" class="flex flex-col translate-x-1" *ngIf="!isExpand">
+        <div class="flex flex-col border-b border-gray-300">
+            <div class="flex flex-row flex-wrap items-center border-b border-marsgray-300">
+                <div class="mr-2">
+                    <nwn-metric-item (click)="sendMessage('optimize-function')" nwnMetricItem="defaultTop" [showRightValue]="false">
+                        <p topValue class="text-black">{{ObjectiveFunction.min_or_max}}</p>
+                        <p topHeadValue>{{ObjectiveFunction.metric}}</p>
+                        <p topMetricContent>Objective function</p>
+                    </nwn-metric-item>
+                </div>
+                <!-- <div class="mr-2">
+                    <nwn-metric-item nwnMetricItem="defaultTop" (click)="sendMessage('number-promo-waves')">
+                        <p topValue>{{optimizer_data?.data.param_no_of_waves}}</p>
+                        <p topHeadValue>3 - 7</p>
+                        <p topMetricContent>Number of waves</p>
+                    </nwn-metric-item>
+                </div> -->
+                <div class="mr-2">
+                    <nwn-metric-item nwnMetricItem="defaultTop" (click)="sendMessage('duration-of-waves')">
+                        <p topValue>{{optimizer_data?.data.param_max_consecutive_promo}}</p>
+                        <p topHeadValue><span *ngIf="duration_min && duration_min!=duration_max">{{duration_min}} - </span>{{duration_max}}</p>
+                        <p topMetricContent>Duration of waves</p>
+                    </nwn-metric-item>
+                </div>
+                <div class="mr-2">
+                    <nwn-metric-item nwnMetricItem="defaultTop" (click)="sendMessage('minimum-gap-waves')">
+                        <p topValue>{{optimizer_data?.data.param_promo_gap}}</p>
+                        <p topHeadValue><span *ngIf="param_gap_min && param_gap_min!=param_gap_max">{{param_gap_min}} - </span>{{param_gap_max}}</p>
+                        <p topMetricContent>Minimum gap b/w waves</p>
+                    </nwn-metric-item>
+                </div>
+                <div class="ml-auto">
+                    <nwn-button (click)="copyBaseline()" type="secondary" size="sm" class="mr-1 mb-1">
+                        <nwn-svg-icon class="mr-1" type="stroke" nwnSvgIcon="copy" size="md"></nwn-svg-icon>
+                        Copy base scenarios
+                    </nwn-button>
+                </div>
+            </div>
+            <div class="flex flex-row flex-wrap items-center">
+                <div class="mr-2">
+                    <nwn-metric-item nwnMetricItem="defaultTop" (click)="sendMessage('number-promo-waves')">
+                        <p topValue>{{optimizer_data?.data.param_no_of_promo}}</p>
+                        <p topHeadValue><span *ngIf="min_week && min_week!=max_week">{{min_week}} - </span>{{max_week}}</p>
+                        <p topMetricContent>Number of weeks</p>
+                    </nwn-metric-item>
+                </div>
+                <div class="mr-2">
+                    <nwn-metric-item nwnMetricItem="defaultTop" (click)="sendMessage('compulsory-weeks-popup')">
+                        <p topValue>-</p>
+                        <p topHeadValue>{{cumpulsory_week}}</p>
+                        <p topMetricContent>Compulsory week</p>
+                    </nwn-metric-item>
+                </div>
+                <div class="mr-2">
+                    <nwn-metric-item nwnMetricItem="defaultTop" (click)="sendMessage('weeks-ignored')">
+                        <p topValue>-</p>
+                        <p topHeadValue>{{ignored_week}}</p>
+                        <p topMetricContent>Ignored weeks</p>
+                    </nwn-metric-item>
+                </div>
+                <div class="mr-2">
+                    <nwn-metric-item nwnMetricItem="multipleValues" (click)="sendMessage('promotion-details')">
+                        <div style="width:500px;flex-wrap: wrap;" multipleValue class="flex flex-row">
+                            <p>{{promotions | paraPipe}}
+                                <!-- promotion, promotion, promotion, promotion, promotion, promotion, promotion, promotion, promotion, promotion, promotion,
+                            promotion, promotion, promotion, promotion, promotion, promotion, promotion, promotion, promotion, promotion,
+                            promotion, promotion, promotion, promotion, promotion, -->
+                        </p>
+                                <!-- <div class="w-break" *ngFor="let promotion of promotions">
+                                {{promotion}},
+                            </div> -->
+                        
+                            
+                        </div>
+                        <div style="width:500px;flex-wrap: wrap;" multipleHeadValue class="flex flex-row">
+                            <!-- <p> -->
+                                <!-- <div  class="w-break" > -->
+                                    <!-- *ngFor="let promotion of selected_promotions" -->
+                                    <p>{{selected_promotions | paraPipe}}</p>
+                                <!-- </div> -->
+                            <!-- </p> -->
+                            
+                        </div>
+                        <p multipleMetricContent>Promotions</p>
+                    </nwn-metric-item>
+                </div>
+               
+            </div>
+        </div>
+        <div class="flex flex-row items-center justify-between space-x-2 border-b border-gray-300">
+            <div
+                cdkDropList
+                cdkDropListOrientation="horizontal"
+                class="checkbox-metric-list flex flex-row flex-wrap items-center justify-start"
+                (cdkDropListDropped)="drop($event)"
+            >
+                <div
+                    class="checkbox-metric-item"
+                    [ngClass]="{
+                        'disabled-div' : checkboxMetric.disabled
+                    }"
+                    *ngFor="let checkboxMetric of checkboxMetrices; let i = index"
+                    cdkDrag
+                    [cdkDragDisabled]="checkboxMetric.disabled"
+                >
+                 <!-- (click) = "metricClick($event , i)" -->
+                        
+                    <nwn-metric-item
+                    (click)="metricClick($event , i)"
+                        nwnMetricItem="checkboxMetric"
+                        [disabled]="checkboxMetric.disabled"
+                        [checkboxValue]="!checkboxMetric.disabled"
+                        [value] = "checkboxMetric.checkboxLabel"
+                        [checked] = "checkboxMetric.checked"
+                        (toggle)="onRoleChangeCheckbox($event, i)"
+                    >
+                        <p checkHeadValue>{{ checkboxMetric.checkHeadValue }}</p>
+                        <label checkboxLabel class="-m-1">{{ checkboxMetric.checkboxLabel }}</label>
+                    </nwn-metric-item>
+                    <!-- nwn-mac-popup -->
+                      
+                </div>
+            </div>
+            <div class="flex flex-row flex-wrap items-center">
+                <div class="flex flex-row items-center p-2">
+                    <div class="bg-marsgray-700 w-5 h-5 mr-2"></div>
+                    <p class="text-body text-marsgray-500">Input metric</p>
+                </div>
+                <div class="flex flex-row items-center p-2">
+                    <div class="bg-marsyellow-800 w-5 h-5 mr-2"></div>
+                    <p class="text-body text-marsgray-500">Base metric</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <nwn-loaded-scenario-controls ></nwn-loaded-scenario-controls> -->
+    <div class="flex flex-row w-full justify-between space-x-2 bg-marsgray-100 py-2">
+        <div class="flex flex-row space-x-2 items-center">
+            <!-- <div class="">
+                <nwn-button 
+                    type="icon"
+                    size="iconsm"
+                    [showTooltip]="true"
+                    (click)="sendMessage('promo-optimizer-popup')"
+                >
+                    <nwn-svg-icon type="stroke" nwnSvgIcon="lightning-bolt"></nwn-svg-icon>
+                    <p tooltipContent>Command interface</p>
+                </nwn-button>
+            </div> -->
+            <div class="fab-bg glow" id="glowbg">
+                <nwn-button type="icon" size="iconsm" [showTooltip]="true" (click)="sendMessage('user-guide-popup')">
+                    <nwn-svg-icon type="stroke" nwnSvgIcon="user-guide"></nwn-svg-icon>
+                    <p tooltipContent>User guide</p>
+                </nwn-button>
+                <img id="animated-tap" class="click-finger" src="../../../../assets/gif/giphy.gif">
+            </div>
+        </div>
+        <div class="flex flex-row">
+            <div class="flex flex-row space-x-4 items-center">
+                <nwn-button [disabled] = "disable_button" type="link" size="sm" (click)="optimizeReset('reset')"> Reset </nwn-button>
+                <nwn-button [disabled] = "disable_button" type="primary" size="sm" (click)="optimizeReset('optimize')"> Optimize </nwn-button>
+                <nwn-button  [disabled] = "disable_save_download" (click)="sendMessage('save-scenario-popup')" type="icon" size="iconsm" [showTooltip]="true">
+                    <nwn-svg-icon type="stroke" nwnSvgIcon="save"></nwn-svg-icon>
+                    <p tooltipContent>Save scenario</p>
+                </nwn-button>
+                <nwn-button [disabled] = "disable_save_download" type="icon" size="iconsm" [showTooltip]="true">
+                    <nwn-svg-icon type="stroke" nwnSvgIcon="save-download" (click)="download()"></nwn-svg-icon>
+                    <p tooltipContent>Download scenario</p>
+                </nwn-button>
+                <div class="relative">
+                    <nwn-button type="icon" size="iconsm" (click)="toggleDisplayDivIf()" [showTooltip]="true">
+                        <nwn-svg-icon type="stroke" nwnSvgIcon="more-horizontal"></nwn-svg-icon>
+                        <p tooltipContent>More actions</p>
+                    </nwn-button>
+                    <div *ngIf="!isShowDivIf">
+                        <div class="absolute z-50 top-10 right-0 bg-white shadow-sm w-[186px] h-auto">
+                            <div class="border-b">
+                                <nwn-button
+                                    type="sideBorder"
+                                    size="sideBorderSize"
+                                    class="w-full"
+                                    (click)="sendMessage('load-scenario-promosimulator')"
+                                >
+                                    <nwn-svg-icon
+                                        class="mr-0.5"
+                                        type="stroke"
+                                        nwnSvgIcon="plus"
+                                        size="lg"
+                                    ></nwn-svg-icon>
+                                    Load scenario
+                                </nwn-button>
+                            </div>
+                            <div class="">
+                                <nwn-button
+                                    type="sideBorder"
+                                    size="sideBorderSize"
+                                    class="w-full"
+                                    (click)="sendMessage('compare-promo-scenario')"
+                                >
+                                    <nwn-svg-icon
+                                        class="mr-0.5"
+                                        type="stroke"
+                                        nwnSvgIcon="arrow-compare"
+                                        size="lg"
+                                    ></nwn-svg-icon>
+                                    Compare scenario
+                                </nwn-button>
+                            </div>
+                        </div>
+                        <div
+                            class="fixed bg-marsgray-900 bg-opacity-0 top-0 left-0 right-0 h-full w-full"
+                            (click)="toggleDisplayDivIf()"
+                        ></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="status == yettobesimulated">
+    <nwn-status-bar nwnStatusBar="yettobesimulated">YET TO BE OPTIMIZED</nwn-status-bar>
+</div>
+<div *ngIf="isExpand">
+    <nwn-status-bar nwnStatusBar="viewmore" (click)="expandHeader()">View More</nwn-status-bar>
+</div>
+<div *ngIf="!isExpand">
+    <nwn-status-bar nwnStatusBar="viewless" (click)="expandHeader()">View Less</nwn-status-bar>
+</div>
+
+<!-- <div *ngIf="status == yettobesimulated">
+    <nwn-status-bar nwnStatusBar="yettobesimulated">YET TO BE OPTIMIZED</nwn-status-bar>
+</div>
+<div *ngIf="status == viewmore">
+    <nwn-status-bar nwnStatusBar="viewmore" (click)="expandHeader()">View More</nwn-status-bar>
+</div>
+<div  *ngIf="status == viewless">
+    <nwn-status-bar nwnStatusBar="viewless" (click)="expandHeader()">View Less</nwn-status-bar>
+</div> -->
+
+
+
+<!-- optimizer function-->
+<nwn-modal id="optimize-function" class="hidden">
+    <nwn-optimize-function (objectiveEvent) = "objectiveEvent($event)"></nwn-optimize-function>
+</nwn-modal>
+
+<!-- number promo waves -->
+<nwn-modal id="number-promo-weeks" class="hidden">
+    <nwn-number-promo-weeks ></nwn-number-promo-weeks>
+</nwn-modal>
+<!-- Duration of waves -->
+<nwn-modal id="duration-of-waves" class="hidden">
+    <nwn-duration-promo-waves [basepromo] = "optimizer_data?.data.param_max_consecutive_promo" (durationWavesEvent)="durationWavesEvent($event)"></nwn-duration-promo-waves>
+</nwn-modal>
+<!-- Min gap between waves -->
+<nwn-modal id="minimum-gap-waves" class="hidden">
+    <nwn-minimum-gap-waves [basepromo] = "optimizer_data?.data.param_promo_gap" (paramGapEvent)="paramGapEvent($event)"></nwn-minimum-gap-waves>
+</nwn-modal>
+
+<!-- Number of promo weeks -->
+<nwn-modal id="number-promo-waves" class="hidden">
+    <nwn-number-promo-waves [basepromo] = "optimizer_data?.data.param_no_of_promo" (promoWaveEvent)="promoWaveEvent($event)"></nwn-number-promo-waves>
+</nwn-modal>
+
+<!-- nwn-mac-popup -->
+<nwn-modal id="mac-popup" class="hidden">
+    <nwn-mac-popup [ip_val] = "ip_val" (configChangeEvent) = "configChangeEvent($event)" [label] = "'MAC'"></nwn-mac-popup>
+</nwn-modal>
+
+<!-- nwn-mac-popup -->
+<nwn-modal id="retailer-popup" class="hidden">
+    <nwn-mac-popup [ip_val] = "ip_val" (configChangeEvent) = "configChangeEvent($event)" [label] = "'Trade margin'"></nwn-mac-popup>
+</nwn-modal>
+
+<nwn-modal id="te-popup" class="hidden">
+    <nwn-mac-popup [ip_val] = "ip_val" (configChangeEvent) = "configChangeEvent($event)" [label] = "'Trade expense'"></nwn-mac-popup>
+</nwn-modal>
+
+<nwn-modal id="mac-per-popup" class="hidden">
+    <nwn-mac-popup [ip_val] = "ip_val" (configChangeEvent) = "configChangeEvent($event)" [label] = "'MAC, % NSV'"></nwn-mac-popup>
+</nwn-modal>
+
+<nwn-modal id="rp-per-popup" class="hidden">
+    <nwn-mac-popup [ip_val] = "ip_val" (configChangeEvent) = "configChangeEvent($event)" [label] = "'TM, % RSV'"></nwn-mac-popup>
+</nwn-modal>
+<!--  -->
+
+<!-- promotion details -->
+<nwn-modal id="promotion-details" class="hidden">
+    <nwn-promotion-details (promotionAddEvent) = "promotionAddEvent($event)" *ngIf="promotions.length>0" [base_promotions]="promotions"></nwn-promotion-details>
+</nwn-modal>
+
+
+
+<!-- Compulsory Weeks -->
+<nwn-modal id="compulsory-weeks-popup" class="hidden">
+    <nwn-compulsory-weeks-popup *ngIf="quarter_year.length > 0" 
+        [ignored_week_val] ="ignored_week_val"
+      [quarter_year] = "quarter_year" 
+      [product_week]="product_week"
+      [week_validation] = "week_validation"
+      (cumpulsoryWeekEvent) = "cumpulsoryWeekEvent($event)" 
+      ></nwn-compulsory-weeks-popup>
+</nwn-modal>
+<!-- Weeks Ignored-->
+<nwn-modal id="weeks-ignored" class="hidden">
+    <nwn-weeks-ignored 
+    *ngIf="quarter_year.length > 0" 
+    [cumpulsory_week_val] ="cumpulsory_week_val" 
+    [quarter_year] = "quarter_year" 
+    [product_week]="product_week"
+    [week_validation] = "week_validation"
+    (ignoredWeekEvent) = "ignoredWeekEvent($event)" 
+    ></nwn-weeks-ignored>
+</nwn-modal>
+
+
+<nwn-modal id="loaded-promosimulator-scenario" class="hidden">
+    <nwn-loaded-promosimulator-scenario [promotion_viewed] = 'info_promotion'></nwn-loaded-promosimulator-scenario>
+</nwn-modal>

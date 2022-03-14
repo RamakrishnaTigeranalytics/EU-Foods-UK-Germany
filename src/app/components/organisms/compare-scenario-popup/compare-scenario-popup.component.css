@@ -1,0 +1,79 @@
+.table,
+th,
+tr,
+td,
+thead,
+tbody {
+    @apply p-0;
+}
+::ng-deep .tableheaddrop .ngx-dropdown-container .ngx-dropdown-button {
+    @apply bg-transparent w-[184px] text-body  p-0 z-40 mb-[0px] rounded-none min-h-[46px] !important;
+}
+::ng-deep .tableheaddrop .ngx-dropdown-container button .nsdicon-angle-down::before {
+    @apply border-marsgray-700 !important;
+}
+::ng-deep .tableheaddrop .ngx-dropdown-container .ngx-dropdown-list-container {
+    @apply rounded-none !important;
+}
+::ng-deep .tableheaddrop .ngx-dropdown-container .ngx-dropdown-list-container ul.available-items {
+    @apply m-0 max-h-[110px] overscroll-y-auto !important;
+}
+::ng-deep .tableheaddrop .ngx-dropdown-container .ngx-dropdown-list-container ul li {
+    @apply text-body px-3 py-2 flex flex-row items-center space-x-3 hover:text-marsblue-500  border-l-3 border-transparent hover:border-marsblue-500 !important;
+}
+
+/* ::ng-deep .tableheaddrop .ngx-dropdown-container .ngx-dropdown-list-container ul.selected-items {
+    @apply hidden !important; */  
+    /* commenting as part of merge */
+
+
+::ng-deep .tableheaddrop .ngx-dropdown-container button .nsdicon-angle-down {
+    @apply float-none !important;
+}
+::ng-deep .tableheaddrop .ngx-dropdown-container .ngx-dropdown-list-container {
+    @apply p-0 !important;
+}
+::ng-deep .tableheaddrop .ngx-dropdown-container .ngx-dropdown-button .display-text {
+    width: calc(100% - 20px) !important;
+    position: relative;
+    left: 20px;
+}
+::ng-deep .tableheaddrop .ngx-dropdown-container .ngx-dropdown-list-container hr {
+    @apply hidden !important;
+}
+::ng-deep .tableheaddrop .ngx-dropdown-container .ngx-dropdown-list-container ul.selected-items {
+    @apply my-0  !important;
+}
+::ng-deep .tableheaddrop .ngx-dropdown-container .ngx-dropdown-list-container ul.selected-items li {
+    @apply relative mb-0 bg-transparent text-marsgray-700 hover:bg-marsgray-50 hover:text-marsblue-500 border-l-3 border-transparent hover:border-marsblue-500 !important;
+}
+::ng-deep .tableheaddrop .ngx-dropdown-container .ngx-dropdown-list-container ul.selected-items li .nsdicon-close {
+    @apply hidden !important;
+}
+/* ::ng-deep
+    .smallDropdown
+    .ngx-dropdown-container
+    .ngx-dropdown-list-container
+    ul.selected-items
+    li:hover
+    .nsdicon-close {
+    @apply block !important;
+} */
+::ng-deep .tableheaddrop .ngx-dropdown-container .ngx-dropdown-list-container ul li > :not([hidden]) ~ :not([hidden]) {
+    @apply ml-0 !important;
+}
+::ng-deep .tableheaddrop .ngx-dropdown-container .ngx-dropdown-list-container ul.selected-items li::after {
+    content: '';
+    position: absolute;
+    background-image: url('/assets/svg/bluetick.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 24px;
+    height: 24px;
+    right: 8px;
+    z-index: 12;
+}
+
+.legend_color {
+    height:10px;width:10px;display:inline-block;
+}

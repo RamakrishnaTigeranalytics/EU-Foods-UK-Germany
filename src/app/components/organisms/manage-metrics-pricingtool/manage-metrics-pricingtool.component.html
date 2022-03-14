@@ -1,0 +1,49 @@
+<div class="w-[650px] bg-white mx-auto my-6">
+    <div class="border-b border-marsgray-200">
+        <nwn-command-header type="stroke" nwnSvgIcon="adjustments">Manage metrics</nwn-command-header>
+    </div>
+    <div class="h-auto bg-white">
+        <div class="border-b border-marsgray-200">
+            <nwn-command-search [hideClose]="true"></nwn-command-search>
+        </div>
+        <div class="h-[448px] scrollbar-y">
+            <div class="border border-gray-200 px-2 bg-gray-100">
+                <nwn-cell-header type="headersm">Sales matrics</nwn-cell-header>
+            </div>
+            <div>
+                <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">Units</nwn-command-multiselect>
+                <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">Base Units</nwn-command-multiselect>
+                <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">Inc. Units</nwn-command-multiselect>
+                <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">Volume</nwn-command-multiselect>
+            </div>
+            <div class="border border-gray-200 px-2 bg-gray-100">
+                <nwn-cell-header type="headersm">Mars matrics</nwn-cell-header>
+            </div>
+            <div>
+                <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">LSV</nwn-command-multiselect>
+                <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">NSV</nwn-command-multiselect>
+                <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">MAC</nwn-command-multiselect>
+                <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">MAC, %NSV</nwn-command-multiselect>
+                <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">TE, % GSV</nwn-command-multiselect>
+                <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">TE / Unit</nwn-command-multiselect>
+                <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">ROI</nwn-command-multiselect>
+                <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">Lift %</nwn-command-multiselect>
+            </div>
+            <div class="border border-gray-200 px-2 bg-gray-100">
+                <nwn-cell-header type="headersm">Customer matrics</nwn-cell-header>
+            </div>
+            <div>
+                <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">ASP</nwn-command-multiselect>
+                <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">Promo ASP</nwn-command-multiselect>
+                <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">RSV</nwn-command-multiselect>
+                <nwn-command-multiselect [leftBorder]="false" [hideClose]="true"
+                    >Customer Margin</nwn-command-multiselect
+                >
+                <nwn-command-multiselect [leftBorder]="false" [hideClose]="true"
+                    >Customer Margin, %RSV</nwn-command-multiselect
+                >
+            </div>
+        </div>
+    </div>
+    <nwn-search-footer [showKeyBoardCtrl]="true" [showApply]="true"></nwn-search-footer>
+</div>

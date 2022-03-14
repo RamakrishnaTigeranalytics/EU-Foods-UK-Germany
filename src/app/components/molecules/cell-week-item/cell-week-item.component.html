@@ -1,0 +1,25 @@
+<!-- <div
+    class="holiday pl-4 pr-9 py-2.5 space-y-1 text-left relative"
+    [ngClass]="{
+        'bg-marslblue-100': type === 'lowholidayweek',
+        'bg-marslblue-200': type === 'meediumholidayweek',
+        'bg-marslblue-300': type === 'highholidayweek'
+    }"
+> -->
+<div
+    class="holiday pl-4 pr-9 py-2.5 space-y-1 text-left relative"
+    [ngClass]="{
+        'light-gradient': type === 'lowholidayweek',
+        'medium-gradient': type === 'meediumholidayweek',
+        'high-gradient': type === 'highholidayweek'
+    }"
+>
+    <p class="text-caption text-marsgray-500 font-normal">{{inWeek.date}}</p>
+    <p class="text-body text-marsgray-700 font-medium">Y1 {{inWeek.week}}</p>
+    <div class="absolute -top-1 right-0" [ngClass]="{ 'triangle-tr': inWeek.holiday }"></div>
+    <div class="holiday-popover border-l-3 border-marsgray-600 shadow-xl bg-white px-4 py-2 w-[106]">
+        <!-- <p class="text-caption font-normal text-marsgray-700">Holiday</p> -->
+        <!-- <p class="text-body font-medium text-marsgray-700">{{inWeek.holiday}}</p> -->
+        <p *ngFor="let holiday of inWeek.holiday" class="text-body font-medium text-marsgray-700">{{holiday}}</p>
+    </div>
+</div>

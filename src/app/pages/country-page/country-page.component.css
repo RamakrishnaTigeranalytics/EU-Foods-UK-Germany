@@ -1,0 +1,21 @@
+.more-button-bg {
+    background-color: #0000A0 !important;
+}
+
+.text-color-title {
+    color: #0000A0 !important;
+}
+
+.for-more {
+    bottom: 15px;
+    position: absolute;
+    right: 0;
+    left: 0;
+}
+
+.cursor-pt {
+    cursor: pointer;
+}
+.text-xl{
+    font-size: 1.2rem;
+}

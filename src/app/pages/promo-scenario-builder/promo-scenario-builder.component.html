@@ -1,0 +1,100 @@
+<nwn-loaded-scenario-header 
+[filter_model] = "filter_model" 
+[hidepanel] = "hidepanel"
+[currency] = "currency"
+[tenant] = "tenant"
+(filterResetEvent) = "filterResetEvent($event)"
+(downloadEvent)="downloadEvent($event)" 
+(modalEvent)="receiveMessage($event)" 
+[title]="scenarioTitle"
+[disable_save_download] = "disable_save_download"
+(simulateResetEvent)="simulateResetEvent($event)">
+</nwn-loaded-scenario-header>
+<nwn-status-bar (click)="hidePanel()"  [nwnStatusBar]="hideFilter">YET TO BE SIMULATED</nwn-status-bar>
+<div>
+    <nwn-summary-placeholder *ngIf="!isFilterApplied"></nwn-summary-placeholder>
+    <nwn-promosimulator-builder-aggregated [currency] = "currency" [tenant] = "tenant" *ngIf="isFilterApplied"></nwn-promosimulator-builder-aggregated>
+</div>
+<!-- Modals -->
+<!-- Filter Retailer -->
+<nwn-modal id="filter-retailer" class="hidden">
+    <nwn-filter-retailer [filter_model]="filter_model" (closeModal)="close($event)" (filterApply)="filterApply($event)" (retailerChange) = "retailerChange($event)" [retailers] = "retailers"></nwn-filter-retailer>
+</nwn-modal>
+<!-- Filter Category -->
+<nwn-modal id="filter-categories" class="hidden">
+    <nwn-filter-categories [filter_model]="filter_model" (closeModal)="close($event)" (filterApply)="filterApply($event)" (categoryChange) = "categoryChange($event)" [categories] = "categories"></nwn-filter-categories>
+</nwn-modal>
+<!-- Filter Strategic Cell -->
+<nwn-modal id="filter-stragetic-cells" class="hidden">
+    <nwn-filter-stragetic-cells [filter_model]="filter_model" (closeModal)="close($event)" (filterApply)="filterApply($event)" (strategicCellChange) = "strategicCellChange($event)" [stragetic_cells] = "strategic_cell"></nwn-filter-stragetic-cells>
+</nwn-modal>
+<!-- Filter Brands -->
+<nwn-modal id="filter-brands" class="hidden">
+    <nwn-filter-brands [filter_model]="filter_model"  (closeModal)="close($event)" (filterApply)="filterApply($event)" (brandChange) = "brandChange($event)"  [brands] = "brands"></nwn-filter-brands>
+</nwn-modal>
+<!-- Filter Brand Formats -->
+<nwn-modal id="filter-brand-formats" class="hidden">
+    <nwn-filter-brands-formats [filter_model]="filter_model" (closeModal)="close($event)" (filterApply)="filterApply($event)" (brandFormatChange) = "brandFormatChange($event)" [brand_formats] = "brands_format"></nwn-filter-brands-formats>
+</nwn-modal>
+<!-- Filter Product Groups -->
+<nwn-modal id="filter-product-groups" class="hidden">
+    <nwn-filter-product-groups [filter_model]="filter_model" (closeModal)="close($event)" (filterApply)="filterApply($event)" (productChange) = "productChange($event)" [product_groups] = "product_group"></nwn-filter-product-groups>
+</nwn-modal>
+<!-- Add Promotions -->
+<nwn-modal id="add-promotion" class="hidden">
+    <nwn-add-promotion *ngIf="tenant == 'uk'" [currency] = 'currency'></nwn-add-promotion>
+    <nwn-add-promotion-germany [promo_name] = "available_promotions"  *ngIf="tenant == 'germany'" [currency] = 'currency'></nwn-add-promotion-germany>
+</nwn-modal>
+
+<!-- <nwn-modal id="add-promotion" class="hidden">
+    <nwn-add-promotion [currency] = 'currency'></nwn-add-promotion>
+</nwn-modal> -->
+<!-- upload weekly promotions -->
+<nwn-modal id="upload-weekly-promotions" class="hidden">
+    <nwn-upload-weekly-promotions (closeModal)="close($event)" (fileUpload) = "fileUpload($event)"></nwn-upload-weekly-promotions>
+</nwn-modal>
+<!-- compare scenario -->
+<nwn-modal id="compare-scenario-popup" class="hidden">
+    <nwn-compare-scenario-popup [currency] = "currency" [tenant] = "tenant"></nwn-compare-scenario-popup>
+</nwn-modal>
+
+<!-- save scenario -->
+<nwn-modal id="save-scenario-popup" class="hidden">
+    <nwn-save-scenario [error]="save_scenario_error" [loadScenarioData]='loaded_scenario' [showSave]='show_save' (saveScenarioEvent)="saveScenario($event)"></nwn-save-scenario>
+</nwn-modal>
+
+<!-- compare-promo-scenario -->
+<nwn-modal id="compare-promo-scenario" class="hidden">
+    <nwn-compare-promo-scenario></nwn-compare-promo-scenario>
+</nwn-modal>
+<!-- load scenario promosimulator -->
+<nwn-modal id="load-scenario-promosimulator" class="hidden">
+    <nwn-load-scenario-promosimulator [title]="loadScenarioPopuptitle" (loadPromotionEvent)="loadPromotionEvent($event)"></nwn-load-scenario-promosimulator>
+</nwn-modal>
+<!-- pricing scenario -->
+<nwn-modal id="pricing-scenario" class="hidden">
+    <nwn-pricing-scenario></nwn-pricing-scenario>
+</nwn-modal>
+<!-- promo scenariobuilder popup -->
+<nwn-modal id="promo-scenariobuilder-popup" class="hidden">
+    <nwn-promo-scenariobuilder-popup></nwn-promo-scenariobuilder-popup>
+</nwn-modal>
+<!-- loaded-promosimulator-scenario -->
+<nwn-modal id="loaded-promosimulator-scenario" class="hidden">
+    <nwn-loaded-promosimulator-scenario [scenario]="'Promo'" [promotion_viewed] = 'promotion_viewed'></nwn-loaded-promosimulator-scenario>
+</nwn-modal>
+
+<!-- Command Interface filter -->
+<nwn-modal id="filter-basic" class="hidden">
+    <nwn-filter-basic></nwn-filter-basic>
+</nwn-modal>
+
+<!-- Promo elasticity filter -->
+<nwn-modal id="promo-elasticity-modal" class="hidden">
+    <nwn-promo-elasticity-popup></nwn-promo-elasticity-popup>
+</nwn-modal>
+
+<!-- User Guide Popup -->
+<nwn-modal id="user-guide-popup" class="hidden">
+    <nwn-user-guide-popup [guideFor]="'simulator'"></nwn-user-guide-popup>
+</nwn-modal>

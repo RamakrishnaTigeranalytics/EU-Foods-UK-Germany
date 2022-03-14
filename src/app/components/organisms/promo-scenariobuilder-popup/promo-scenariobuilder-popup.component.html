@@ -1,0 +1,21 @@
+<div class="w-[650px] bg-white mx-auto my-6">
+    <div class="border-b border-marsgray-200">
+        <nwn-command-header type="fill" nwnSvgIcon="simulator">Promo Scenario Builder</nwn-command-header>
+    </div>
+    <div class="border-b border-marsgray-200">
+        <nwn-command-search [value]="searchText" [hideClose]="true" [placeholder]="placeholder" (inputChangeEvent) = "inputChangeEvent($event)"></nwn-command-search>
+    </div>
+    <div>
+        <ng-container *ngFor="let data of filterNames | appFilter: searchText : 'promo';">
+            <nwn-command-iconitem  type="{{data.type}}" *ngIf="data.name == 'Set filter'" nwnSvgIcon="{{data.nwnSvgIcon}}" [hideTick]="data.hideTick" (click)="openModal(data.id)">{{data.name}}</nwn-command-iconitem>
+            <nwn-command-iconitem  type="{{data.type}}" *ngIf="data.name != 'Set filter'" nwnSvgIcon="{{data.nwnSvgIcon}}" [ngClass]="{ 'disabled': isFiltered == false }" [hideTick]="data.hideTick" (click)="openModal(data.id)">{{data.name}}</nwn-command-iconitem>
+        </ng-container>
+        <!-- <nwn-command-iconitem type="stroke" nwnSvgIcon="filter" [hideTick]="true" (click)="openModal('filter-basic')">Set filter</nwn-command-iconitem>
+        <nwn-command-iconitem type="stroke" nwnSvgIcon="plus" [hideTick]="true" [ngClass]="{ 'disabled': isFiltered == false }" (click)="openModal('add-promotion')">Add new promotion</nwn-command-iconitem>
+        <nwn-command-iconitem type="stroke" nwnSvgIcon="variables" [hideTick]="true" [ngClass]="{ 'disabled': isFiltered == false }" (click)="openModal('promo-elasticity-modal')"
+            >Set promo elasticity</nwn-command-iconitem
+        >
+        <nwn-command-iconitem type="stroke" nwnSvgIcon="plus" [hideTick]="true" [ngClass]="{ 'disabled': isFiltered == false }" (click)="openModal('load-scenario-promosimulator')">Load scenario</nwn-command-iconitem> -->
+    </div>
+    <nwn-search-footer [showKeyBoardCtrl]="true"></nwn-search-footer>
+</div>

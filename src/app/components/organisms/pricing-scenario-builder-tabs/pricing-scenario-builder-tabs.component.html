@@ -1,0 +1,530 @@
+<div class="px-12 py-5">
+    <div class="text-left py-5">
+        <h1 class="text-heading font-extrabold">Summary</h1>
+    </div>
+    <div class="flex flex-row flex-wrap border-b border-marsgray-300">
+        <div class="pr-6">
+            <nwn-tab-cta (click)="toggleTabs(1)" [type]="openTab === 1 ? 'selectedtab' : 'unselectedtab'"
+                >Graphical summary</nwn-tab-cta
+            >
+        </div>
+        <div class="pr-6">
+            <nwn-tab-cta (click)="toggleTabs(2)" [type]="openTab === 2 ? 'selectedtab' : 'unselectedtab'"
+                >Tabular summary</nwn-tab-cta
+            >
+        </div>
+    </div>
+
+    <div id="graphical-summary" [ngClass]="{ hidden: openTab !== 1, block: openTab === 1 }">
+        <div class="flex graphical-summary-dropdown py-8">
+            <nwn-graphical-summary-dropdown [config]="config_" (click) = "openModal('summary-aggregate')"></nwn-graphical-summary-dropdown>
+        </div>
+        <div class="flex flex-row justify-start border-b border-t border-marsgray-300">
+            <div class="border-r border-marsgra-300 pr-6 py-5">
+                <div class="pt-5 pb-10">
+                    <h1 class="text-title-medium text-gray-700 font-medium">Baseline vs Lift(units)</h1>
+                </div>
+                <div class="pt-12 pr-8">
+                    <nwn-baseline-lift-chart [currency]="currency" [baselineliftdata]="baselineLiftChartData"></nwn-baseline-lift-chart>
+                </div>
+                <div class="flex flex-row flex-wrap space-x-4 my-6">
+                    <div>
+                        <nwn-legend-items nwnLegendItems="onesquare" type="squaresm" color="bgLBlue-100"
+                            >Lift</nwn-legend-items
+                        >
+                    </div>
+                    <div>
+                        <nwn-legend-items nwnLegendItems="onesquare" type="squaresm" color="bgLBlue-300"
+                            >Base</nwn-legend-items
+                        >
+                    </div>
+                    <div>
+                        <nwn-legend-items nwnLegendItems="onesquare" type="squaresm" color="bgLBlue-600"
+                            >Simulated</nwn-legend-items
+                        >
+                    </div>
+                </div>
+            </div>
+            <div class="py-5 pl-6 scrollbar-x" [ngStyle]="{ 'width.px': aggregatedGraphWidth }" (scroll)="updateScroll('GraphOP')" #scrollOneOP>
+                <div class="flex flex-row justify-between pt-5 pb-10 w-full">
+                    <h1 class="text-title-medium text-gray-700 font-medium">Mars & Customer P&L Metrics</h1>
+                    <div class="flex flex-row space-x-2">
+                        <!-- <div *ngFor="let img of hierarchy_model|imagePipe:'hier' " class="w-20 h-auto border border-marsgray-100">
+                            
+                            <img class="w-full h-auto" [src]="img" alt="" />
+                        </div> -->
+                        <!-- <div class="w-20 h-auto border border-marsgray-100">
+                            <img class="w-full h-auto" src="/assets/subbrand-img/twix.png" alt="" />
+                        </div>
+                        <div class="w-20 h-auto border border-marsgray-100">
+                            <img class="w-full h-auto" src="/assets/subbrand-img/american-heritage.png" alt="" />
+                        </div>
+                        <div class="flex items-center w-20 px-3 h-auto">
+                            <p class="text-body-standard text-marsgray-700 font-normal">+5</p>
+                        </div> -->
+                    </div>
+                </div>
+                <nwn-pl-chart [currency]="currency" [plchartdata]='plChartData'></nwn-pl-chart>
+                <div class="flex flex-row-reverse space-x-4 space-x-reverse my-6">
+                    <div>
+                        <nwn-legend-items nwnLegendItems="onesquare" type="squaresm" color="bgLBlue-300"
+                            >Base</nwn-legend-items
+                        >
+                    </div>
+                    <div>
+                        <nwn-legend-items nwnLegendItems="onesquare" type="squaresm" color="bgLBlue-600"
+                            >Simulated</nwn-legend-items
+                        >
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-row justify-between items-center py-10">
+            <div class="flex flex-row flex-wrap border border-marsgray-300">
+                <div class="p-3">
+                    <nwn-toggle-cta (click)="toggleAbsolute('abs')" [type]="abs_selected">Absolute change</nwn-toggle-cta>
+                </div>
+                <div class="p-3">
+                    <nwn-toggle-cta (click)="toggleAbsolute('per')" [type]="per_selected">Percentage change</nwn-toggle-cta>
+                </div>
+            </div>
+            <div class="flex flex-row flex-wrap space-x-4">
+                <div>
+                    <nwn-legend-items nwnLegendItems="onesquare" type="squaresm" color="bg-gray-500"
+                        >Base value</nwn-legend-items
+                    >
+                </div>
+                <div>
+                    <nwn-legend-items nwnLegendItems="onesquare" type="squaresm" color="bg-gray-700"
+                        >Simulated value</nwn-legend-items
+                    >
+                </div>
+                <div>
+                    <nwn-legend-items
+                        nwnLegendItems="twosquare"
+                        type="squaresm"
+                        colorVariantFirst="bgGreenAccent"
+                        colorVariantSecond="bgRed-600"
+                        >Simulated value</nwn-legend-items
+                    >
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-row justify-start items-center py-5">
+            <div class="baselinemetrics min-w-[243px] flex flex-row justify-center">
+                <table class="border border-marsgray-200 text-left">
+                    <thead class="bg-white">
+                        <tr class="whitespace-nowrap">
+                            <th colspan="2" scope="colgroup">
+                                <nwn-cell-header type="headersm" color="bggray-100">Baseline vs Incremental</nwn-cell-header>
+                            </th>
+                        </tr>
+                        <tr class="whitespace-nowrap">
+                            <th colspan="1" scope="colgroup" class="text-center">
+                                <nwn-cell-header type="subheadermd" color="bgtransparent"
+                                    >Baseline Units</nwn-cell-header
+                                >
+                            </th>
+                            <th colspan="1" scope="colgroup" class="text-center">
+                                <nwn-cell-header type="subheadermd" color="bgtransparent"
+                                    >Incremental Units</nwn-cell-header
+                                >
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white">
+                        <tr class="whitespace-nowrap">
+                            <td><nwn-cell-item [differenceFormat] = "format" [nwnCellData]="units"></nwn-cell-item></td>
+                            <td><nwn-cell-item [differenceFormat] = "format" [nwnCellData]="inc_units"></nwn-cell-item></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="price-marsplmetrics ml-20 scrollbar-x" (scroll)="updateScroll('TableOP')" #scrollTwoOP>
+                <table class="border border-marsgray-200 text-left">
+                    <thead class="bg-white">
+                        <tr class="whitespace-nowrap">
+                            <th colspan="5" scope="colgroup">
+                                <nwn-cell-header type="headersm" color="bggray-100">Mars P&L Metrics</nwn-cell-header>
+                            </th>
+                            <th colspan="2" scope="colgroup">
+                                <nwn-cell-header type="headersm" color="bggray-100"
+                                    >Customer P&L Metrics</nwn-cell-header
+                                >
+                            </th>
+                        </tr>
+                        <tr class="whitespace-nowrap">
+                            <th colspan="1" scope="colgroup" class="text-center">
+                                <nwn-cell-header type="subheadermd" color="bgtransparent">RSV</nwn-cell-header>
+                            </th>
+                            <th colspan="1" scope="colgroup" class="text-center">
+                                <nwn-cell-header type="subheadermd" color="bgtransparent"
+                                    >Retailer Margin</nwn-cell-header
+                                >
+                            </th>
+                            <th colspan="1" scope="colgroup" class="text-center">
+                                <nwn-cell-header type="subheadermd" color="bgtransparent">GSV</nwn-cell-header>
+                            </th>
+                            <th colspan="1" scope="colgroup" class="text-center">
+                                <nwn-cell-header type="subheadermd" color="bgtransparent"
+                                    >Trade expense</nwn-cell-header
+                                >
+                            </th>
+                            <th colspan="1" scope="colgroup" class="text-center">
+                                <nwn-cell-header type="subheadermd" color="bgtransparent">NSV</nwn-cell-header>
+                            </th>
+                            <th colspan="1" scope="colgroup" class="text-center">
+                                <nwn-cell-header type="subheadermd" color="bgtransparent">COGS</nwn-cell-header>
+                            </th>
+                            <th colspan="1" scope="colgroup" class="text-center">
+                                <nwn-cell-header type="subheadermd" color="bgtransparent">MAC</nwn-cell-header>
+                            </th>
+                           
+                           
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white">
+                        <tr class="whitespace-nowrap">
+                            <td><nwn-cell-item [differenceFormat] = "format" [nwnCellData]="rsv"></nwn-cell-item></td>
+                            <td><nwn-cell-item [differenceFormat] = "format" [nwnCellData]="cutomer_margin"></nwn-cell-item></td>
+                            <td><nwn-cell-item [differenceFormat] = "format" [nwnCellData]="lsv"></nwn-cell-item></td>
+                            <td><nwn-cell-item [differenceFormat] = "format" [nwnCellData]="trade_expense"></nwn-cell-item></td>
+                            <td><nwn-cell-item [differenceFormat] = "format" [nwnCellData]="nsv"></nwn-cell-item></td>
+                            <td><nwn-cell-item [differenceFormat] = "format" [nwnCellData]="cogs"></nwn-cell-item></td>
+                            <td><nwn-cell-item [differenceFormat] = "format" [nwnCellData]="mac"></nwn-cell-item></td>
+                            
+                            
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div id="tabular-summary" class="tabularSummary" [ngClass]="{ hidden: openTab !== 2, block: openTab === 2 }">
+        <div class="flex flex-row items-center justify-between py-5">
+            <!-- <div class="flex flex-row items-center"> -->
+                <div class="flex flex-row flex-wrap border border-marsgray-300">
+                    <div class="p-3">
+                        <nwn-toggle-cta (click)="toggleAbsolute('abs')" [type]="abs_selected">Absolute change</nwn-toggle-cta>
+                    </div>
+                    <div class="p-3">
+                        <nwn-toggle-cta (click)="toggleAbsolute('per')" [type]="per_selected" >Percentage change</nwn-toggle-cta>
+                    </div>
+                </div>
+                <div class="flex ml-4 tabular-select-dropdown">
+                    <ngx-select-dropdown
+                        tabindex="0"
+                        [multiple]="false"
+                        [(ngModel)]="singleSelect"
+                        [config]="config"
+                        [options]="tabularSummaryVlaues"
+                        (change)="selectionChanged($event)"
+                    ></ngx-select-dropdown>
+                </div>
+            <!-- </div> -->
+            <div class="flex flex-row flex-wrap space-x-4 justify-end">
+                <!-- <div class="mb-2">
+                    <nwn-legend-items nwnLegendItems="onesquare" type="squaresm" color="bgLBlue-100"
+                        >Low seasonality</nwn-legend-items
+                    >
+                </div>
+                <div class="mb-2">
+                    <nwn-legend-items nwnLegendItems="onesquare" type="squaresm" color="bgLBlue-200"
+                        >Medium seasonality</nwn-legend-items
+                    >
+                </div>
+                <div class="mb-2">
+                    <nwn-legend-items nwnLegendItems="onesquare" type="squaresm" color="bgLBlue-300"
+                        >High seasonality</nwn-legend-items
+                    >
+                </div>
+                <div class="mb-2">
+                    <nwn-legend-items nwnLegendItems="triangle-tr" type="triangletr" color="border-gray"
+                        >Holiday week</nwn-legend-items
+                    >
+                </div> -->
+                <div class="mb-2">
+                    <nwn-legend-items nwnLegendItems="onesquare" type="squaresm" color="bg-gray-500"
+                        >Base value</nwn-legend-items
+                    >
+                </div>
+                <div class="mb-2">
+                    <nwn-legend-items nwnLegendItems="onesquare" type="squaresm" color="bg-gray-700"
+                        >Simulated value</nwn-legend-items
+                    >
+                </div>
+                <div class="mb-2">
+                    <nwn-legend-items
+                        nwnLegendItems="twosquare"
+                        type="squaresm"
+                        colorVariantFirst="bgGreenAccent"
+                        colorVariantSecond="bgRed-600"
+                        >Simulated value</nwn-legend-items
+                    >
+                </div>
+            </div>
+        </div>
+
+        <div
+            id="weeklyScenariotable"
+            class="weeklyScenariotable scrolly_table scrollbar"
+            [ngStyle]="{ 'width.px': weeklyTableWidth, 'height.px': weeklyTableHeight }"
+        >
+            <table class="border border-marsgray-200 text-left">
+                <thead class="bg-white">
+                    <tr class="whitespace-nowrap">
+                        <td class="sticked freeze tableDropdown whitespace-nowrap freeze" rowspan="2" colspan="1">
+                            <p class="text-body text-center">Product group</p>
+                        </td>
+                        <th colspan="2" scope="colgroup" class="sticked freeze_vertical">
+                            <nwn-cell-header type="headersm" color="bggray-100">Sales metrics</nwn-cell-header>
+                        </th>
+                        <th colspan="10" scope="colgroup" class="sticked freeze_vertical">
+                            <nwn-cell-header type="headersm" color="bggray-100">Mars metrics</nwn-cell-header>
+                        </th>
+                        <th colspan="7" scope="colgroup" class="sticked freeze_vertical">
+                            <nwn-cell-header type="headersm" color="bggray-100">Retailer metrics</nwn-cell-header>
+                        </th>
+                    </tr>
+                    <tr class="whitespace-nowrap">
+                        <th class="sticked freeze_vertical" scope="col">
+                            <nwn-cell-header type="subheadersm" color="bgwhite">Units</nwn-cell-header>
+                        </th>
+                        <th class="sticked freeze_vertical" scope="col">
+                            <nwn-cell-header type="subheadersm" color="bgwhite">Volume</nwn-cell-header>
+                        </th>
+                        <th class="sticked freeze_vertical" scope="col">
+                            <nwn-cell-header type="subheadersm" color="bgwhite">COGS</nwn-cell-header>
+                        </th>
+                        <th class="sticked freeze_vertical" scope="col">
+                            <nwn-cell-header type="subheadersm" color="bgwhite">GSV
+
+                                <ng-container *ngIf="singleSelect._id == 'perton'">(per ton)</ng-container>
+                                <ng-container *ngIf="singleSelect._id == 'perunit'">(per unit)</ng-container>
+                            </nwn-cell-header>
+                        </th>
+                        <th class="sticked freeze_vertical" scope="col">
+                            <nwn-cell-header type="subheadersm" color="bgwhite">NSV
+                                <ng-container *ngIf="singleSelect._id == 'perton'">(per ton)</ng-container>
+                                <ng-container *ngIf="singleSelect._id == 'perunit'">(per unit)</ng-container>
+                            </nwn-cell-header>
+                        </th>
+                        <th class="sticked freeze_vertical" scope="col">
+                            <nwn-cell-header type="subheadersm" color="bgwhite">MAC</nwn-cell-header>
+                        </th>
+                        <th class="sticked freeze_vertical" scope="col">
+                            <nwn-cell-header type="subheadersm" color="bgwhite">MAC, %NSV</nwn-cell-header>
+                        </th>
+                        <th class="sticked freeze_vertical" scope="col">
+                            <nwn-cell-header type="subheadersm" color="bgwhite">Trade expense
+                                <ng-container *ngIf="singleSelect._id == 'perton'">(per ton)</ng-container>
+                                <ng-container *ngIf="singleSelect._id == 'perunit'">(per unit)</ng-container>
+                            </nwn-cell-header>
+                        </th>
+                        <th class="sticked freeze_vertical" scope="col">
+                            <nwn-cell-header type="subheadersm" color="bgwhite">TE, % GSV</nwn-cell-header>
+                        </th>
+                        <th class="sticked freeze_vertical" scope="col">
+                            <nwn-cell-header type="subheadersm" color="bgwhite">TE / Unit</nwn-cell-header>
+                        </th>
+                        <!-- <th class="sticked freeze_vertical" scope="col">
+                            <nwn-cell-header type="subheadersm" color="bgwhite">ROI</nwn-cell-header>
+                        </th>
+                        <th class="sticked freeze_vertical" scope="col">
+                            <nwn-cell-header type="subheadersm" color="bgwhite">Lift %</nwn-cell-header>
+                        </th> -->
+                        <th class="sticked freeze_vertical" scope="col">
+                            <nwn-cell-header type="subheadersm" color="bgwhite">ASP</nwn-cell-header>
+                        </th>
+                        <!-- <th class="sticked freeze_vertical" scope="col">
+                            <nwn-cell-header type="subheadersm" color="bgwhite">Promo ASP</nwn-cell-header>
+                        </th> -->
+                        <th class="sticked freeze_vertical" scope="col">
+                            <nwn-cell-header type="subheadersm" color="bgwhite">RSV</nwn-cell-header>
+                        </th>
+                        <th class="sticked freeze_vertical" scope="col">
+                            <nwn-cell-header type="subheadersm" color="bgwhite">Customer Margin
+                                <ng-container *ngIf="singleSelect._id == 'perton'">(per ton)</ng-container>
+                                <ng-container *ngIf="singleSelect._id == 'perunit'">(per unit)</ng-container>
+                            </nwn-cell-header>
+                        </th>
+                        <th class="sticked freeze_vertical" scope="col">
+                            <nwn-cell-header type="subheadersm" color="bgwhite">Customer Margin,%RSV</nwn-cell-header>
+                        </th>
+                    </tr>
+                </thead>
+                <!-- <div *ngFor="let item of tabular_data | keyvalue">
+                    {{item.key}}:{{item.value}}
+                  </div> -->
+                <tbody class="bg-white">
+                    <tr *ngFor="let item of tabular_data | keyvalue" class="whitespace-nowrap">
+                        <th scope="row" class="sticked freeze_horizontal">
+                            <nwn-cell-header type="subheaderlg" color="bg-transparent">
+                                <div class="tooltip">
+                                    {{item.key  | truncate:[15] }}
+                                    <span class="tooltiptext">
+                                        {{ item.key }}
+                                        
+                                    </span>
+                                </div>
+                                </nwn-cell-header>
+                        </th>
+
+                        <td><nwn-cell-item [differenceFormat] = "format" [nwnCellData]="item.value.units"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format" [nwnCellData]="item.value.volume"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format" [nwnCellData]="item.value.cogs"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format" [nwnCellData]="item.value.lsv"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format" [nwnCellData]="item.value.nsv"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format" [nwnCellData]="item.value.mac"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format" [nwnCellData]="item.value.mac_nsv"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format" [nwnCellData]="item.value.te"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format" [nwnCellData]="item.value.te_lsv"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format" [nwnCellData]="item.value.te_unit"></nwn-cell-item></td>
+                        <!-- <td><nwn-cell-item [differenceFormat] = "format" [nwnCellData]="item.value.roi"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format" [nwnCellData]="item.value.lift"></nwn-cell-item></td> -->
+                        <td><nwn-cell-item [differenceFormat] = "format" [nwnCellData]="item.value.asp"></nwn-cell-item></td>
+                        <!-- <td><nwn-cell-item [differenceFormat] = "format" [nwnCellData]="item.value.promo_asp"></nwn-cell-item></td> -->
+                        <td><nwn-cell-item [differenceFormat] = "format" [nwnCellData]="item.value.rsv_w_o_vat"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format" [nwnCellData]="item.value.customer_margin"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format" [nwnCellData]="item.value.customer_margin_rsv"></nwn-cell-item></td>
+                    </tr>
+                    <!-- <tr class="whitespace-nowrap">
+                        <th scope="row" class="sticked freeze_horizontal">
+                            <nwn-cell-header type="subheaderlg" color="bg-transparent">Milkyway XXL</nwn-cell-header>
+                        </th>
+
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                    </tr> -->
+                    <!-- <tr class="whitespace-nowrap">
+                        <th scope="row" class="sticked freeze_horizontal">
+                            <nwn-cell-header type="subheaderlg" color="bg-transparent">Skittles XXL</nwn-cell-header>
+                        </th>
+
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                    </tr>
+                    <tr class="whitespace-nowrap">
+                        <th scope="row" class="sticked freeze_horizontal">
+                            <nwn-cell-header type="subheaderlg" color="bg-transparent">Bounty XXL</nwn-cell-header>
+                        </th>
+
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                    </tr>
+                    <tr class="whitespace-nowrap">
+                        <th scope="row" class="sticked freeze_horizontal">
+                            <nwn-cell-header type="subheaderlg" color="bg-transparent">Orbit OTC</nwn-cell-header>
+                        </th>
+
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                    </tr>
+                    <tr class="whitespace-nowrap">
+                        <th scope="row" class="sticked freeze_horizontal">
+                            <nwn-cell-header type="subheaderlg" color="bg-transparent">Orbit XXL</nwn-cell-header>
+                        </th>
+
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                    </tr>
+                    <tr class="whitespace-nowrap">
+                        <th scope="row" class="sticked freeze_horizontal">
+                            <nwn-cell-header type="subheaderlg" color="bg-transparent">Big Bars</nwn-cell-header>
+                        </th>
+
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                        <td><nwn-cell-item [differenceFormat] = "format"></nwn-cell-item></td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<nwn-modal id="summary-aggregate" class="hidden">
+    <nwn-add-new-pricingtool-popup 
+    [heading] = "'select retailer and product'"
+    [hierarchy_model] = "hierarchy_model"
+    (productChange) = "hierarchyProductChange($event)" 
+    (filterApply) = "filterApply($event)"
+    ></nwn-add-new-pricingtool-popup>
+</nwn-modal>

@@ -1,0 +1,99 @@
+<div class="w-[650px] bg-white mx-auto my-6">
+    <div class="border-b border-marsgray-200">
+        <nwn-command-header type="stroke" nwnSvgIcon="plus">{{heading}}</nwn-command-header>
+    </div>
+
+    <div class="border-b border-marsgray-200">
+        <nwn-command-search [value] = "searchText"  (inputChangeEvent)="inputChangeEvent($event)" [hideClose]="true"></nwn-command-search>
+    </div>
+   
+    <!-- {{product}} Products
+    <hr>
+    {{retailers}} Retailers -->
+    <div class="h-[448px] scrollbar-y bg-white">
+        <div>
+
+            <nwn-command-multiselect (valueChangeSelect) = "allselect($event)" 
+            [value] = "all_.value" [checked]="all_.checked" 
+            [leftBorder]="false" [hideClose]="true" >{{all_.value}}</nwn-command-multiselect>
+            
+            <ng-container *ngFor="let retailer of hierarchy_model">
+                <nwn-command-multiselect
+                (valueChangeSelect)="valueChangeSelect($event)"
+                 [value] = "retailer.value" [checked]="retailer.checked" 
+                 [leftBorder]="false" [hideClose]="true" [cmdMultiselectHead]="true"
+                    >{{retailer.value}}</nwn-command-multiselect
+                >
+                <nwn-command-multiselect
+                [value] = "p.value" [checked]="p.checked"
+                *ngFor="let p of retailer.child | appFilter:searchText : 'hierarchy'" 
+                [leftBorder]="false" [hideClose]="true" [cmdMultiselectSub]="true"
+                (valueChangeSelect)="valueChangeSelectProduct($event , retailer)"
+                    >{{p.value}}</nwn-command-multiselect
+                >
+            </ng-container>
+            <!-- <ng-container *ngFor="let retailer of retailers">
+            <nwn-command-multiselect
+            (valueChangeSelect)="valueChangeSelect($event)"
+             [value] = "retailer.value" [checked]="retailer.checked" 
+             [leftBorder]="false" [hideClose]="true" [cmdMultiselectHead]="true"
+                >{{retailer.value}}</nwn-command-multiselect
+            >
+            <nwn-command-multiselect
+            [value] = "p.value" [checked]="p.checked"
+            *ngFor="let p of product | subFilter : retailer : true : product_group" 
+            [leftBorder]="false" [hideClose]="true" [cmdMultiselectSub]="true"
+            (valueChangeSelect)="valueChangeSelectProduct($event)"
+                >{{p.value}}</nwn-command-multiselect
+            >
+        </ng-container> -->
+            <!-- <nwn-command-multiselect [leftBorder]="false" [hideClose]="true" [cmdMultiselectSub]="true"
+                >Milkyway XXL</nwn-command-multiselect
+            >
+            <nwn-command-multiselect [leftBorder]="false" [hideClose]="true" [cmdMultiselectSub]="true"
+                >Skittles XXL</nwn-command-multiselect
+            >
+            <nwn-command-multiselect [leftBorder]="false" [hideClose]="true" [cmdMultiselectSub]="true"
+                >Winter Fresh XXL</nwn-command-multiselect
+            >
+            <nwn-command-multiselect [leftBorder]="false" [hideClose]="true" [cmdMultiselectSub]="true"
+                >Bounty XXL</nwn-command-multiselect
+            > -->
+        </div>
+        <!-- <div>
+            <nwn-command-multiselect [leftBorder]="false" [hideClose]="true" [cmdMultiselectHead]="true"
+                >Target</nwn-command-multiselect
+            >
+            <nwn-command-multiselect
+                [leftBorder]="false"
+                [hideClose]="true"
+                [cmdMultiselectSub]="true"
+                [disabled]="true"
+                >Milkyway XXL</nwn-command-multiselect
+            >
+            <nwn-command-multiselect
+                [leftBorder]="false"
+                [hideClose]="true"
+                [cmdMultiselectSub]="true"
+                [disabled]="true"
+                >Skittles XXL</nwn-command-multiselect
+            >
+            <nwn-command-multiselect
+                [leftBorder]="false"
+                [hideClose]="true"
+                [cmdMultiselectSub]="true"
+                [disabled]="true"
+                >Winter Fresh XXL</nwn-command-multiselect
+            >
+            <nwn-command-multiselect
+                [leftBorder]="false"
+                [hideClose]="true"
+                [cmdMultiselectSub]="true"
+                [disabled]="true"
+                >Bounty XXL</nwn-command-multiselect
+            >
+        </div> -->
+    </div>
+    <nwn-search-footer *ngIf="heading == 'Add more'" (click) = "apply()" [showKeyBoardCtrl]="true" [showAdd]="true" type="primary"></nwn-search-footer>
+    <nwn-search-footer *ngIf="heading != 'Add more'" (click) = "apply()" [showKeyBoardCtrl]="true" [showApply]="true" type="primary"></nwn-search-footer>
+</div>

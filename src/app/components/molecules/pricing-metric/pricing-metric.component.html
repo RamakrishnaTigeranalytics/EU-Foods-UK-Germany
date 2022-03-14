@@ -1,0 +1,98 @@
+<div class="hover:bg-gray-200 px-2 py-3 flex flex-col space-y-1">
+    <!-- <nwn-calendar></nwn-calendar> -->
+    <div class="flex flex-row items-center space-x-1">
+        <div>
+            <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M13.5423 2.91683H12.209V2.25016C12.209 2.07335 12.1387 1.90378 12.0137 1.77876C11.8887 1.65373 11.7191 1.5835 11.5423 1.5835C11.3655 1.5835 11.1959 1.65373 11.0709 1.77876C10.9459 1.90378 10.8757 2.07335 10.8757 2.25016V2.91683H6.87565V2.25016C6.87565 2.07335 6.80541 1.90378 6.68039 1.77876C6.55536 1.65373 6.3858 1.5835 6.20898 1.5835C6.03217 1.5835 5.8626 1.65373 5.73758 1.77876C5.61256 1.90378 5.54232 2.07335 5.54232 2.25016V2.91683H4.20898C3.67855 2.91683 3.16984 3.12754 2.79477 3.50262C2.4197 3.87769 2.20898 4.3864 2.20898 4.91683V12.9168C2.20898 13.4473 2.4197 13.956 2.79477 14.331C3.16984 14.7061 3.67855 14.9168 4.20898 14.9168H13.5423C14.0728 14.9168 14.5815 14.7061 14.9565 14.331C15.3316 13.956 15.5423 13.4473 15.5423 12.9168V4.91683C15.5423 4.3864 15.3316 3.87769 14.9565 3.50262C14.5815 3.12754 14.0728 2.91683 13.5423 2.91683ZM14.209 12.9168C14.209 13.0936 14.1387 13.2632 14.0137 13.3882C13.8887 13.5133 13.7191 13.5835 13.5423 13.5835H4.20898C4.03217 13.5835 3.8626 13.5133 3.73758 13.3882C3.61256 13.2632 3.54232 13.0936 3.54232 12.9168V8.25016H14.209V12.9168ZM14.209 6.91683H3.54232V4.91683C3.54232 4.74002 3.61256 4.57045 3.73758 4.44543C3.8626 4.3204 4.03217 4.25016 4.20898 4.25016H5.54232V4.91683C5.54232 5.09364 5.61256 5.26321 5.73758 5.38823C5.8626 5.51326 6.03217 5.5835 6.20898 5.5835C6.3858 5.5835 6.55536 5.51326 6.68039 5.38823C6.80541 5.26321 6.87565 5.09364 6.87565 4.91683V4.25016H10.8757V4.91683C10.8757 5.09364 10.9459 5.26321 11.0709 5.38823C11.1959 5.51326 11.3655 5.5835 11.5423 5.5835C11.7191 5.5835 11.8887 5.51326 12.0137 5.38823C12.1387 5.26321 12.209 5.09364 12.209 4.91683V4.25016H13.5423C13.7191 4.25016 13.8887 4.3204 14.0137 4.44543C14.1387 4.57045 14.209 4.74002 14.209 4.91683V6.91683Z"
+                    fill="#71717A"
+                />
+            </svg>
+        </div>
+        <ng-content></ng-content>
+        <!-- <dp-date-picker mode="day" theme="p-30" placeholder="--/--/----" [config]="config"></dp-date-picker> -->
+        <!-- {{percentage}} -->
+    </div>
+    <p class="text-marsyellow-800 text-caption">{{base}} ₽</p>
+    <div  *ngIf="percentage === false">
+        <div class="flex flex-row items-center justify-between">
+            <div (click) = "toggleEnable()" class="flex flex-row items-center justify-between mr-2 border-r border-marsgray-300">
+                <!-- class="enabledInput"  -->
+                <input
+                [ngClass]="{ 'enabledInput': absenable === true,
+                'disabledInput': absenable === false
+            
+            }"
+                
+                type="number" value="{{ counterPer }}" />
+                <!-- <div class="mx-2">
+                    <div class="flex flex-col space-y-1" >
+                        <nwn-button type="icon" size="no-size" class="leading-0" (click)="$event.stopPropagation();incrementPer()">
+                            <nwn-svg-icon type="stroke" size="md" nwnSvgIcon="plus"></nwn-svg-icon>
+                        </nwn-button>
+                        <nwn-button type="icon" size="no-size" class="leading-0" (click)="$event.stopPropagation();decrementPer()">
+                            <nwn-svg-icon type="stroke" size="md" nwnSvgIcon="minus"></nwn-svg-icon>
+                        </nwn-button>
+                    </div>
+                </div> -->
+            </div>
+            <div (click) = "toggleEnable()"  class="flex flex-row items-center justify-between border-l space-x-2">
+                <div class="input-icon input-icon-right">
+                    <!-- class="disabledInput" -->
+                <input
+                [ngClass]="{ 'disabledInput': absenable === true,
+                'enabledInput': absenable === false
+            
+            }"
+                 type="number" value="{{ counter }}" /> 
+                <i>%</i>
+                </div>
+                <div>
+                    <!-- class="hidden" -->
+                    <div class="flex flex-col space-y-1">
+                        <nwn-button type="icon" size="no-size" class="leading-0" (click)="$event.stopPropagation();decincrement()">
+                            <nwn-svg-icon type="stroke" size="md" nwnSvgIcon="plus"></nwn-svg-icon>
+                        </nwn-button>
+                        <nwn-button type="icon" size="no-size" class="leading-0" (click)="$event.stopPropagation();decdecrement()">
+                            <nwn-svg-icon type="stroke" size="md" nwnSvgIcon="minus"></nwn-svg-icon>
+                        </nwn-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="text-body text-marsgray-500">{{label}}</p>
+    </div>
+    <!-- <div (click) = "togglePercent(false)" *ngIf="percentage === true">
+        <div  class="flex flex-row items-center justify-between">
+            <div class="flex flex-row items-center justify-between space-x-2 mr-2 border-r border-marsgray-300">
+                <input class="disabledInput" disabled type="number" value="{{ counterPer }}" />
+                <div class="hidden">
+                    <div class="flex flex-col space-y-1">
+                        <nwn-button type="icon" size="no-size" class="leading-0" (click)="$event.stopPropagation();incrementPer()">
+                            <nwn-svg-icon type="stroke" size="md" nwnSvgIcon="plus"></nwn-svg-icon>
+                        </nwn-button>
+                        <nwn-button type="icon" size="no-size" class="leading-0" (click)="$event.stopPropagation();decrementPer()">
+                            <nwn-svg-icon type="stroke" size="md" nwnSvgIcon="minus"></nwn-svg-icon>
+                        </nwn-button>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-row items-center justify-between">
+                <div class="percent">
+                <input class="enabledInput" type="number" value="{{ counter }}" />  
+            </div>
+                <div class="mx-2">
+                    <div class="flex flex-col space-y-1">
+                        <nwn-button type="icon" size="no-size" class="leading-0" (click)="$event.stopPropagation();increment()">
+                            <nwn-svg-icon type="stroke" size="md" nwnSvgIcon="plus"></nwn-svg-icon>
+                        </nwn-button>
+                        <nwn-button type="icon" size="no-size" class="leading-0" (click)="$event.stopPropagation();decrement()">
+                            <nwn-svg-icon type="stroke" size="md" nwnSvgIcon="minus"></nwn-svg-icon>
+                        </nwn-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="text-body text-marsgray-500">{{label}}</p>
+    </div> -->
+</div>

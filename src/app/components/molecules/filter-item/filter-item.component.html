@@ -1,0 +1,14 @@
+<div class="inline-flex cursor-pointer space-x-1 items-center border border-gray-300 px-2 py-1 hover:bg-marsgray-200">
+    <div class="text-body text-marsgray-700" [ngClass]="{ hidden: hideFilterIcon == true }">
+        <nwn-svg-icon [type]="type" [nwnSvgIcon]="nwnSvgIcon"></nwn-svg-icon>
+    </div>
+    <div
+        class="text-body text-marsgray-700"
+        [ngClass]="{ 'small-value': size === 'smallValue', 'large-value': size === 'lgValue' }"
+    >
+        <ng-content></ng-content>
+    </div>
+    <nwn-button (click)="closeClicked($event)" type="icon" size="iconsm" [ngClass]="{ hidden: hideClose == true }">
+        <nwn-svg-icon size="md" nwnSvgIcon="close"></nwn-svg-icon>
+    </nwn-button>
+</div>

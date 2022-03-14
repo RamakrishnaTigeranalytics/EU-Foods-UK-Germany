@@ -1,0 +1,42 @@
+.table,
+th,
+tr,
+td,
+thead,
+tbody {
+    @apply p-0;
+}
+table {
+    border-spacing: 0px;
+}
+
+td,
+th {
+    border-left: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+}
+
+.scrolly_table {
+    white-space: nowrap;
+    overflow: auto;
+    height: 400px;
+}
+
+.slide {
+    cursor: grabbing;
+}
+
+.fixed.freeze {
+    z-index: 10;
+    position: relative;
+}
+
+.fixed.freeze_vertical {
+    z-index: 5;
+    position: relative;
+}
+
+.fixed.freeze_horizontal {
+    z-index: 1;
+    position: relative;
+}

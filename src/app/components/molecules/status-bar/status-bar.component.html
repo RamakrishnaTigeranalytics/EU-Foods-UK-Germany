@@ -1,0 +1,68 @@
+<div class="relative w-full text-center status-line group" nwnStatusBar="nwnStatusBar">
+    <ng-container *ngIf="nwnStatusBar === 'yettobesimulated'">
+        <div class="w-full h-0.5 bg-marsorange-accent absolute top-0 right-0 left-0"></div>
+        <span
+            class="
+                bg-marsorange-accent
+                uppercase
+                text-white text-caption
+                py-1
+                px-2
+                rounded-b-lg
+                top-0
+                inline-flex
+                items-center
+            "
+        >
+            <nwn-svg-icon class="mr-1" type="stroke" nwnSvgIcon="clock" size="sm"></nwn-svg-icon>
+            <p class="uppercase text-white">Yet to be simulated</p>
+        </span>
+    </ng-container>
+    <ng-container *ngIf="nwnStatusBar === 'viewmore'">
+        <div class="w-full h-0.5 bg-marsteal-400 group-hover:bg-marsteal-500 absolute top-0 right-0 left-0"></div>
+        <nwn-button type="nostyle" size="nosize">
+            <span
+                class="
+                    bg-marsteal-400
+                    group-hover:bg-marsteal-500
+                    uppercase
+                    text-white text-caption
+                    py-1
+                    px-2
+                    rounded-b-lg
+                    top-0
+                    inline-flex
+                    items-center
+                    group
+                "
+            >
+                <nwn-svg-icon class="mr-1" type="stroke" nwnSvgIcon="chevron-down" size="md"></nwn-svg-icon>
+                <p class="uppercase text-white">View More</p>
+            </span>
+        </nwn-button>
+    </ng-container>
+    <ng-container *ngIf="nwnStatusBar === 'viewless'">
+        <div class="w-full h-0.5 bg-marsteal-400 group-hover:bg-marsteal-500 absolute top-0 right-0 left-0"></div>
+        <nwn-button type="nostyle" size="nosize">
+            <span
+                type="ghost"
+                size="ghostsize"
+                class="
+                    bg-marsteal-400
+                    group-hover:bg-marsteal-500
+                    uppercase
+                    py-1
+                    px-2
+                    text-white text-caption
+                    rounded-b-lg
+                    top-0
+                    inline-flex
+                    items-center
+                "
+            >
+                <nwn-svg-icon class="mr-1" type="stroke" nwnSvgIcon="chevron-up" size="md"></nwn-svg-icon>
+                <p class="uppercase text-white">View Less</p>
+            </span>
+        </nwn-button>
+    </ng-container>
+</div>

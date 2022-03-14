@@ -1,0 +1,10 @@
+.disabled{
+    background-color: grey;
+}
+
+.checktool .btn-tooltip {
+    @apply hidden absolute shadow whitespace-nowrap px-4 py-2 -left-7 -bottom-10 bg-white w-auto z-[99] text-caption text-marsgray-700 font-medium;
+}
+.checktool:hover .btn-tooltip {
+    @apply block;
+}

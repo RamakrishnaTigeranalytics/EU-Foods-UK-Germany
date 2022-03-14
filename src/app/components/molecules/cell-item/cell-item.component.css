@@ -1,0 +1,6 @@
+.text-size-lg {
+    @apply text-body font-normal text-marsgray-700;
+}
+.text-size-md {
+    @apply text-caption font-normal text-marsgray-700;
+}

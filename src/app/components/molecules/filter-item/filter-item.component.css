@@ -1,0 +1,6 @@
+.small-value {
+    @apply text-caption font-normal;
+}
+.large-value {
+    @apply text-body font-normal;
+}

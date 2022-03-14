@@ -1,0 +1,11 @@
+<div class = "week-item"
+    [ngClass]="{
+        'default-week-item': type === 'defaultWeek',
+        'compulsory-week-item': type === 'compulsoryWeek',
+        'disable-week-item': type === 'disabledWeek'
+    }"
+>
+    <div class="absolute top-0 left-0 triangle-tl"></div>
+    <div class="text-caption text-marsgray-500 font-normal"><ng-content select="[weekValue]"></ng-content></div>
+    <div class="text-body text-marsgray-700 font-medium"><ng-content select="[dateValue]"></ng-content></div>
+</div>

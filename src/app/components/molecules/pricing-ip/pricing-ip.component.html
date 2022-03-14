@@ -1,0 +1,46 @@
+<div class="hover:bg-gray-200 px-2 py-3 flex flex-col ">
+    
+     
+     
+        <div class="flex flex-row items-center justify-between space-x-1">
+            
+            <nwn-button   [disabled] = "disable" type="icon" size="iconsm" (click)="decrement()">
+                <nwn-svg-icon type="stroke" size="md" nwnSvgIcon="minus"></nwn-svg-icon>
+            </nwn-button>
+            <div   class="input-icon input-icon-right">
+               
+               
+            <input
+            (keyup)="onInputChange($event)"
+            [ngClass]="{ 'enabledInput': disable === false,
+                'disabledInput': disable === true
+            
+            }"
+
+            [disabled]="disable"
+            
+                class="
+                    text-title-medium text-marsgray-700
+                    w-16
+                    h-10
+                    p-2
+                    rounded-none
+                    border border-marsgray-300
+                    focus:border-marsgray-500 focus:outline-none
+                    bg-marsgray-50
+                    text-center
+                    
+                    
+                "
+                type="number"
+                value="{{ counter }}"
+            />
+             <!-- disabledInput -->
+            <i>%</i>
+            </div>
+            <nwn-button  [disabled] = "disable" type="icon" size="iconsm" (click)="increment()">
+                <nwn-svg-icon type="stroke" size="md" nwnSvgIcon="plus"></nwn-svg-icon>
+            </nwn-button>
+        </div>
+             
+</div>

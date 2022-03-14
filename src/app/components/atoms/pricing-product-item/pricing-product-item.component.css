@@ -1,0 +1,27 @@
+.sfi {
+    @apply py-2 px-1.5 text-caption font-medium border hover:bg-marsgray-200;
+}
+.default-sfi {
+    @apply border-marsgray-300 text-marsgray-500;
+}
+.default-sfi:hover {
+    @apply bg-marsgray-300;
+}
+.active-sfi {
+    @apply border-marsblue-500 text-marsblue-500;
+}
+
+.filled-sfi {
+    @apply bg-marsgray-200 border-marsgray-300 text-marsblue-500;
+}
+.filled-sfi:hover {
+    @apply bg-marsgray-200 border-marsgray-400 text-marsblue-500;
+}
+
+.filledactive-sfi {
+    @apply bg-marsgray-200 border-marsblue-500 text-marsblue-500;
+}
+.icon-small-btn {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}

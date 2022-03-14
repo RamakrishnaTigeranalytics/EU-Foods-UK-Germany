@@ -1,0 +1,30 @@
+/* https://github.com/angular-slider/ngx-slider/blob/master/STYLING.md */
+/* https://github.com/angular-slider/ngx-slider/blob/master/src/ngx-slider/lib/slider.component.scss */
+
+::ng-deep .custom-slider .ngx-slider {
+    @apply h-[-32px]  !important;
+}
+::ng-deep .custom-slider .ngx-slider .ngx-slider-pointer {
+    @apply bg-marsblue-600 rounded-[4px] w-[18px] h-[18px] mt-[6px] flex items-center outline-none !important;
+}
+::ng-deep .custom-slider .ngx-slider .ngx-slider-pointer:after {
+    @apply bg-transparent !important;
+}
+::ng-deep .custom-slider .ngx-slider .ngx-slider-bar {
+    @apply bg-gray-200 rounded-none h-[4px] !important;
+}
+::ng-deep .custom-slider .ngx-slider .ngx-slider-floor {
+    @apply -bottom-5 text-caption !important;
+}
+::ng-deep .custom-slider .ngx-slider .ngx-slider-ceil {
+    @apply -bottom-5 text-caption !important;
+}
+::ng-deep .custom-slider .ngx-slider .ngx-slider-model-high {
+    @apply text-caption p-[4px] bg-gray-100 rounded-[4px] !important;
+}
+::ng-deep .custom-slider .ngx-slider .ngx-slider-model-value {
+    @apply text-caption p-[4px] bg-gray-100 rounded-[4px] !important;
+}
+::ng-deep .custom-slider .ngx-slider .ngx-slider-selection {
+    @apply bg-marsblue-600 !important;
+}

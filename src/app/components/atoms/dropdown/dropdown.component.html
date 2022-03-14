@@ -1,0 +1,16 @@
+<!-- <ul class="bg-white">
+    <li class="px-3 py-4 group flex flex-row items-center space-x-3">
+        <nwn-svg-icon class="text-marsgray-700 stroke-current group-hover:text-marsblue-500"></nwn-svg-icon>
+        <span class="group-hover:text-marsblue-500 text-marsgray-700 text-body">{{ content }}</span>
+    </li>
+</ul> -->
+<!--Using ng-option and for loop-->
+<!--Using items input-->
+<!-- <ng-select [items]="cars" bindLabel="name" bindValue="id" [(ngModel)]="selectedCar"> </ng-select> -->
+<ngx-select-dropdown
+    tabindex="0"
+    [multiple]="false"
+    [(ngModel)]="singleSelect"
+    [config]="config"
+    [options]="optionsNormal"
+></ngx-select-dropdown>

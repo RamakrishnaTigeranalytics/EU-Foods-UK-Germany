@@ -1,0 +1,12 @@
+.left-border {
+    @apply border-l-2 border-marsblue-500;
+}
+.cmd-multiselect-head {
+    @apply bg-marsgray-50;
+}
+.cmd-mutiselect-sub {
+    @apply pl-14 !important;
+}
+.disabled {
+    @apply opacity-40;
+}

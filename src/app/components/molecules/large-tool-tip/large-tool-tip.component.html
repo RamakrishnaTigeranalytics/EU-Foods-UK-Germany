@@ -1,0 +1,37 @@
+<div *ngIf="scenario" class="large-tooltip bg-white arrow_box w-[320px]">
+    <div class="bg-marsgray-100 py-1 px-4">
+        <p class="text-marsgray-700 text-caption">{{scenario.name}}</p>
+    </div>
+    <div class="flex flex-col px-4 py-3">
+        <div class="text-caption text-marsgray-700 font-normal">
+           {{scenario.comment}}
+        </div>
+    </div>
+    <div class="flex flex-row flex-wrap pb-3 px-4">
+        <div class="mr-1 mb-1">
+            <nwn-filter-item size="smallValue" [hideFilterIcon]="true" [hideClose]="true"
+                >{{scenario.retailer.account_name}}</nwn-filter-item
+            >
+        </div>
+        <!-- <div class="mr-1 mb-1">
+            <nwn-filter-item size="smallValue" [hideFilterIcon]="true" [hideClose]="true">Chocolate</nwn-filter-item>
+        </div>
+        <div class="mr-1 mb-1">
+            <nwn-filter-item size="smallValue" [hideFilterIcon]="true" [hideClose]="true">All brands</nwn-filter-item>
+        </div>
+        <div class="mr-1 mb-1">
+            <nwn-filter-item size="smallValue" [hideFilterIcon]="true" [hideClose]="true"
+                >All stragetic cells</nwn-filter-item
+            >
+        </div>
+        <div class="mr-1 mb-1">
+            <nwn-filter-item size="smallValue" [hideFilterIcon]="true" [hideClose]="true">Galaxy silk</nwn-filter-item>
+        </div> -->
+        <div class="mr-1 mb-1">
+            <nwn-filter-item size="smallValue" [hideFilterIcon]="true" [hideClose]="true"
+                >{{scenario.retailer.product_group}}</nwn-filter-item
+            >
+        </div>
+    </div>
+</div>
+

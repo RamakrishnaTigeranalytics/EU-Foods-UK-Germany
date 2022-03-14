@@ -1,0 +1,32 @@
+<div class="w-[650px] bg-white mx-auto my-6">
+    <div class="border-b border-marsgray-200">
+        <nwn-command-header type="stroke" nwnSvgIcon="retailers">Filter by retailer</nwn-command-header>
+    </div>
+    <div class="border-b border-marsgray-200">
+        <nwn-command-search [value]="searchText" [placeholder]="placeholder" [hideClose]="true" (inputChangeEvent)="inputChangeEvent($event)"></nwn-command-search>
+    </div>
+    <div class="scrollbar-y h-[287px]">
+        <ng-container *ngIf="!pricing">
+            <nwn-command-multiselect (valueChangeSelect)="valueChangeSelect($event)" *ngFor="let retailer of retailers | appFilter: searchText;" [value] = "retailer.value" [checked]="retailer.checked" [leftBorder]="false" [hideClose]="true" >{{retailer.value}}</nwn-command-multiselect>
+
+        </ng-container>
+        <ng-container *ngIf="pricing">
+            <nwn-command-multiselect (valueChangeSelect) = "allselect($event)" [value] = "all_.value" [checked]="all_.checked" [leftBorder]="false" [hideClose]="true" >{{all_.value}}</nwn-command-multiselect>
+            <nwn-command-multiselect (valueChangeSelect)="valueChangeSelectPricing($event)" *ngFor="let retailer of retailers | appFilter: searchText;" [value] = "retailer.value" [checked]="retailer.checked" [leftBorder]="false" [hideClose]="true" >{{retailer.value}}</nwn-command-multiselect>
+
+        </ng-container>
+        <!-- <nwn-command-multiselect [value] = "all_.value" [checked]="all_.checked" [leftBorder]="false" [hideClose]="true" >{{all_.value}}</nwn-command-multiselect> -->
+        
+        <!-- <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">Target</nwn-command-multiselect>
+        <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">Carrefour</nwn-command-multiselect>
+        <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">Trader Joe’s</nwn-command-multiselect>
+        <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">Costco</nwn-command-multiselect>
+        <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">Whole foods</nwn-command-multiselect>
+        <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">Costco</nwn-command-multiselect>
+        <nwn-command-multiselect [leftBorder]="false" [hideClose]="true">Whole foods</nwn-command-multiselect> -->
+    </div>
+    <nwn-search-footer (click) = "apply('filter-retailer')" [showKeyBoardCtrl]="true" [showApply]="true"></nwn-search-footer>
+</div>
+
+
+

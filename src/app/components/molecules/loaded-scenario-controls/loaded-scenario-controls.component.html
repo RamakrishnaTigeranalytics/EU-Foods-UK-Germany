@@ -1,0 +1,61 @@
+<div class="flex flex-row w-full justify-between space-x-2 bg-marsgray-100 py-2">
+    <div class="flex flex-row space-x-2 items-center">
+        <div class="flex flex-row space-x-2 border-r border-marsgray-300 pr-2">
+            <nwn-button type="icon" size="iconsm">
+                <input type="file" accept="image/*" hidden="true" #file>
+
+                <nwn-svg-icon (click)="file.click()" type="stroke" nwnSvgIcon="upload"></nwn-svg-icon>
+            </nwn-button>
+            <nwn-button type="icon" size="iconsm">
+                <nwn-svg-icon type="stroke" nwnSvgIcon="download"></nwn-svg-icon>
+            </nwn-button>
+        </div>
+        <div class="">
+            <nwn-button type="icon" size="iconsm">
+                <nwn-svg-icon type="stroke" nwnSvgIcon="lightning-bolt"></nwn-svg-icon>
+            </nwn-button>
+        </div>
+    </div>
+    <div class="flex flex-row">
+        <div class="flex flex-row space-x-4 items-center">
+            <nwn-button type="link" size="sm"> Reset </nwn-button>
+            <nwn-button type="primary" size="sm"> Simulate </nwn-button>
+            <nwn-button type="icon" size="iconsm">
+                <nwn-svg-icon type="stroke" nwnSvgIcon="save"></nwn-svg-icon>
+            </nwn-button>
+            <nwn-button type="icon" size="iconsm">
+                <nwn-svg-icon type="stroke" nwnSvgIcon="save-download"></nwn-svg-icon>
+            </nwn-button>
+            <div class="relative">
+                <nwn-button type="icon" size="iconsm" (click)="toggleDisplayDivIf()">
+                    <nwn-svg-icon type="stroke" nwnSvgIcon="more-horizontal"></nwn-svg-icon>
+                </nwn-button>
+                <div *ngIf="!isShowDivIf">
+                    <div class="absolute z-50 top-10 right-0 bg-white shadow-sm w-[186px] h-auto">
+                        <div class="border-b">
+                            <nwn-button type="sideBorder" size="sideBorderSize" class="w-full">
+                                <nwn-svg-icon class="mr-0.5" type="stroke" nwnSvgIcon="plus" size="lg"></nwn-svg-icon>
+                                Load scenario
+                            </nwn-button>
+                        </div>
+                        <div class="">
+                            <nwn-button type="sideBorder" size="sideBorderSize" class="w-full">
+                                <nwn-svg-icon
+                                    class="mr-0.5"
+                                    type="stroke"
+                                    nwnSvgIcon="arrow-compare"
+                                    size="lg"
+                                ></nwn-svg-icon>
+                                Compare scenarios
+                            </nwn-button>
+                        </div>
+                    </div>
+                    <div
+                        class="fixed bg-marsgray-900 bg-opacity-10 top-0 left-0 right-0 h-full w-full"
+                        (click)="toggleDisplayDivIf()"
+                    ></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

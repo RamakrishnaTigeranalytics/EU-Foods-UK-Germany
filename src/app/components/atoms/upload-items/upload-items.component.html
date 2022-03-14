@@ -1,0 +1,18 @@
+<div class="w-full text-center border border-dashed border-marsgray-300 p-6 relative cursor-pointer">
+    <div class="flex flex-col items-center space-y-2">
+        <div class="text-marsgray-500">
+            <nwn-svg-icon type="fill" nwnSvgIcon="ufile-upload"></nwn-svg-icon>
+        </div>
+        <p class="text-marsgray-500 text-body font-medium">Drag and drop</p>
+        <p class="text-marsgray-500 text-body font-medium">
+            or <span class="text-marsblue-500">browse</span> to choose a file
+        </p>
+    </div>
+    <input type="file" accept=".xlsx, .xls, .csv" (change)="onFileSelected();" #fileInput type="file" id="simulatorInputFile" class="w-full h-full opacity-0 absolute top-0 left-0 right-0 cursor-pointer" />
+</div>
+<div class="flex flex-row py-2 items-center justify-between" [ngClass]="{ hidden: showLoadUpload == false }">
+    <p class="text-marsgray-500 text-body-standard">{{fileName}}</p>
+    <nwn-button type="icon" size="iconsm" (click)="removeFile()">
+        <nwn-svg-icon nwnSvgIcon="close" type="stroke" size="lg"></nwn-svg-icon>
+    </nwn-button>
+</div>

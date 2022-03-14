@@ -1,0 +1,18 @@
+.th-br{
+    border-top-width: unset !important;
+}
+
+.tr-br {
+    outline:  unset !important;
+}
+
+th, tr, td, thead, tbody {
+    padding: 0px;
+    border: 1px solid #E4E4E7 !important;
+    outline-offset: 0px;
+}
+
+table {
+    outline: unset !important;
+    border-collapse: collapse !important;
+}

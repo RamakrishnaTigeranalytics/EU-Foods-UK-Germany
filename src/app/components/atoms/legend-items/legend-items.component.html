@@ -1,0 +1,55 @@
+<div class="flex flex-row items-center space-x-2" nwnLegendItems="nwnLegendItems">
+    <div class="flex flex-row">
+        <ng-container *ngIf="nwnLegendItems === 'onesquare'">
+            <div
+                [ngClass]="{
+                    'square-sm': type === 'squaresm',
+                    'square-lg': type === 'squarelg',
+                    'bg-gray-500': color === 'bg-gray-500',
+                    'bg-gray-700': color === 'bg-gray-700',
+                    'bg-marslblue-100': color === 'bgLBlue-100',
+                    'bg-marslblue-200': color === 'bgLBlue-200',
+                    'bg-marslblue-300': color === 'bgLBlue-300',
+                    'bg-marslblue-600': color === 'bgLBlue-600',
+                    'bg-marsgreen-accent': color === 'bggreen-accent',
+                    'bg-marsred-100': color === 'bgred-100',
+                    'bg-marsgreen-100': color === 'bggreen-100',
+                    'bg-marsyellow-400': color === 'bgYellow',
+                    'border-marslblue-800 border': color == 'borderedBlue',
+                    'light-gradient' : color == 'lightgradient',
+                    'medium-gradient' : color == 'mediumgradient',
+                    'high-gradient' : color == 'highgradient'
+                }"
+            ></div>
+        </ng-container>
+        <ng-container *ngIf="nwnLegendItems === 'twosquare'">
+            <div class="flex flex-row space-x-0.5">
+                <div
+                    [ngClass]="{
+                        'square-sm': type === 'squaresm',
+                        'square-lg': type === 'squarelg',
+                        'bg-marsgreen-accent': colorVariantFirst === 'bgGreenAccent',
+                        'bg-marsred-600': colorVariantFirst === 'bgRed-600'
+                    }"
+                ></div>
+                <div
+                    [ngClass]="{
+                        'square-sm': type === 'squaresm',
+                        'square-lg': type === 'squarelg',
+                        'bg-marsgreen-accent': colorVariantSecond === 'bgGreenAccent',
+                        'bg-marsred-600': colorVariantSecond === 'bgRed-600'
+                    }"
+                ></div>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="nwnLegendItems === 'triangle-tr'">
+            <div
+                [ngClass]="{
+                    'triangle-tr': type === 'triangletr',
+                    'border-gray-500': color === 'border-gray'
+                }"
+            ></div>
+        </ng-container>
+    </div>
+    <p class="text-caption font-normal text-marsgray-500"><ng-content></ng-content></p>
+</div>

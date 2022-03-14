@@ -1,0 +1,98 @@
+<nwn-loaded-optimizer-header 
+(optimizeAndResetEvent) = "optimizeAndReset($event)"
+(downloadEvent)="downloadEvent($event)"
+(filterResetEvent) = "filterResetEvent($event)"
+ (modalClose) = "closeModalEvent($event)"
+ [filter_model] = "filter_model" 
+ [status]= "status"
+ [title]="scenarioTitle"
+ [currency]="currency"
+ [tenant]="tenant"
+ [disable_save_download] = "disable_save_download"
+  (modalEvent)="receiveMessage($event)"></nwn-loaded-optimizer-header>
+<!-- [simulated]="status" optimizer-summary-popup -->
+<div>
+    <!-- <div (click)="openModal('confirmation-popup')">confirmation</div> -->
+    <nwn-summary-placeholder *ngIf="!isOptimiserFilterApplied"></nwn-summary-placeholder>
+    <nwn-promo-optimizer-aggregated
+    [filter_model] = "filter_model"
+    [currency] = "currency" [tenant] = "tenant" 
+
+    [isUserConstraintChanged] = "isUserConstraintChanged"
+    *ngIf="isOptimiserFilterApplied" (modalEvent)="receiveMessage($event)"></nwn-promo-optimizer-aggregated>
+</div>
+
+<!-- Modals -->
+<!-- Filter Retailer -->
+<nwn-modal id="filter-retailer" class="hidden">
+    <nwn-filter-retailer [filter_model]="filter_model" (closeModal)="close($event)" (filterApply)="filterApply($event)" (retailerChange) = "retailerChange($event)" [retailers] = "retailers"></nwn-filter-retailer>
+</nwn-modal>
+<!-- Filter Category -->
+<nwn-modal id="filter-categories" class="hidden">
+    <nwn-filter-categories [filter_model]="filter_model" (closeModal)="close($event)" (filterApply)="filterApply($event)" (categoryChange) = "categoryChange($event)" [categories] = "categories"></nwn-filter-categories>
+</nwn-modal>
+<!-- Filter Strategic Cell -->
+<nwn-modal id="filter-stragetic-cells" class="hidden">
+    <nwn-filter-stragetic-cells [filter_model]="filter_model" (closeModal)="close($event)" (filterApply)="filterApply($event)" (strategicCellChange) = "strategicCellChange($event)" [stragetic_cells] = "strategic_cell"></nwn-filter-stragetic-cells>
+</nwn-modal>
+<!-- Filter Brands -->
+<nwn-modal id="filter-brands" class="hidden">
+    <nwn-filter-brands [filter_model]="filter_model" (closeModal)="close($event)" (filterApply)="filterApply($event)" (brandChange)="brandChange($event)"  [brands] = "brands"></nwn-filter-brands>
+</nwn-modal>
+<!-- Filter Brand Formats -->
+<nwn-modal id="filter-brand-formats" class="hidden">
+    <nwn-filter-brands-formats [filter_model]="filter_model" (closeModal)="close($event)" (filterApply)="filterApply($event)" (brandFormatChange) = "brandFormatChange($event)" [brand_formats] = "brands_format"></nwn-filter-brands-formats>
+</nwn-modal>
+<!-- Filter Product Groups -->
+<nwn-modal id="filter-product-groups" class="hidden">
+    <nwn-filter-product-groups [filter_model]="filter_model" (closeModal)="close($event)" (filterApply)="filterApply($event)" (productChange) = "productChange($event)" [product_groups] = "product_group"></nwn-filter-product-groups>
+</nwn-modal>
+<!-- save scenario -->
+<nwn-modal id="save-scenario-popup" class="hidden">
+    <nwn-save-scenario [error] = "save_scenario_error" (saveScenarioEvent)="saveScenario($event)"></nwn-save-scenario>
+</nwn-modal>
+<!-- Add Promotions -->
+<nwn-modal id="add-promotion" class="hidden">
+    <nwn-add-promotion></nwn-add-promotion>
+</nwn-modal>
+<!-- compare scenario -->
+<nwn-modal id="compare-scenario-popup" class="hidden">
+    <nwn-compare-scenario-popup></nwn-compare-scenario-popup>
+</nwn-modal>
+<!-- compare-promo-scenario -->
+<nwn-modal id="compare-promo-scenario" class="hidden">
+    <nwn-compare-promo-scenario [openTab] = "3"></nwn-compare-promo-scenario>
+</nwn-modal>
+<!-- load scenario promosimulator -->
+<nwn-modal id="load-scenario-promosimulator" class="hidden">
+    <nwn-load-scenario-promosimulator [title]="loadScenarioPopuptitle" (loadPromotionEvent) = "loadOptimizer($event)"></nwn-load-scenario-promosimulator>
+</nwn-modal>
+<!-- pricing scenario -->
+<nwn-modal id="pricing-scenario" class="hidden">
+    <nwn-pricing-scenario></nwn-pricing-scenario>
+</nwn-modal>
+
+<!-- summary popup -->
+<nwn-modal id="optimizer-summary-popup" class="hidden">
+    <nwn-optimizer-summary-popup [constraint_difference] = "constraint_difference"  ></nwn-optimizer-summary-popup>
+</nwn-modal>
+
+<!-- User Guide Popup -->
+<nwn-modal id="user-guide-popup" class="hidden">
+    <nwn-user-guide-popup [guideFor]="'optimizer'"></nwn-user-guide-popup>
+</nwn-modal>
+
+
+<!-- Command Interface Section-->
+<nwn-modal id="promo-optimizer-popup" class="hidden">
+    <nwn-promo-optimizer-popup></nwn-promo-optimizer-popup>
+</nwn-modal>
+
+<!-- Command Interface filter -->
+<nwn-modal id="filter-basic-optimizer" class="hidden">
+    <nwn-filter-basic-optimizer></nwn-filter-basic-optimizer>
+</nwn-modal>
+
+<nwn-modal id="confirmation-popup" class="hidden">
+    <nwn-confirmation-popup (confirmationEvent)="confirmationEvent($event)"></nwn-confirmation-popup>
+</nwn-modal>

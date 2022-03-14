@@ -1,0 +1,35 @@
+<div class="relative group">
+    <a
+        class="
+            hover:bg-marsgray-100
+            inline-flex
+            p-2
+            border border-transparent
+            hover:border-gray-200
+            text-marsgray-700
+            hover:text-marsblue-500
+        "
+        [ngClass]="{ 'active-icon': active == true }"
+        [routerLink]="link"
+    >
+        <nwn-svg-icon [type]="type" [nwnSvgIcon]="nwnSvgIcon"></nwn-svg-icon>
+    </a>
+    <span
+        class="
+            hidden
+            group-hover:flex
+            absolute
+            left-16
+            top-0
+            bg-marsgray-50
+            text-body text-marsgray-700
+            leading-6
+            py-2
+            px-5
+            border border-gray-200
+            w-max
+            z-50
+        "
+        ><ng-content></ng-content
+    ></span>
+</div>

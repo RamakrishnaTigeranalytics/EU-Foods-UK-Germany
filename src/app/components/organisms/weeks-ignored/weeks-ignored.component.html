@@ -1,0 +1,120 @@
+<div class="w-[654px]">
+    <div class="border-b border-marsgray-200">
+        <nwn-command-header type="stroke" nwnSvgIcon="adjustments">Weeks to be ignored</nwn-command-header>
+    </div>
+    <div class="border-b border-marsgray-200">
+        <div class="flex flex-row flex-wrap px-6 pt-6 pb-3 bg-white">
+            <div *ngFor="let year of quarter_year" class="mr-2 mb-2">
+                <nwn-simulated-filter-item (click) = "changeQuarter(year)" [selected_quarter]="selected_quarter" [key]="year" [type]="selected_quarter | weekTypePipe :weekly_map : year " size="sfi">{{year}}</nwn-simulated-filter-item>
+            </div>
+            <div  *ngIf="error" class="mr-2 mb-2 error">{{error}}</div>
+            <!-- <div class="mr-2 mb-2">
+                <nwn-simulated-filter-item size="sfi">Quater 2</nwn-simulated-filter-item>
+            </div>
+            <div class="mr-2 mb-2">
+                <nwn-simulated-filter-item size="sfi">Quater 3</nwn-simulated-filter-item>
+            </div>
+            <div class="mr-2 mb-2">
+                <nwn-simulated-filter-item size="sfi">Quater 4</nwn-simulated-filter-item>
+            </div> -->
+        </div>
+        <div class="flex flex-row flex-wrap px-6 pt-4 pb-3 bg-white">
+            <div *ngFor="let product of selected_product_week" class="mr-1 mb-1 w-[96px]">
+                <nwn-week-item (click) = "clickWeekly(product)" [cumpulsory_week_val] =  "cumpulsory_week_val"  [weekly_product] = "product" [weekly_map_ignored] = "weekly_map" >
+                    <p weekValue>Week {{product.week}}</p>
+                    <p dateValue>{{product.date}}</p>
+                </nwn-week-item>
+            </div>
+            <!-- <div class="mr-1 mb-1">
+                <nwn-week-item type="compulsoryWeek">
+                    <p weekValue>Week 1</p>
+                    <p dateValue>01-01-2021</p>
+                </nwn-week-item>
+            </div>
+            <div class="mr-1 mb-1">
+                <nwn-week-item type="compulsoryWeek">
+                    <p weekValue>Week 1</p>
+                    <p dateValue>01-01-2021</p>
+                </nwn-week-item>
+            </div>
+            <div class="mr-1 mb-1">
+                <nwn-week-item type="compulsoryWeek">
+                    <p weekValue>Week 1</p>
+                    <p dateValue>01-01-2021</p>
+                </nwn-week-item>
+            </div>
+            <div class="mr-1 mb-1">
+                <nwn-week-item type="defaultWeek">
+                    <p weekValue>Week 1</p>
+                    <p dateValue>01-01-2021</p>
+                </nwn-week-item>
+            </div>
+            <div class="mr-1 mb-1">
+                <nwn-week-item type="defaultWeek">
+                    <p weekValue>Week 1</p>
+                    <p dateValue>01-01-2021</p>
+                </nwn-week-item>
+            </div>
+            <div class="mr-1 mb-1">
+                <nwn-week-item type="disabledWeek">
+                    <p weekValue>Week 1</p>
+                    <p dateValue>01-01-2021</p>
+                </nwn-week-item>
+            </div>
+            <div class="mr-1 mb-1">
+                <nwn-week-item type="disabledWeek">
+                    <p weekValue>Week 1</p>
+                    <p dateValue>01-01-2021</p>
+                </nwn-week-item>
+            </div>
+            <div class="mr-1 mb-1">
+                <nwn-week-item type="defaultWeek">
+                    <p weekValue>Week 1</p>
+                    <p dateValue>01-01-2021</p>
+                </nwn-week-item>
+            </div>
+            <div class="mr-1 mb-1">
+                <nwn-week-item type="defaultWeek">
+                    <p weekValue>Week 1</p>
+                    <p dateValue>01-01-2021</p>
+                </nwn-week-item>
+            </div>
+            <div class="mr-1 mb-1">
+                <nwn-week-item type="defaultWeek">
+                    <p weekValue>Week 1</p>
+                    <p dateValue>01-01-2021</p>
+                </nwn-week-item>
+            </div>
+            <div class="mr-1 mb-1">
+                <nwn-week-item type="defaultWeek">
+                    <p weekValue>Week 1</p>
+                    <p dateValue>01-01-2021</p>
+                </nwn-week-item>
+            </div>
+            <div class="mr-1 mb-1">
+                <nwn-week-item type="defaultWeek">
+                    <p weekValue>Week 1</p>
+                    <p dateValue>01-01-2021</p>
+                </nwn-week-item>
+            </div> -->
+        </div>
+        <div class="flex flex-row space-x-3 px-6 py-4 bg-white">
+            <div>
+                <nwn-legend-items nwnLegendItems="onesquare" type="squarelg" color="bggreen-accent"
+                    >Active weeks</nwn-legend-items
+                >
+            </div>
+            <div>
+                <nwn-legend-items nwnLegendItems="onesquare" type="squarelg" color="bggreen-100"
+                    >Compulsory weeks</nwn-legend-items
+                >
+            </div>
+            <div>
+                <nwn-legend-items nwnLegendItems="onesquare" type="squarelg" color="bgred-100"
+                    >Disabled week</nwn-legend-items
+                >
+            </div>
+        </div>
+    </div>
+    <nwn-search-footer  (click)="apply()" [showApply]="true"></nwn-search-footer>
+</div>

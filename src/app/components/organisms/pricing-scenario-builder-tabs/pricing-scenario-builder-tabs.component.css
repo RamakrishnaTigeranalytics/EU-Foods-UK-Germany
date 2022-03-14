@@ -1,0 +1,112 @@
+::ng-deep .ngx-dropdown-container .ngx-dropdown-button {
+    @apply bg-transparent w-[184px] text-body  p-0 z-40 mb-[0px] rounded-none min-h-[46px] !important;
+}
+::ng-deep .ngx-dropdown-container button .nsdicon-angle-down::before {
+    @apply border-marsgray-700 !important;
+}
+::ng-deep .ngx-dropdown-container .ngx-dropdown-list-container {
+    @apply rounded-none !important;
+}
+::ng-deep .ngx-dropdown-container .ngx-dropdown-list-container ul.available-items {
+    @apply m-0 max-h-[110px] overscroll-y-auto !important;
+}
+::ng-deep .ngx-dropdown-container .ngx-dropdown-list-container ul li {
+    @apply text-body px-3 py-2 flex flex-row items-center space-x-3 hover:text-marsblue-500  border-l-3 border-transparent hover:border-marsblue-500 !important;
+}
+
+::ng-deep .ngx-dropdown-container button .nsdicon-angle-down {
+    @apply float-none !important;
+}
+::ng-deep .ngx-dropdown-container .ngx-dropdown-list-container {
+    @apply p-0 !important;
+}
+::ng-deep .ngx-dropdown-container .ngx-dropdown-button .display-text {
+    width: calc(100% - 20px) !important;
+    position: relative;
+    left: 20px;
+}
+::ng-deep .ngx-dropdown-container .ngx-dropdown-list-container hr {
+    @apply hidden !important;
+}
+::ng-deep .ngx-dropdown-container .ngx-dropdown-list-container ul.selected-items {
+    @apply my-0  !important;
+}
+::ng-deep .ngx-dropdown-container .ngx-dropdown-list-container ul.selected-items li {
+    @apply relative mb-0 bg-transparent text-marsgray-700 hover:bg-marsgray-50 hover:text-marsblue-500 border-l-3 border-transparent hover:border-marsblue-500 !important;
+}
+::ng-deep
+    .graphical-summary-dropdown
+    .ngx-dropdown-container
+    .ngx-dropdown-list-container
+    .search-container
+    input:focus
+    + label {
+    @apply hidden !important;
+}
+::ng-deep
+    .graphical-summary-dropdown
+    .ngx-dropdown-container
+    .ngx-dropdown-list-container
+    .search-container
+    label.active {
+    @apply hidden !important;
+}
+::ng-deep .ngx-dropdown-container .ngx-dropdown-list-container ul.selected-items li .nsdicon-close {
+    @apply hidden !important;
+}
+/* ::ng-deep
+    .smallDropdown
+    .ngx-dropdown-container
+    .ngx-dropdown-list-container
+    ul.selected-items
+    li:hover
+    .nsdicon-close {
+    @apply block !important;
+} */
+::ng-deep
+    .graphical-summary-dropdown
+    .ngx-dropdown-container
+    .ngx-dropdown-list-container
+    ul
+    li
+    > :not([hidden])
+    ~ :not([hidden]) {
+    @apply ml-0 !important;
+}
+::ng-deep .ngx-dropdown-container .ngx-dropdown-list-container ul.selected-items li::after {
+    content: '';
+    position: absolute;
+    background-image: url('/assets/svg/bluetick.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 24px;
+    height: 24px;
+    right: 8px;
+    z-index: 12;
+}
+::ng-deep .graphical-summary-dropdown .ngx-dropdown-container .ngx-dropdown-list-container .search-container {
+    @apply bg-marsgray-50 mt-0 pt-0  !important;
+}
+::ng-deep .graphical-summary-dropdown .ngx-dropdown-container .ngx-dropdown-list-container .search-container label {
+    @apply text-body font-normal pl-2 h-auto top-1 !important;
+}
+::ng-deep .graphical-summary-dropdown .ngx-dropdown-container .ngx-dropdown-list-container .search-container input {
+    width: 89% !important;
+    padding: 10px !important;
+    @apply border-marsgray-100 !important;
+}
+::ng-deep
+    .graphical-summary-dropdown
+    .ngx-dropdown-container
+    .ngx-dropdown-list-container
+    .search-container
+    input:focus {
+    @apply border-b border-marsgray-300 !important;
+}
+::ng-deep .tabular-select-dropdown .ngx-dropdown-container .ngx-dropdown-list-container .search-container {
+    @apply hidden !important;
+}
+
+.tabular-select-dropdown{
+    flex:auto
+}

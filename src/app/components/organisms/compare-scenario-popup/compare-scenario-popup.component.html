@@ -1,0 +1,55 @@
+<div style="width: 1250px;background: white;padding: 20px;" *ngIf="loaded_scenario?.length > 0">
+    <div class="compare-head flex flex-row justify-between py-3">
+        <div class="flex flex-row items-center space-x-5">
+            <nwn-button type="icon" size="iconsm" (click)="backClicked()">
+                <nwn-svg-icon type="stroke" nwnSvgIcon="arrow-left" size="lg"></nwn-svg-icon>
+            </nwn-button>
+            <h1 class="text-title-medium texxt-marsgray-700 font-normal">Compare scenario</h1>
+        </div>
+        <div class="flex flex-row items-center space-x-5">
+            <nwn-button type="primary" size="sm" (click)="openAdd()">Add scenario</nwn-button>
+            <nwn-button type="icon" size="iconsm" (click)="downloadExcel()">
+                <nwn-svg-icon type="stroke" nwnSvgIcon="save-download" size="lg"></nwn-svg-icon>
+            </nwn-button>
+        </div>
+    </div>
+    <div class="compare-content pt-4">
+        <div class="flex flex-row flex-wrap border-b border-marsgray-300">
+            <div class="pr-6">
+                <nwn-tab-cta (click)="toggleTabs(1)" [type]="openTab === 1 ? 'selectedtab' : 'unselectedtab'"
+                    >Graph
+                </nwn-tab-cta
+                >
+            </div>
+            <div class="pr-6">
+                <nwn-tab-cta (click)="toggleTabs(2)" [type]="openTab === 2 ? 'selectedtab' : 'unselectedtab'"
+                    >KPI metrics</nwn-tab-cta
+                >
+            </div>
+            <div *ngIf="!pricing" class="pr-6">
+                <nwn-tab-cta (click)="toggleTabs(3)" [type]="openTab === 3 ? 'selectedtab' : 'unselectedtab'"
+                    >Promotion plans</nwn-tab-cta
+                >
+            </div>
+        </div>
+        <div *ngIf="loaded_scenario.length > 0"  class="tab-content">
+            <div id="compare-scenario-graph" [ngClass]="{ hidden: openTab !== 1, block: openTab === 1 }" style="margin-top: 3rem;">
+                <nwn-cm-sc-chart [currency]="currency" [cschartdata]='CompareScenarioChartData' [legenddata]='legendNames'></nwn-cm-sc-chart>
+                <div class="flex flex-row-reverse space-x-4 space-x-reverse my-6">
+                    <div>
+                        <ng-container *ngFor="let data of legendNames">
+                            <div class="legend_color" [ngStyle]="{'background-color': data.color}"></div>
+                            <div style="display:inline-block;">&nbsp;&nbsp;{{data.name}}&nbsp;&nbsp;</div>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+            <div id="kpi-metrics" [ngClass]="{ hidden: openTab !== 2, block: openTab === 2 }">
+                <nwn-kpi-metrics [pricing] = "pricing" (deleteCompareEvent)="deleteCompareEvent($event)" [loaded_scenario]="loaded_scenario"></nwn-kpi-metrics>
+            </div>
+            <div *ngIf="!pricing" id="promotion-plans" [ngClass]="{ hidden: openTab !== 3, block: openTab === 3 }">
+                <nwn-promotion-plans-tab [tenant] = "tenant" [loaded_scenario]="loaded_scenario"></nwn-promotion-plans-tab>
+            </div>
+        </div>
+    </div>
+</div>

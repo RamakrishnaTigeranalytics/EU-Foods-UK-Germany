@@ -1,0 +1,6 @@
+.unselected-tooglecta {
+    @apply text-title-small text-marsgray-400 font-bold hover:text-marsblue-500 cursor-pointer;
+}
+.selected-tooglecta {
+    @apply text-title-small text-marsblue-500 font-bold cursor-pointer;
+}

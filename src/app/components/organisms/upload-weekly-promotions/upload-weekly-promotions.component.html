@@ -1,0 +1,9 @@
+<div class="w-[650px] bg-white mx-auto my-6 bg-white">
+    <div class="border-b border-marsgray-200">
+        <nwn-command-header type="stroke" nwnSvgIcon="upload">Upload Pricing Changes</nwn-command-header>
+    </div>
+    <div class="border-b border-marsgray-200 px-6 py-3">
+        <nwn-upload-items (fileUploadEvent)="fileUploadEvent($event)" [showLoadUpload]="false" (modalEvent)="receiveMessage($event)" [isUploadClicked]="isUploadClicked"></nwn-upload-items>
+    </div>
+    <nwn-search-footer [showAdd]="true" type="primary" [disabled]="isButtonDisabled" (click)="uploadFile()"></nwn-search-footer>
+</div>

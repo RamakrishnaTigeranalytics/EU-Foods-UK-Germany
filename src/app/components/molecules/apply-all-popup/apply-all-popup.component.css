@@ -1,0 +1,7 @@
+.o-auto{
+    /* overflow: visible; */
+}
+
+::ng-deep .popup-date .dp-picker-input {
+    visibility: visible;
+}
